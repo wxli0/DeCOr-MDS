@@ -15,7 +15,7 @@ import time
 
 
 # Librairie nSimplices courante
-exec(compile(open(r"nSimplices_new.py", encoding="utf8").read(), "nSimplices_new.py", 'exec'))
+exec(compile(open(r"nSimplices_final.py", encoding="utf8").read(), "nSimplices_new.py", 'exec'))
 #execfile("/path-to-code/2021-04-01_nSimplices-lib.py")
 
 # set matplotlib default savefig directory
@@ -25,7 +25,7 @@ plt.rcParams["savefig.directory"] = os.getcwd() # To save figures to directory
 ### test data
 
 
-data = pd.read_csv(r'Datasets\bdd_synthetic_rdim10.csv',sep=';',header=None)
+data = pd.read_csv(r'datasets/bdd_synthetic_rdim10.csv',sep=';',header=None)
 data.head()
 #df.sample(frac = 0.1)
 
@@ -239,7 +239,8 @@ ax3.grid()
 plt.show()
 
 ###Représentation 3D
-
+tab = data
+coord=np.array(tab)
 ttab=np.array(coord)
 
 from mpl_toolkits.mplot3d import Axes3D
@@ -283,24 +284,23 @@ plt.show()
 # plt.show()
 
 
-###PCvPC
+# ###PCvPC (does not work)
+# ttab=np.array(coord_corr)
 
-ttab=np.array(coord_corr)
-
-fig, axs = plt.subplots(3, 3)
-axs[0, 0].plot(x, y)
-axs[0, 0].set_title('PC1vPC2')
-axs[0, 1].plot(x, y, 'tab:orange')
-axs[0, 1].set_title('PC1vPC3')
-axs[1, 1].plot(x, -y, 'tab:red')
-axs[1, 1].set_title('PC2vPC3')
-axs[0, 2].plot(x, -y, 'tab:red')
-axs[0, 2].set_title('PC1vPC4')
-axs[1, 2].plot(x, -y, 'tab:red')
-axs[1, 2].set_title('PC2vPC4')
-axs[2, 2].plot(x, -y, 'tab:red')
-axs[2, 2].set_title('PC3vPC4')
-plt.show()
+# fig, axs = plt.subplots(3, 3)
+# axs[0, 0].plot(x, y)
+# axs[0, 0].set_title('PC1vPC2')
+# axs[0, 1].plot(x, y, 'tab:orange')
+# axs[0, 1].set_title('PC1vPC3')
+# axs[1, 1].plot(x, -y, 'tab:red')
+# axs[1, 1].set_title('PC2vPC3')
+# axs[0, 2].plot(x, -y, 'tab:red')
+# axs[0, 2].set_title('PC1vPC4')
+# axs[1, 2].plot(x, -y, 'tab:red')
+# axs[1, 2].set_title('PC2vPC4')
+# axs[2, 2].plot(x, -y, 'tab:red')
+# axs[2, 2].set_title('PC3vPC4')
+# plt.show()
 
 ###Shepard Diagram
 
@@ -346,7 +346,7 @@ plt.show()
 
 ### Test influence bruit 0
 
-data_n = pd.read_csv(r'C:\Users\jules\Ecole\Polytechnique\Stage_3A\Bibliographie\noise0.csv',sep=';',header=None)
+data_n = pd.read_csv(r'outputs/noise0.csv',sep=';',header=None)
 D=pdist(data_n.copy())
 D_TRUE=squareform(D)
 
@@ -360,7 +360,7 @@ DSO=squareform(D)
 
 B,hcoll0=DrawNSimplices(DSO,N,B,0,4)
 
-data_n = pd.read_csv(r'C:\Users\jules\Ecole\Polytechnique\Stage_3A\Bibliographie\noise1.csv',sep=';',header=None)
+data_n = pd.read_csv(r'outputs/noise1.csv',sep=';',header=None)
 D=pdist(data_n.copy())
 D_TRUE=squareform(D)
 
@@ -374,7 +374,7 @@ DSO=squareform(D)
 
 B,hcoll1=DrawNSimplices(DSO,N,B,0,4)
 
-data_n = pd.read_csv(r'C:\Users\jules\Ecole\Polytechnique\Stage_3A\Bibliographie\noise5.csv',sep=';',header=None)
+data_n = pd.read_csv(r'outputs/noise5.csv',sep=';',header=None)
 D=pdist(data_n.copy())
 D_TRUE=squareform(D)
 
@@ -388,7 +388,7 @@ DSO=squareform(D)
 
 B,hcoll5=DrawNSimplices(DSO,N,B,0,4)
 
-data_n = pd.read_csv(r'C:\Users\jules\Ecole\Polytechnique\Stage_3A\Bibliographie\noise10.csv',sep=';',header=None)
+data_n = pd.read_csv(r'outputs/noise10.csv',sep=';',header=None)
 D=pdist(data_n.copy())
 D_TRUE=squareform(D)
 
@@ -402,7 +402,7 @@ DSO=squareform(D)
 
 B,hcoll10=DrawNSimplices(DSO,N,B,0,4)
 
-data_n = pd.read_csv(r'C:\Users\jules\Ecole\Polytechnique\Stage_3A\Bibliographie\noise50.csv',sep=';',header=None)
+data_n = pd.read_csv(r'outputs/noise50.csv',sep=';',header=None)
 D=pdist(data_n.copy())
 D_TRUE=squareform(D)
 
@@ -435,7 +435,7 @@ print(np.median(hcoll50),np.var(hcoll50))
 
 ### Test influence bruit 2
 
-data_n = pd.read_csv(r'C:\Users\jules\Ecole\Polytechnique\Stage_3A\Bibliographie\nois2.csv',sep=';',header=None)
+data_n = pd.read_csv(r'outputs/nois2.csv',sep=';',header=None)
 D=pdist(data_n.copy())
 D_TRUE=squareform(D)
 
@@ -449,7 +449,7 @@ DSO=squareform(D)
 
 B,hcoll0=DrawNSimplices(DSO,N,B,0,2)
 
-data_n = pd.read_csv(r'C:\Users\jules\Ecole\Polytechnique\Stage_3A\Bibliographie\nois4.csv',sep=';',header=None)
+data_n = pd.read_csv(r'outputs/nois4.csv',sep=';',header=None)
 D=pdist(data_n.copy())
 D_TRUE=squareform(D)
 
@@ -463,7 +463,7 @@ DSO=squareform(D)
 
 B,hcoll1=DrawNSimplices(DSO,N,B,0,4)
 
-data_n = pd.read_csv(r'C:\Users\jules\Ecole\Polytechnique\Stage_3A\Bibliographie\nois8.csv',sep=';',header=None)
+data_n = pd.read_csv(r'outputs/nois8.csv',sep=';',header=None)
 D=pdist(data_n.copy())
 D_TRUE=squareform(D)
 
@@ -477,7 +477,7 @@ DSO=squareform(D)
 
 B,hcoll5=DrawNSimplices(DSO,N,B,0,8)
 
-data_n = pd.read_csv(r'C:\Users\jules\Ecole\Polytechnique\Stage_3A\Bibliographie\nois16.csv',sep=';',header=None)
+data_n = pd.read_csv(r'outputs/nois16.csv',sep=';',header=None)
 D=pdist(data_n.copy())
 D_TRUE=squareform(D)
 
@@ -491,7 +491,7 @@ DSO=squareform(D)
 
 B,hcoll10=DrawNSimplices(DSO,N,B,0,16)
 
-data_n = pd.read_csv(r'C:\Users\jules\Ecole\Polytechnique\Stage_3A\Bibliographie\nois32.csv',sep=';',header=None)
+data_n = pd.read_csv(r'outputs/nois32.csv',sep=';',header=None)
 D=pdist(data_n.copy())
 D_TRUE=squareform(D)
 
