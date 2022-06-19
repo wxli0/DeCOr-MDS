@@ -96,7 +96,6 @@ def cMDS(D,alreadyCentered=False):
     if p != p2:
         sys.exit("D must be symetric...")
         
-    
     # Double centering
     if not alreadyCentered:
         J=np.eye(p)-np.ones((p,p))/p
@@ -109,13 +108,13 @@ def cMDS(D,alreadyCentered=False):
     # Eigenvectors
     evals, evecs = np.linalg.eigh(Dcc)
     
-    # Sort by eigenvalue in decreasing order
+    # Sort by eigenvalue in decreasing order, consider all the eigenvectors 
     idx = np.argsort(abs(evals))[::-1]
     evecst = evecs[:,idx]
-    evalst= evals[idx]    
+    evalst= evals[idx] 
     
     # Undelying coordinates 
-    idxPos,=np.where(evalst>0)
+    idxPos,=np.where(evalst>0) # only  consider eigenvalues > 0
     Xe=np.dot(evecst[:,idxPos],np.diag(evalst[idxPos]**0.5))
     
     return evalst[idxPos], evecst[:,idxPos], Xe
@@ -162,6 +161,28 @@ def CorrectProjection(N,Data,list_outliers,n_bar):
     
 
 def nSimplices(D,d,n0=2,nf=6):
+    """
+    The nSimplices method
+    Parameters
+    ----------
+    D: int
+        The squared matrix form of pairwise distancs
+    d: int
+        Number of components in MDS
+    n0: int
+        Lowest dimension to test
+    nf: int
+        Largest dimension to test
+
+    Returns
+    -------
+    O: list[int]
+        The list of orthogonal outliers 
+    n_bar: int
+        The relevant dimension of the dataset
+    D_coor: list[list[float]]
+        The list of corrected distance 
+    """
     
     N=np.shape(D)[0]
     dico_outliers   = {}
