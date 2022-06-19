@@ -6,7 +6,6 @@ import numpy as np
 def col(mean,var,nb): # loc, scale, size
     return pd.DataFrame(np.transpose(np.random.normal(mean,var,nb)))
 
-
 df_dim3 = pd.concat([col(0,3,200),col(1,2,200), col(10,5,200),col(0,0,200),col(3,0.1,200),col(10,0.2,200),col(0,0.05,200)],axis=1)
 
 df_dim2 = pd.concat([col(1,2,200), col(10,5,200),col(0,0.0001,200),col(3,0.1,200),col(10,0.2,200),col(0,0.05,200),col(2,0.1,200)],axis=1) #
