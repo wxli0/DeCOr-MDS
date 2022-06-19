@@ -181,7 +181,9 @@ def nSimplices(D,d,n0=2,nf=6):
     n_bar: int
         The relevant dimension of the dataset
     D_coor: list[list[float]]
-        The list of corrected distance 
+        The list of corrected pairwise distance 
+    coord_corr: list[list[float]]
+        The list corrected coordinates
     """
     
     N=np.shape(D)[0]
@@ -247,4 +249,4 @@ def nSimplices(D,d,n0=2,nf=6):
     D_corr,coord_corr=CorrectProjection(N,eucl_coord,O,n_bar)
     
     
-    return O, n_bar , D_corr
+    return O, n_bar , D_corr, coord_corr

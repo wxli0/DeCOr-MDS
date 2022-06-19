@@ -3,7 +3,7 @@
 import pandas as pd
 import numpy as np
 
-def col(mean,var,nb):
+def col(mean,var,nb): # loc, scale, size
     return pd.DataFrame(np.transpose(np.random.normal(mean,var,nb)))
 
 
