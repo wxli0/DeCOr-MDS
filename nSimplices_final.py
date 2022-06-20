@@ -138,7 +138,7 @@ def CorrectProjection(N,Data,list_outliers,n_bar):
     pca_method = PCA(n_components=n_bar)
     method = pca_method.fit_transform(Data_pca) 
     vectors=pca_method.components_
-    print(vectors)
+    # print(vectors)
     
     Mean=np.mean(Data_pca,0)
     # print(Mean)
@@ -195,7 +195,7 @@ def nSimplices(D,d,n0=2,nf=6):
     nb_outliers = np.zeros((nf-n0))
     
     Med=np.median(D)
-    print(Med)
+    # print(Med)
     
     hmed=np.zeros((nf-n0))
     
@@ -241,7 +241,7 @@ def nSimplices(D,d,n0=2,nf=6):
     
     #Correction thanks to MDS and PCA on the distance matrix
     
-    print("correction of outliers")
+    # print("correction of outliers")
     
     clf = manifold.MDS(n_components=d, max_iter=100000000000,dissimilarity='precomputed')
     eucl_coord = clf.fit_transform(D)
