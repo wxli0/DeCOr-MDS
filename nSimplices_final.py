@@ -250,3 +250,39 @@ def nSimplices(D,d,n0=2,nf=6):
     
     
     return O, n_bar , D_corr, coord_corr
+
+
+def sim_outliers(df, prop, col_start, col_end, out_dist = alea.uniform(-100,100)):
+    """
+    Simulate p (in percentage) outliers in df from column col_start to column col_end
+
+     Parameters
+    ----------
+    df: list[list[float]]
+        The original dataframe 
+    p: float
+        The outlier fraction
+    col_start: int
+        The first column index to consider adding outliers (inclusive)
+    col_end: int
+        The last column index to consider adding outliers (inclusive)
+    out_dist: function, default uniform(-100,100)
+        The outlier distribution
+
+    Returns
+    -------
+    df_new: list[list[float]]
+        A new dataframe with outliers
+    """
+    N = df.shape[0]
+    df_new = df.copy()
+    num_outliers=int(np.ceil(prop*N))
+    # random draw of outliers 
+    outlier_indices=np.sort(alea.sample(range(N),num_outliers))
+    for n in outlier_indices:
+        horsplan=out_dist
+        # for each row, add outliers to one of columns 10 to 15 (inclusive)
+        # columns 10 to 15 are originally simulated with Guassian(2, 0.05)
+        i=alea.randint(col_start,col_end)
+        df_new.loc[n,i] = horsplan
+    return df_new
