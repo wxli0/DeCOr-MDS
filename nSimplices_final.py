@@ -276,7 +276,7 @@ def sim_outliers(df, prop, col_start, col_end, out_dist = alea.uniform(-100,100)
     """
     N = df.shape[0]
     df_new = df.copy()
-    num_outliers=int(np.ceil(prop*N))
+    num_outliers=math.floor(np.ceil(prop*N))
     # random draw of outliers 
     outlier_indices=np.sort(alea.sample(range(N),num_outliers))
     for n in outlier_indices:
