@@ -128,128 +128,126 @@ def cMDS(D,alreadyCentered=False):
     Correct the coordinates matrix, by projecting the outliers on the subspace of dimensionality n_bar
 """
 
-def CorrectProjection(N,Data,list_outliers,n_bar):
+def correct_projection(euc_coord, outlier_indices, subspace_dim):
+    """
+    Correct the outliers index by outlier_indices in euclidean coordinates euc_coord \
+        in a subspace of dimension subspace_dim
+    Parameters
+    ----------
+    euc_coord: list[list[float]]
+        Euclidean coordinates containing the outliers and normal points 
+    outlier_indices: list[int]
+        List of indices of outliers in euc_coord
+    subspace_dim: int, 
+        Dimension of the subspace
+
+    Returns
+    -------
+    corr_pairwise_dis: list[list[[float]]]
+        Correct pairwise distance matrix of the original points in euc_coord
+    corr_coord: list[list[float]]
+        Corrected coordinates
+    """
+    feature_num = euc_coord.shape[1] # number of features 
+    corr_coord = euc_coord*1.0
     
-    d=Data.shape[1]
-    Data_corr=Data*1.0
+    normal_coord = np.delete(euc_coord, outlier_indices, 0) 
     
-    Data_pca=np.delete(Data,list_outliers,0)
+    PCA_model = PCA(n_components=subspace_dim)
+    _ = PCA_model.fit_transform(normal_coord) # do not need to correct non-outliers 
+    PCA_components = PCA_model.components_ # find subspace components formed by Data_pca
     
-    pca_method = PCA(n_components=n_bar)
-    method = pca_method.fit_transform(Data_pca) 
-    vectors=pca_method.components_
-    # print(vectors)
+    normal_mean = np.mean(normal_coord,0) 
+
+    for comp in PCA_components:
+        normal_mean = normal_mean - np.dot(normal_mean, comp) * comp # standardize mean by the components 
     
-    Mean=np.mean(Data_pca,0)
-    # print(Mean)
-    for v in vectors:
-        Mean=Mean-np.dot(Mean,v)*v
-    
-    for i in list_outliers:
-        outlier=Data[i]
-        sum=0
-        projection=np.zeros(d)
-        for v in vectors:
-            projection+=np.dot(outlier,v)*v
-        Data_corr[i,:]=projection+Mean
-    
-    
-    Distances_corr=squareform(pdist(Data_corr))
+    for idx in outlier_indices:
+        outlier = euc_coord[idx]
+        proj_coord = np.zeros(feature_num)
+        for comp in PCA_components:
+            proj_coord += np.dot(outlier, comp) * comp
+        corr_coord[idx, :] = proj_coord + normal_mean
+
+    corr_pairwise_dis = squareform(pdist(corr_coord))
     #Then, the distances data is prepared for MDS.
     
-    return Distances_corr,Data_corr
+    return corr_pairwise_dis, corr_coord
     
 
-def nSimplices(D,d,n0=2,nf=6):
+def nSimplices(pairwise_dis, feature_num, dim_start=2, dim_end=6):
     """
     The nSimplices method
     Parameters
     ----------
-    D: int
+    pairwise_dis: int
         The squared matrix form of pairwise distancs
-    d: int
+    feature_num: int
         Number of components in MDS
-    n0: int
-        Lowest dimension to test
-    nf: int
-        Largest dimension to test
+    dim_start: int, default 2
+        Lowest dimension to test (inclusive)
+    dim_end: int, default 6
+        Largest dimension to test (inclusive)
 
     Returns
     -------
-    O: list[int]
-        The list of orthogonal outliers 
-    n_bar: int
+    outlier_indices: list[int]
+        A list of indices of the orthogonal outliers 
+    subspace_dim: int
         The relevant dimension of the dataset
-    D_coor: list[list[float]]
+    corr_pairwise_dis: list[list[float]]
         The list of corrected pairwise distance 
-    coord_corr: list[list[float]]
+    corr_coord: list[list[float]]
         The list corrected coordinates
     """
     
-    N=np.shape(D)[0]
-    dico_outliers   = {}
-    dico_h          = {}
+    point_num = np.shape(pairwise_dis)[0]
     
-    stop=False
+    stop = False    
     
-    nb_outliers = np.zeros((nf-n0))
-    
-    Med=np.median(D)
-    # print(Med)
-    
-    hmed=np.zeros((nf-n0))
+    med_height =np.zeros((dim_end-dim_start))
+    dim_height_map = {}
+
     
     # Iteration on n: determination of the screeplot nb_outliers function of the dimension tested
-    for n in range(n0,nf):
+    for dim in range(dim_start,dim_end+1):
         
         if not stop:
             
-            h= nSimplwhichh(N,D,n,seed=n+1)
+            cur_height = nSimplwhichh(point_num, pairwise_dis, dim, seed=dim+1)
             
-            h=np.array(h)
-            hs1=np.std(h)
-            hmed[n-n0]=np.median(h)
+            cur_height = np.array(cur_height)
+            med_height[dim-dim_start] = np.median(cur_height)
             
-            dico_h[n] = h
+            dim_height_map[dim] = cur_height
     
     #Determination of the relevant dimension
+    dims = np.array(range(dim_start, dim_end+1),dtype=float)
+    subspace_dim = np.argmax(med_height[0:len(dims)-1]/med_height[1:len(dims)])+dim_start+1
     
-    dimension=np.array(range(n0,nf),dtype=float)
-    n_bar=np.argmax(hmed[0:len(dimension)-1]/hmed[1:len(dimension)])+n0+1
+    #Detection of outliers in dimension n_bar 
+    subspace_heights = dim_height_map[subspace_dim]
+    subspace_height_size = subspace_heights.size
     
-    #Detection of outliers in dimension n_bar
+    subspace_med=np.median(subspace_heights)
+    subspace_std=stats.median_abs_deviation(subspace_heights)
     
-    heights=dico_h[n_bar]
-    N=heights.size
-    
-    h_med=np.median(heights)
-    h_std=stats.median_abs_deviation(heights)
-    
-    limit=h_med+5*h_std
-    integers=np.array(range(N))
-    O=integers[heights>limit]
-    #print(O)
+    thres = subspace_med + 5 * subspace_std
+    integers = np.array(range(subspace_height_size))
+    outlier_indices = integers[subspace_heights > thres]
     
     
-    #Correction of the bias obtained on n_bar
+    #Correction of the bias obtained on n_bar 
+    outlier_prop = outlier_indices.shape[0]/subspace_height_size
+    subspace_dim = subspace_dim - math.floor(subspace_dim * outlier_prop)
     
-    p=O.shape[0]/N
-    n_bar=n_bar-int(round(n_bar*p))
-    # print("Dimensionality found after correction:")
-    # print(n_bar)
-    
-    
-    #Correction thanks to MDS and PCA on the distance matrix
-    
-    # print("correction of outliers")
-    
-    clf = manifold.MDS(n_components=d, max_iter=100000000000,dissimilarity='precomputed')
-    eucl_coord = clf.fit_transform(D)
-    
-    D_corr,coord_corr=CorrectProjection(N,eucl_coord,O,n_bar)
+    # Correction of outliers using MDS, PCA
+    MDS_model = manifold.MDS(n_components=feature_num, max_iter=100000000000,dissimilarity='precomputed')
+    euc_coord = MDS_model.fit_transform(pairwise_dis)
+    corr_pairwise_dis, corr_coord = correct_projection(euc_coord, outlier_indices, subspace_dim)
     
     
-    return O, n_bar , D_corr, coord_corr
+    return outlier_indices, subspace_dim , corr_pairwise_dis, corr_coord
 
 
 def sim_outliers(df, prop, col_start, col_end, out_dist = alea.uniform(-100,100)):
