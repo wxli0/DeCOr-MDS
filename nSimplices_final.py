@@ -149,18 +149,19 @@ def correct_projection(euc_coord, outlier_indices, subspace_dim):
         Corrected coordinates
     """
     feature_num = euc_coord.shape[1] # number of features 
-    corr_coord = euc_coord*1.0
+    corr_coord = euc_coord * 1.0
     
-    normal_coord = np.delete(euc_coord, outlier_indices, 0) 
+    normal_coord = np.delete(euc_coord, outlier_indices, 0) # delete outliers
     
     PCA_model = PCA(n_components=subspace_dim)
     _ = PCA_model.fit_transform(normal_coord) # do not need to correct non-outliers 
     PCA_components = PCA_model.components_ # find subspace components formed by Data_pca
     
-    normal_mean = np.mean(normal_coord,0) 
+    normal_mean = np.mean(normal_coord,0) # mean of the normal vectors per feature
 
     for comp in PCA_components:
-        normal_mean = normal_mean - np.dot(normal_mean, comp) * comp # standardize mean by the components 
+        normal_mean = normal_mean - np.dot(normal_mean, comp) * comp 
+        # standardize mean by PCA components, TODO: divide by |comp|^2
     
     for idx in outlier_indices:
         outlier = euc_coord[idx]
@@ -175,7 +176,7 @@ def correct_projection(euc_coord, outlier_indices, subspace_dim):
     return corr_pairwise_dis, corr_coord
     
 
-def nSimplices(pairwise_dis, feature_num, dim_start=2, dim_end=6):
+def nSimplices(pairwise_dis, feature_num, dim_start, dim_end, euc_coord=None):
     """
     The nSimplices method
     Parameters
@@ -188,6 +189,10 @@ def nSimplices(pairwise_dis, feature_num, dim_start=2, dim_end=6):
         Lowest dimension to test (inclusive)
     dim_end: int, default 6
         Largest dimension to test (inclusive)
+    euc_coord: np 2D array
+        Euclidean coordinates of the dataset containing the outliers, default None.\
+        If provided, pass euc_coord directly into correct_projection; otherwise, use \
+        MDS to transform pairwise_dis 
 
     Returns
     -------
@@ -202,30 +207,23 @@ def nSimplices(pairwise_dis, feature_num, dim_start=2, dim_end=6):
     """
     
     point_num = np.shape(pairwise_dis)[0]
-    
-    stop = False    
-    
-    med_height =np.zeros((dim_end-dim_start))
+        
+    med_height =np.zeros((dim_end-dim_start+1))
     dim_height_map = {}
 
     
     # Iteration on n: determination of the screeplot nb_outliers function of the dimension tested
-    for dim in range(dim_start,dim_end+1):
-        
-        if not stop:
-            
-            cur_height = nSimplwhichh(point_num, pairwise_dis, dim, seed=dim+1)
-            
-            cur_height = np.array(cur_height)
-            med_height[dim-dim_start] = np.median(cur_height)
-            
-            dim_height_map[dim] = cur_height
+    for dim in range(dim_start,dim_end+1):           
+        cur_height = nSimplwhichh(point_num, pairwise_dis, dim, seed=dim+1)     
+        cur_height = np.array(cur_height)
+        med_height[dim-dim_start] = np.median(cur_height)
+        dim_height_map[dim] = cur_height
     
     #Determination of the relevant dimension
     dims = np.array(range(dim_start, dim_end+1),dtype=float)
     subspace_dim = np.argmax(med_height[0:len(dims)-1]/med_height[1:len(dims)])+dim_start+1
     
-    #Detection of outliers in dimension n_bar 
+    #Detection of outliers in dimension subspace_dim
     subspace_heights = dim_height_map[subspace_dim]
     subspace_height_size = subspace_heights.size
     
@@ -233,8 +231,9 @@ def nSimplices(pairwise_dis, feature_num, dim_start=2, dim_end=6):
     subspace_std=stats.median_abs_deviation(subspace_heights)
     
     thres = subspace_med + 5 * subspace_std
-    integers = np.array(range(subspace_height_size))
-    outlier_indices = integers[subspace_heights > thres]
+    all_indices = np.array(range(subspace_height_size))
+    outlier_indices = all_indices[subspace_heights > thres]
+    print("outlier indices are:", outlier_indices)
     
     
     #Correction of the bias obtained on n_bar 
@@ -242,10 +241,15 @@ def nSimplices(pairwise_dis, feature_num, dim_start=2, dim_end=6):
     subspace_dim = subspace_dim - math.floor(subspace_dim * outlier_prop)
     
     # Correction of outliers using MDS, PCA
-    MDS_model = manifold.MDS(n_components=feature_num, max_iter=100000000000,dissimilarity='precomputed')
-    euc_coord = MDS_model.fit_transform(pairwise_dis)
-    corr_pairwise_dis, corr_coord = correct_projection(euc_coord, outlier_indices, subspace_dim)
-    
+    corr_coord = None
+    if euc_coord is not None: # no need to apply MDS
+        corr_pairwise_dis, corr_coord = correct_projection(euc_coord, outlier_indices, subspace_dim)
+    else:
+        MDS_model = manifold.MDS(n_components=feature_num, max_iter=100000000000,dissimilarity='precomputed')
+        euc_coord = MDS_model.fit_transform(pairwise_dis)
+        corr_pairwise_dis, corr_coord = correct_projection(euc_coord, outlier_indices, subspace_dim)
+        corr_coord = euc_coord
+        corr_pairwise_dis = squareform(pdist(euc_coord))
     
     return outlier_indices, subspace_dim , corr_pairwise_dis, corr_coord
 
