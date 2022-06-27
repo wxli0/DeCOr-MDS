@@ -21,7 +21,6 @@ from scipy import stats
 """
 
 def nSimplexVolume(indices,squareDistMat,exactdenominator=False):
-    
     n = np.size(indices) - 1
     restrictedD = squareDistMat[:,indices][indices,:]
     CMmat = np.vstack(((n+1)*[1.] , restrictedD))
@@ -59,7 +58,7 @@ def DrawNSimplices(data,N,B,i,n):
     
     return B,hcollection
 
-""" """
+
 """ Determination of the height of each point   
                                                                   
 Iteration on each point of the dataset, and the height is the median of heights of the points in B n-simplices
@@ -180,36 +179,26 @@ def correct_projection(euc_coord, outlier_indices, subspace_dim):
     #Then, the distances data is prepared for MDS.
     
     return corr_pairwise_dis, corr_coord
-    
 
-def nSimplices(pairwise_dis, feature_num, dim_start, dim_end, euc_coord=None):
+
+def find_subspace_dim(pairwise_dis, dim_start, dim_end):
     """
-    The nSimplices method
+    Find the subspace dimension formed by the pairwise distance matrix pairwise_dis
     Parameters
     ----------
-    pairwise_dis: int
+    pairwise_dis: 2D np array of float
         The squared matrix form of pairwise distancs
-    feature_num: int
-        Number of components in MDS
     dim_start: int, default 2
         Lowest dimension to test (inclusive)
     dim_end: int, default 6
         Largest dimension to test (inclusive)
-    euc_coord: np 2D array
-        Euclidean coordinates of the dataset containing the outliers, default None.\
-        If provided, pass euc_coord directly into correct_projection; otherwise, use \
-        MDS to transform pairwise_dis 
 
     Returns
     -------
-    outlier_indices: list[int]
-        A list of indices of the orthogonal outliers 
     subspace_dim: int
         The relevant dimension of the dataset
-    corr_pairwise_dis: list[list[float]]
-        The list of corrected pairwise distance 
-    corr_coord: list[list[float]]
-        The list corrected coordinates
+    outlier_indices: list[int]
+        A list of indices of the orthogonal outliers 
     """
     
     point_num = np.shape(pairwise_dis)[0]
@@ -247,6 +236,40 @@ def nSimplices(pairwise_dis, feature_num, dim_start, dim_end, euc_coord=None):
     #Correction of the bias obtained on n_bar 
     outlier_prop = outlier_indices.shape[0]/subspace_height_size
     subspace_dim = subspace_dim - math.floor(subspace_dim * outlier_prop)
+
+    return subspace_dim, 
+
+def nSimplices(pairwise_dis, feature_num, dim_start, dim_end, euc_coord=None):
+    """
+    The nSimplices method
+    Parameters
+    ----------
+    pairwise_dis: 2D np array of float
+        The squared matrix form of pairwise distancs
+    feature_num: int
+        Number of components in MDS
+    dim_start: int, default 2
+        Lowest dimension to test (inclusive)
+    dim_end: int, default 6
+        Largest dimension to test (inclusive)
+    euc_coord: np 2D array
+        Euclidean coordinates of the dataset containing the outliers, default None.\
+        If provided, pass euc_coord directly into correct_projection; otherwise, use \
+        MDS to transform pairwise_dis 
+
+    Returns
+    -------
+    outlier_indices: list[int]
+        A list of indices of the orthogonal outliers 
+    subspace_dim: int
+        The relevant dimension of the dataset
+    corr_pairwise_dis: list[list[float]]
+        The list of corrected pairwise distance 
+    corr_coord: list[list[float]]
+        The list corrected coordinates
+    """
+    
+    subspace_dim, outlier_indices = find_subspace_dim(pairwise_dis, dim_start, dim_end)
     
     # Correction of outliers using MDS, PCA
     corr_coord = None

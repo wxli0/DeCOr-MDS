@@ -8,7 +8,7 @@ def col(mean,var,nb): # loc, scale, size
 
 df_dim3 = pd.concat([col(0,3,200),col(1,2,200), col(10,5,200),col(0,0,200),col(3,0.1,200),col(10,0.2,200),col(0,0.05,200)],axis=1)
 
-df_dim2 = pd.concat([col(1,2,200), col(10,5,200),col(0,0.0001,200),col(3,0.1,200),col(10,0.2,200),col(0,0.05,200),col(2,0.1,200)],axis=1) #
+df_dim2 = pd.concat([col(1,2,200), col(10,5,200),col(0,0,200),col(3,0.0003,200),col(10,0.0001,200),col(0,0.0001,200),col(2,0.0002,200)],axis=1) #
 
 df_dim2point5 = pd.concat([col(1,5,200), col(10,5,200),col(2,0,200),col(2,0.01,200),col(2,0.01,200),col(2,0.02,200)],axis=1) #,col(3,0.1,200),col(10,0.2,200),col(0,0.05,200),col(2,0.1,200)
 
