@@ -152,6 +152,7 @@ def correct_projection(euc_coord, outlier_indices, subspace_dim):
     corr_coord = euc_coord * 1.0
     
     normal_coord = np.delete(euc_coord, outlier_indices, 0) # delete outliers
+    print("outliet_indices is:", outlier_indices)
     
     PCA_model = PCA(n_components=subspace_dim)
     _ = PCA_model.fit_transform(normal_coord) # do not need to correct non-outliers 
@@ -162,13 +163,18 @@ def correct_projection(euc_coord, outlier_indices, subspace_dim):
     for comp in PCA_components:
         normal_mean = normal_mean - np.dot(normal_mean, comp) * comp 
         # standardize mean by PCA components, TODO: divide by |comp|^2
+    print("normal_mean is:", normal_mean)
     
     for idx in outlier_indices:
         outlier = euc_coord[idx]
+        print("original coord is:", outlier)
         proj_coord = np.zeros(feature_num)
         for comp in PCA_components:
             proj_coord += np.dot(outlier, comp) * comp
+            print("proj_coord is:", proj_coord)
+        print("+normal_mean is:", proj_coord + normal_mean)
         corr_coord[idx, :] = proj_coord + normal_mean
+        print("corr_coord is:", pd.DataFrame(corr_coord).head(20))
 
     corr_pairwise_dis = squareform(pdist(corr_coord))
     #Then, the distances data is prepared for MDS.
@@ -221,7 +227,9 @@ def nSimplices(pairwise_dis, feature_num, dim_start, dim_end, euc_coord=None):
     
     #Determination of the relevant dimension
     dims = np.array(range(dim_start, dim_end+1),dtype=float)
+    print("med_height is:", med_height)
     subspace_dim = np.argmax(med_height[0:len(dims)-1]/med_height[1:len(dims)])+dim_start+1
+    print("subspace_dim one is:", subspace_dim)
     
     #Detection of outliers in dimension subspace_dim
     subspace_heights = dim_height_map[subspace_dim]
@@ -243,13 +251,12 @@ def nSimplices(pairwise_dis, feature_num, dim_start, dim_end, euc_coord=None):
     # Correction of outliers using MDS, PCA
     corr_coord = None
     if euc_coord is not None: # no need to apply MDS
+        print("no MDS")
         corr_pairwise_dis, corr_coord = correct_projection(euc_coord, outlier_indices, subspace_dim)
     else:
         MDS_model = manifold.MDS(n_components=feature_num, max_iter=100000000000,dissimilarity='precomputed')
         euc_coord = MDS_model.fit_transform(pairwise_dis)
         corr_pairwise_dis, corr_coord = correct_projection(euc_coord, outlier_indices, subspace_dim)
-        corr_coord = euc_coord
-        corr_pairwise_dis = squareform(pdist(euc_coord))
     
     return outlier_indices, subspace_dim , corr_pairwise_dis, corr_coord
 
