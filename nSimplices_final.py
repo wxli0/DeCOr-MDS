@@ -222,22 +222,28 @@ def find_subspace_dim(pairwise_dis, dim_start, dim_end):
     
     #Detection of outliers in dimension subspace_dim
     subspace_heights = dim_height_map[subspace_dim]
+    print("subspace_heights for dimension", subspace_dim, "is:", subspace_heights)
     subspace_height_size = subspace_heights.size
     
-    subspace_med=np.median(subspace_heights)
-    subspace_std=stats.median_abs_deviation(subspace_heights)
+    subspace_med = np.median(subspace_heights)
+    subspace_std = stats.median_abs_deviation(subspace_heights)
+    subspace_mean = np.mean(subspace_heights)
     
     thres = subspace_med + 5 * subspace_std
+    print("subspace med is:", subspace_med, "std is:", subspace_std, "mean is:", np.mean(subspace_heights))
     all_indices = np.array(range(subspace_height_size))
     outlier_indices = all_indices[subspace_heights > thres]
     print("outlier indices are:", outlier_indices)
+    for idx in outlier_indices:
+        print("idx is:", idx, "height is:", subspace_heights[idx], "thres is:", thres)
     
     
     #Correction of the bias obtained on n_bar 
     outlier_prop = outlier_indices.shape[0]/subspace_height_size
-    subspace_dim = subspace_dim - math.floor(subspace_dim * outlier_prop)
+    print("outlier proportion is:", outlier_prop, "int(subspace_dim * outlier_prop) is:", round(subspace_dim * outlier_prop))
+    subspace_dim = subspace_dim - int(subspace_dim * outlier_prop) # TODO: check this with Khanh, round vs. floor
 
-    return subspace_dim, 
+    return int(subspace_dim), outlier_indices
 
 def nSimplices(pairwise_dis, feature_num, dim_start, dim_end, euc_coord=None):
     """
