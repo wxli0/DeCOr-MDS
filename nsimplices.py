@@ -13,99 +13,163 @@ from scipy import optimize
 from sklearn.decomposition import PCA
 from sklearn import manifold
 from scipy import stats
-#
 
 
-""" nSimplex Volume
-    Cayley-Menger formula     
-"""
+def simplex_volume(indices,dis_sq,use_deno=False):
+    """ 
+    Calculate simplex volumn using Cayley-Menger formula formed by specific indices  
 
-def nSimplexVolume(indices,squareDistMat,exactdenominator=False):
+    Parameters
+    ----------
+    indices: list[int]
+        The indices to form the simplex
+    dis_sq: list[float]
+        The squared-form pairwise distances
+    exact_dono: bool
+        Use denominator or not in the final volumn, default false
+
+    Returns
+    -------
+    float
+        The simplex volumn
+    """
+
     n = np.size(indices) - 1
-    restrictedD = squareDistMat[:,indices][indices,:]
-    CMmat = np.vstack(((n+1)*[1.] , restrictedD))
-    CMmat = np.hstack((np.array([[0.]+(n+1)*[1.]]).T , CMmat))
+    tar_dis_sq = dis_sq[:,indices][indices,:]
+    CM_mat = np.vstack(((n+1)*[1.] , tar_dis_sq))
+    CM_mat = np.hstack((np.array([[0.]+(n+1)*[1.]]).T , CM_mat))
     # NB : missing (-1)**(n+1)  ; but unnecessary here since abs() is taken afterwards
-    if exactdenominator:
-        denominator = float(2**n *(math.factorial(n))**2)
+    if use_deno:
+        deno = float(2**n *(math.factorial(n))**2)
     else:
         # if calculation of n*Vn/Vn-1 then n*sqrt(denominator_n/denominator_{n-1})
         # simplify to 1/sqrt(2), to take into account in CALLING function.
-        denominator = 1.
-    VnSquare=np.linalg.det(CMmat**2)
-    return np.sqrt(abs(VnSquare/denominator))
+        deno = 1.
+    VnSquare=np.linalg.det(CM_mat**2)
+    return np.sqrt(abs(VnSquare/deno))
 
 
-'''
-Draw B groups of (n-1) points to create B nsimplices containing i, to calculate the heights of the point i
-'''
-def DrawNSimplices(data,N,B,i,n):
 
+def nsimplices_heights(dis_sq, num_total_point, num_group, point_index, num_simplex_point):
+    '''
+    From a set of num_total_point points with pairwise distances (dis_sq), \
+        draw num_group groups of (num_simplex-1) \
+        points to create B nsimplices containing point_index point, \
+        to calculate the heights of the point point_index
+
+    Parameters
+    ----------
+    dis_sq: list[float]
+        The squared-formed pairwise distances
+    num_total_point: int
+        The total number of points in dis_sq
+    num_group: int
+        The number of groups to draw
+    point_index: int
+        The target point index
+    num_simplex_point: int
+        The number of points for a simplex
+
+    Returns
+    -------
+    heights: list[float]
+        The heights for the drawn simplices
+    '''
     
-    hcollection=[]
-    countVzero = 0
-    for b in range(B):
-        indices  = alea.sample( [x for x in range(N) if x != i] , (n)+1 )
-        Vn       = nSimplexVolume( [i]+indices , data, exactdenominator=False)
-        Vnm1     = nSimplexVolume( indices, data, exactdenominator=False)
+    heights=[]
+    for _ in range(num_group):
+        indices = \
+            alea.sample([x for x in range(num_total_point) if x != point_index], \
+                (num_simplex_point)+1 )
+        Vn = simplex_volume([point_index]+indices , dis_sq)
+        Vnm1 = simplex_volume(indices, dis_sq)
         if Vnm1!=0:
             hcurrent =  Vn / Vnm1 / np.sqrt(2.) #*(n+1)*np.sqrt(2.)
-            hcollection.append( hcurrent )
+            heights.append( hcurrent )
         else:
-            hcollection.append(0.0)
-    
-    B = B - countVzero
-    
-    return B,hcollection
+            heights.append(0.0)
+    return heights
 
 
-""" Determination of the height of each point   
-                                                                  
-Iteration on each point of the dataset, and the height is the median of heights of the points in B n-simplices
+def nsimplices_all_heights(num_total_point, dis_sq, num_simplex_point, \
+    seed=1):
+    """ 
+    For a set of num_total point points with pairwise distances dis_sq, determine \
+        the height of each point, by drawing 100 groups of simplices for each point, \
+        with each simplex has num_simple_point.
 
-"""
-def nSimplwhichh(N,data,n,seed=1,figpath=os.getcwd(), verbose=False):
+    Parameters
+    ----------
+    num_total_point: int
+        The total number of points in dis_sq
+    dis_sq: list[float]
+        Squared-from pairwise distances
+    num_simplex_point: int
+        The number of points for the drawn simplex
+    seed: int
+        The seed for picking points to form simplices, default 1
+
+    Returns
+    -------
+    heights: list[float]
+        The heights for all points
+    """
+
     alea.seed(seed)
-    h=N*[float('NaN')]
+    heights=num_total_point * [float('NaN')]
     
     
-    # Computation of h_i for each i
-    for i in range(N):
+    # computation of h_i for each i
+    for idx in range(num_total_point):
         
-        B=100
-        #we draw B groups of (n-1) points, to create n-Simplices and then compute the height median for i
-        (B,hcollection)=DrawNSimplices(data,N,B,i,n)
+        num_group = 100
+        # we draw 100 groups of (num_simplex_point) points, \
+        # to create n-simplices and then compute the height median for i
+        idx_heights = \
+            nsimplices_heights(dis_sq, num_total_point, num_group, idx, num_simplex_point)
         
-        #we here get h[i] the median of heights of the data point i
-        h[i] = np.median(hcollection)
+        #w e here get h[i] the median of heights of the data point i
+        heights[idx] = np.median(idx_heights)
         
-    return h
+    return heights
 
 
-
-""" 
-    Classical multidimensional scaling
-""" 
-
-def cMDS(D,alreadyCentered=False):
+def MDS(dis_sq,already_centered=False):
     """
-    D: distance / dissimilarity matrix, square and symetric, diagonal 0
+    Classical multidimensional scaling for pairwise distances dis_sq
+
+    Parameters
+    ----------
+    dis_sq: list[float]
+        The symetric and squared-form pairwise distances with diagonal being 0s
+    already_centered: bool
+        dis_sq is already centered, no need for double centering, default False.
+    
+    Returns
+    ----------
+    list[float]:
+        The sorted eigenvalues
+    2D np array of float:
+        The eigenvectors sorted by their eigenvalues
+    2D np array of float
+        The underlying coordinates
     """
-    (p,p2)=np.shape(D)
-    if p != p2:
+
+    width,height = np.shape(dis_sq)
+    if width != height:
         sys.exit("D must be symetric...")
         
     # Double centering
-    if not alreadyCentered:
-        J=np.eye(p)-np.ones((p,p))/p
-        Dcc=-0.5*np.dot(J,np.dot(D**2,J))
+    if not already_centered:
+        jaco = np.eye(width)-np.ones((width,width))/width
+        dis_sq_centered =-0.5*np.dot(jaco, np.dot(dis_sq ** 2, jaco))
     else: 
         # allows robust centering with mediane and mad
         # outside this routine
-        Dcc=D
+        dis_sq_centered = dis_sq
     
     # Eigenvectors
-    evals, evecs = np.linalg.eigh(Dcc)
+    evals, evecs = np.linalg.eigh(dis_sq_centered)
     
     # Sort by eigenvalue in decreasing order, consider all the eigenvectors 
     idx = np.argsort(abs(evals))[::-1]
@@ -113,12 +177,10 @@ def cMDS(D,alreadyCentered=False):
     evalst= evals[idx] 
     
     # Undelying coordinates 
-    idxPos,=np.where(evalst>0) # only  consider eigenvalues > 0
-    Xe=np.dot(evecst[:,idxPos],np.diag(evalst[idxPos]**0.5))
+    idx_pos, = np.where(evalst>0) # only  consider eigenvalues > 0
+    coords = np.dot(evecst[:,idx_pos], np.diag(evalst[idx_pos]**0.5))
     
-    return evalst[idxPos], evecst[:,idxPos], Xe
-
-
+    return evalst[idx_pos], evecst[:,idx_pos], coords
 
 
 """
@@ -207,20 +269,20 @@ def find_subspace_dim(pairwise_dis, dim_start, dim_end):
     dim_height_map = {}
 
     
-    # Iteration on n: determination of the screeplot nb_outliers function of the dimension tested
+    # determine of the screeplot nb_outliers function of the dimension tested
     for dim in range(dim_start,dim_end+1):           
-        cur_height = nSimplwhichh(point_num, pairwise_dis, dim, seed=dim+1)     
+        cur_height = nsimplices_all_heights(point_num, pairwise_dis, dim, seed=dim+1)     
         cur_height = np.array(cur_height)
         med_height[dim-dim_start] = np.median(cur_height)
         dim_height_map[dim] = cur_height
     
-    #Determination of the relevant dimension
+    # determine of the subspace dimension
     dims = np.array(range(dim_start, dim_end+1),dtype=float)
     print("med_height is:", med_height)
     subspace_dim = np.argmax(med_height[0:len(dims)-1]/med_height[1:len(dims)])+dim_start+1
     print("subspace_dim one is:", subspace_dim)
     
-    #Detection of outliers in dimension subspace_dim
+    # detect outliers in dimension subspace_dim
     subspace_heights = dim_height_map[subspace_dim]
     print("subspace_heights for dimension", subspace_dim, "is:", subspace_heights)
     subspace_height_size = subspace_heights.size
@@ -238,14 +300,13 @@ def find_subspace_dim(pairwise_dis, dim_start, dim_end):
         print("idx is:", idx, "height is:", subspace_heights[idx], "thres is:", thres)
     
     
-    #Correction of the bias obtained on n_bar 
+    # correct the bias obtained by subspace dimension
     outlier_prop = outlier_indices.shape[0]/subspace_height_size
-    print("outlier proportion is:", outlier_prop, "int(subspace_dim * outlier_prop) is:", round(subspace_dim * outlier_prop))
     subspace_dim = subspace_dim - int(subspace_dim * outlier_prop) # TODO: check this with Khanh, round vs. floor
 
     return int(subspace_dim), outlier_indices
 
-def nSimplices(pairwise_dis, feature_num, dim_start, dim_end, euc_coord=None):
+def nsimplices(pairwise_dis, feature_num, dim_start, dim_end, euc_coord=None):
     """
     The nSimplices method
     Parameters
@@ -294,7 +355,7 @@ def sim_outliers(df, prop, col_start, col_end, out_dist = alea.uniform(-100,100)
     """
     Simulate p (in percentage) outliers in df from column col_start to column col_end
 
-     Parameters
+    Parameters
     ----------
     df: list[list[float]]
         The original dataframe 
