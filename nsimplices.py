@@ -13,6 +13,7 @@ from scipy import optimize
 from sklearn.decomposition import PCA
 from sklearn import manifold
 from scipy import stats
+import pandas as pd
 
 
 def simplex_volume(indices,dis_sq,use_deno=False):

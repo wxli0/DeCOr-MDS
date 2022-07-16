@@ -1,6 +1,5 @@
-from nsimplices import nsimplices
+from nsimplices import *
 
-import numpy as np
 
 ### Run nSimplices method
 feature_num = 200
