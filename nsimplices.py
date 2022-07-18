@@ -352,7 +352,8 @@ def nsimplices(pairwise_dis, feature_num, dim_start, dim_end, euc_coord=None):
     return outlier_indices, subspace_dim , corr_pairwise_dis, corr_coord
 
 
-def sim_outliers(df, prop, col_start, col_end, out_dist = alea.uniform(-100,100)):
+def sim_outliers(df, prop, col_start, col_end, out_dist = alea.uniform(-100,100), \
+    res_outlier_indices = None):
     """
     Simulate p (in percentage) outliers in df from column col_start to column col_end
 
@@ -368,21 +369,26 @@ def sim_outliers(df, prop, col_start, col_end, out_dist = alea.uniform(-100,100)
         The last column index to consider adding outliers (inclusive)
     out_dist: function, default uniform(-100,100)
         The outlier distribution
+    res_outlier_indices: list[int]
+        Only selects outliers from these restriccted outlier indices
 
     Returns
     -------
     df_new: list[list[float]]
         A new dataframe with outliers
     """
-    N = df.shape[0]
+
+    # if there is no restriction on outlier indices, generate from all indices
+    if res_outlier_indices is None:
+        res_outlier_indices = range(df.shape[0])
+
+    num_point = df.shape[0]
     df_new = df.copy()
-    num_outliers=math.floor(np.ceil(prop*N))
+    num_outliers=math.floor(np.ceil(prop * num_point))
     # random draw of outliers 
-    outlier_indices=np.sort(alea.sample(range(N),num_outliers))
+    outlier_indices=np.sort(alea.sample(res_outlier_indices,num_outliers))
     for n in outlier_indices:
         horsplan=out_dist
-        # for each row, add outliers to one of columns 10 to 15 (inclusive)
-        # columns 10 to 15 are originally simulated with Guassian(2, 0.05)
         i=alea.randint(col_start,col_end)
         df_new.loc[n,i] = horsplan
     return df_new
