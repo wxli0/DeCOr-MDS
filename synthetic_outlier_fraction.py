@@ -50,6 +50,6 @@ props = np.arange(prop_incre, prop_incre+len(dim_pred_diff)*prop_incre, prop_inc
 plt.plot(props, dim_pred_diff, c="red", label = "after correction")
 plt.plot(props, dim_raw_diff, c="blue", label = "before correction")
 plt.xticks(props)
-plt.xlabel(r'frarction of outliers $p$')
+plt.xlabel(r'fraction of outliers $p$')
 plt.ylabel(r'$\bar{n}-d^{*}$')
 plt.savefig("./outputs/synthetic_outlier_fraction.png")
