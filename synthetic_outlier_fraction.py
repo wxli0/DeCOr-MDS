@@ -41,7 +41,7 @@ for i in range(len(res_outlier_indices_list)):
     out_dis_sq=squareform(out_dis) # squared matrix form of D
     subspace_dim, outlier_indices = find_subspace_dim(out_dis_sq, 30, df_prev.shape[1])
     dim_pred_diff.append(subspace_dim - true_dim)
-    dim_raw_diff.append(subspace_dim + int((subspace_dim * len(outlier_indices)/df_prev.shape[1]) - true_dim))
+    dim_raw_diff.append(subspace_dim + int((subspace_dim * len(outlier_indices)/df_prev.shape[0]) - true_dim))
     print("subspace_dim is:", subspace_dim)
 
 
