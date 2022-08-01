@@ -16,7 +16,7 @@ df_dim4 = pd.concat([col(1,5,200), col(10,5,200),col(2,5,200),col(-2,4,200),col(
 df_dim5 = pd.concat([col(1,5,200), col(10,5,200),col(2,5,200),col(-2,4,200),col(7,6,200),col(2,0.01,200),col(2,0.02,200),col(2,0.02,200)],axis=1)
 df_dim6 = pd.concat([col(1,5,200), col(10,5,200),col(2,5,200),col(-2,4,200),col(7,6,200),col(7,6,200),col(2,0.01,200),col(2,0.02,200),col(2,0.02,200)],axis=1)
 
-N = 400
+N = 1000
 # df_dim10 = pd.concat([col(1,5,N), col(10,5,N),col(2,5,N),col(-2,4,N),col(7,6,N),col(7,6,N),col(1,5,N), col(10,5,N),col(2,5,N),col(-2,4,N),\
 #     col(0,0.0001,N),col(0,0.0002,N),col(0,0.0003,N),col(0,0.0002,N),col(0,0.0001,N),col(0,0.0002,N),col(0,0.0003,N),col(0,0.0002,N),col(0,0.0001,N),col(0,0.0001,N)],axis=1)
 
@@ -81,36 +81,36 @@ nois16=np.array(df_noise2_influence16)
 nois32=np.array(df_noise2_influence32)
 
 
-# np.savetxt(r'outputs/bdd_synthetic_rdim2.csv',tab_dim2,delimiter=';')
+# np.savetxt(r'datasets/bdd_synthetic_rdim2.csv',tab_dim2,delimiter=';')
 
-# np.savetxt(r'outputs/bdd_synthetic_rdim3.csv',tab_dim3,delimiter=';')
+# np.savetxt(r'datasets/bdd_synthetic_rdim3.csv',tab_dim3,delimiter=';')
 
-# np.savetxt(r'outputs/bdd_synthetic_rdim2point5.csv',tab_dim2point5,delimiter=';')
+# np.savetxt(r'datasets/bdd_synthetic_rdim2point5.csv',tab_dim2point5,delimiter=';')
 
-# np.savetxt(r'outputs/bdd_synthetic_rdim4.csv',tab_dim4,delimiter=';')
+# np.savetxt(r'datasets/bdd_synthetic_rdim4.csv',tab_dim4,delimiter=';')
 
-# np.savetxt(r'outputs/bdd_synthetic_rdim5.csv',tab_dim5,delimiter=';')
+# np.savetxt(r'datasets/bdd_synthetic_rdim5.csv',tab_dim5,delimiter=';')
 
-# np.savetxt(r'outputs/bdd_synthetic_rdim6.csv',tab_dim6,delimiter=';')
+# np.savetxt(r'datasets/bdd_synthetic_rdim6.csv',tab_dim6,delimiter=';')
 
-np.savetxt(r'outputs/bdd_synthetic_rdim10.csv',tab_dim10,delimiter=';')
+# np.savetxt(r'datasets/bdd_synthetic_rdim10.csv',tab_dim10,delimiter=';')
 
-# np.savetxt(r'outputs/bdd_synthetic_rdim30.csv',tab_dim30,delimiter=';')
+# np.savetxt(r'datasets/bdd_synthetic_rdim30.csv',tab_dim30,delimiter=';')
 
-# np.savetxt(r'outputs/bdd_synthetic_rdim20.csv',tab_dim20,delimiter=';')
+# np.savetxt(r'datasets/bdd_synthetic_rdim20.csv',tab_dim20,delimiter=';')
 
-# np.savetxt(r'outputs/bdd_synthetic_rdim40.csv',tab_dim40,delimiter=';')
+np.savetxt(r'datasets/bdd_synthetic_rdim40.csv',tab_dim40,delimiter=';')
 
-# np.savetxt(r'outputs/bdd_synthetic_rdim40_2.csv',tab_dim40_2,delimiter=';')
+# np.savetxt(r'datasets/bdd_synthetic_rdim40_2.csv',tab_dim40_2,delimiter=';')
 
-# np.savetxt(r'outputs/noise0.csv',noise0,delimiter=';')
-# np.savetxt(r'outputs/noise1.csv',noise1,delimiter=';')
-# np.savetxt(r'outputs/noise5.csv',noise5,delimiter=';')
-# np.savetxt(r'outputs/noise10.csv',noise10,delimiter=';')
-# np.savetxt(r'outputs/noise50.csv',noise50,delimiter=';')
+# np.savetxt(r'datasets/noise0.csv',noise0,delimiter=';')
+# np.savetxt(r'datasets/noise1.csv',noise1,delimiter=';')
+# np.savetxt(r'datasets/noise5.csv',noise5,delimiter=';')
+# np.savetxt(r'datasets/noise10.csv',noise10,delimiter=';')
+# np.savetxt(r'datasets/noise50.csv',noise50,delimiter=';')
 
-# np.savetxt(r'outputs/nois2.csv',nois2,delimiter=';')
-# np.savetxt(r'outputs/nois4.csv',nois4,delimiter=';')
-# np.savetxt(r'outputs/nois8.csv',nois8,delimiter=';')
-# np.savetxt(r'outputs/nois16.csv',nois16,delimiter=';')
-# np.savetxt(r'outputs/nois32.csv',nois32,delimiter=';')
+# np.savetxt(r'datasets/nois2.csv',nois2,delimiter=';')
+# np.savetxt(r'datasets/nois4.csv',nois4,delimiter=';')
+# np.savetxt(r'datasets/nois8.csv',nois8,delimiter=';')
+# np.savetxt(r'datasets/nois16.csv',nois16,delimiter=';')
+# np.savetxt(r'datasets/nois32.csv',nois32,delimiter=';')

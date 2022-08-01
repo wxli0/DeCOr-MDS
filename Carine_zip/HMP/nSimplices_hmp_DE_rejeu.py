@@ -5,6 +5,8 @@ nSimplices on hmp
 """
 import math
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import os
 import random as alea
@@ -12,8 +14,8 @@ from scipy.linalg import solve,pinv,pinv2
 from scipy.spatial.distance import pdist, squareform
 #from statsmodels.robust.scale import mad
 
-exec(compile(open(r"lib/cMDS.py", encoding="utf8").read(), "cMDS.py", 'exec'))
-exec(compile(open(r"lib/liblnSimplices-rejeu.py", encoding="utf8").read(), "liblnSimplices-rejeu.py", 'exec'))
+exec(compile(open(r"lib/cMDS.py").read(), "cMDS.py", 'exec'))
+exec(compile(open(r"lib/liblnSimplices-rejeu.py").read(), "liblnSimplices-rejeu.py", 'exec'))
 
 # execfile("./lib/cMDS.py")
 # execfile("./lib/liblnSimplices-rejeu.py")
@@ -50,7 +52,7 @@ alea.seed(42)
 cutoff=0.5
 trim=0.9
 
-dim=20 # 5,10,15,20
+dim=11 # 5,10,15,20
 resu=voldim_corrabb(data,cutoff,trim,ngmetric="rkurtosis",nmin=dim,nmax=dim)
 np.savez("./resu/hhsJhn_"+str(dim),resu[0])
 np.savez("./resu/hsignif_"+str(dim),resu[1])
@@ -60,7 +62,9 @@ np.savez("./resu/cdata_"+str(dim),resu[3])
 #var = np.array(resu[0][3][0])**2 / (2*np.mean(data,0))
 #print np.std(resu[0][3][0]) , np.std(resu[0][3][0] / np.sqrt(2*np.mean(data,0))), np.std( var ), 1.4826*np.median(abs(var-np.median(var)))
 
-va, ve, Xe = cMDS(resu[3][3])
-plt.plot(Xe[:,0],Xe[:,1],'.');plt.legend(["QuantE+nSimplices"])
-plt.show()
+va, ve, Xe = cMDS(resu[3][dim])
+plt.plot(Xe[:,0],Xe[:,1],'.')
+plt.legend(["QuantE+nSimplices"])
+plt.savefig("dim11.png")
+
 

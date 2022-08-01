@@ -30,7 +30,7 @@ def inequality_correction(distance_matrix):
     #loop on elements
     list_mini = []
     for n in range(N):
-        print(n,"sur",N)
+        print n,"sur",N
         Dne[n,n]=0.
         for m in range((n+1),N):
             #init mini
@@ -107,7 +107,7 @@ def h_hs_Jhn(N,data,trim,n,seed=1):
             Vnm1     = nSimplexVolume( indices, data, denominateurexact=False)
             if Vnm1!=0:
                 #hcourant = n * Vn / Vnm1
-                hcourant =  Vn / Vnm1 / np.sqrt(2.)
+                hcourant =  Vn / Vnm1 / np.sqrt(2.) # Question: Why sqrt(2) not n (equation (1) in the manuscript)?
                 hcollection.append( hcourant )
             else:
                 countVzero += 1
@@ -191,7 +191,7 @@ def voldim_corrabb(data,cutoff,trim,ngmetric="negentropy",nmin=2, nmax=5, short=
             htrim  = [h[i] for i in horder][ int(N*(1-trim)/2) : int(N - N*(1-trim)/2) ]
             
             #""" Calcul de h_i / median(delta_.,i), pour détection d'outliers                                                   """
-            honmediandist = (h / np.median(data,axis=0))**2      # ? : *N/(N-1) to remove bias due to the 0 ?
+            honmediandist = (h / np.median(data,axis=0))**2      # ? : *N/(N-1) to remove bias due to the 0 ? Question: What does equation correspond to? Why do we divide h by the median of the original data?
             
             #""" Calcul de h_signif = median( h_i / median(delta_i,.) )_trim% """
             #honmediandisttrim = [honmediandist[i] for i in np.argsort(h)][:int(N*trim)]
@@ -207,7 +207,7 @@ def voldim_corrabb(data,cutoff,trim,ngmetric="negentropy",nmin=2, nmax=5, short=
             #Jh_{n}
             JhnOrd = np.argsort(np.array(Jhn)[:,0])
             Jhntrim = [Jhn[i] for i in JhnOrd][ int(N*(1-trim)/2) : int(N - N*(1-trim)/2) ]
-            if nmax > nmin :
+            if nmax > nmin : # Note: not in use
               #Jh_{n-1}
               Jhnm1 = dico_h_hs_Jhn[(nm1)][2]
               Jhnm1Ord = np.argsort(np.array(Jhnm1)[:,0])
@@ -232,55 +232,20 @@ def voldim_corrabb(data,cutoff,trim,ngmetric="negentropy",nmin=2, nmax=5, short=
             cdata = 1.0*data
             #cutoff negentropy : 0.5
             
-            dico_outliers[n] = list(np.where( honmediandist >cutoff)[0])
-            print("DIM "+str(n)+", NB OUTLIERS : "+str(len(dico_outliers[n])))
-            print("outliers : "+str(dico_outliers[n]))
+            dico_outliers[n] = list(np.where( honmediandist >cutoff)[0]) # Question: we used a fixed number for cutoff? I think this is consistent with your description in section 3.4.1 in your thesis, where you mentioned kurtosis predefined curoff is 0.5. However, I do not see how this is consistent with the pseudocode in the manuscript, where the cutoff is a function of n (the true dimension)
+            print "outliers : "+str(dico_outliers[n])
             
-            if (nmax > nmin) and not short :
-              if hsignif >= cutoff and len(dico_outliers[n])>np.ceil((1-trim)*N):
+            dico_outliers[n] = list(np.where( honmediandist >cutoff)[0]) # Question: redundant with line 235?
                   
-                  print("Le nombre estimé de dimensions dans les données est d'au moins : ",n,".")
-                  
-              else:
-                  
-                  dico_outliers[n] = list(np.where( honmediandist >cutoff)[0])
-                  
-                  #if n in dico_outliers.keys():
-                  for i in dico_outliers[n]:
-                      for j in [x for x in range(N) if x!=i]:
-                          #cdata[i,j] = cdata[j,i] = np.sqrt(np.max((0.,(data[i,j]**2 - h[i]**2))))
-                          cdata[i,j] = cdata[j,i] = np.sqrt(np.max((0.,(cdata[i,j]**2 - h[i]**2))))
-                          # Limitation : le calcul ci-dessus ne tient pas compte d'éventuels clusters d'outliers.
-                  
-                  if len(dico_outliers[n])>0: 
-                      dico_cdata[n] = cdata
-                  
-                  if hsignif >= cutoff:
-                      
-                      h2,hs2,Jhn2 = h_hs_Jhn(N,cdata,trim,n,seed=n+1)
-                      #print np.mean(np.array(Jhn2),0)
-                      
-                      if ngmetric=="negentropy":
-                          hsignif2 = np.mean(np.array(Jhn2)[:,0]) / np.mean(np.array(dico_h_hs_Jhn[(nm1)][2])[:,0])
-                      elif ngmetric=="negentropyexp":
-                          hsignif2 = np.mean(np.array(Jhn2)[:,1]) / np.mean(np.array(dico_h_hs_Jhn[(nm1)][2])[:,1])
-                      elif ngmetric=="rkurtosis":
-                          hsignif2 = np.mean(np.array(Jhn2)[:,2]) / np.mean(np.array(dico_h_hs_Jhn[(nm1)][2])[:,2])
-                      #print "hsignif2="+str(hsignif2)
-                      
-                      if hsignif2 < cutoff:
-                          
-                          dico_h_hs_Jhn[n] = h2,hs2,Jhn2
-                          print("Le nombre estimé de dimensions dans les données est : "+str(n-1)+".")
-                          stop=True
-                      else:
-                          print("Le nombre estimé de dimensions dans les données est d'au moins : ",n,".")
-                  else:
-                      print("Le nombre estimé de dimensions dans les données est : "+str(n-1)+".")
-                      stop=True
+            for i in dico_outliers[n]:
+                for j in [x for x in range(N) if x!=i]:
+                    #cdata[i,j] = cdata[j,i] = np.sqrt(np.max((0.,(data[i,j]**2 - h[i]**2))))
+                    cdata[i,j] = cdata[j,i] = np.sqrt(np.max((0.,(cdata[i,j]**2 - h[i]**2))))
+                    # Limitation : le calcul ci-dessus ne tient pas compte d'éventuels clusters d'outliers.
             
-    
-    #plt.show()
+            if len(dico_outliers[n])>0: 
+                dico_cdata[n] = cdata
+            
     
     return dico_h_hs_Jhn, dico_hsignif, dico_outliers,dico_cdata
 
