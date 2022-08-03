@@ -3,14 +3,12 @@
 """
 nSimplices on hmp
 """
-import math
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-import os
+import sys
 import random as alea
-from scipy.linalg import solve,pinv,pinv2
 from scipy.spatial.distance import pdist, squareform
 #from statsmodels.robust.scale import mad
 
@@ -20,9 +18,15 @@ exec(compile(open(r"lib/liblnSimplices-rejeu.py").read(), "liblnSimplices-rejeu.
 # execfile("./lib/cMDS.py")
 # execfile("./lib/liblnSimplices-rejeu.py")
 lieudata="./data/"
-QE=np.loadtxt(lieudata+"v13lqphylotypeQuantE.csv",delimiter=",")
+data_path = lieudata+"v13lqphylotypeQuantE.csv"
+if len(sys.argv) != 1:
+    data_path = sys.argv[1]
+
+QE=np.loadtxt(data_path, delimiter=",")
 # -> 2255 samples on 425 phylogenies
 Qcolor = list(np.loadtxt(lieudata+"couleurshtmlQIHP", dtype='str'))
+print("Qcolor is:", Qcolor)
+print("Qcolor length is:", len(Qcolor))
 #
 #couleursQIHP[THROAT==1] <- "deeppink" #"hotpink2"
 #couleursQIHP[EARS==1] <- "black" 
@@ -62,9 +66,21 @@ np.savez("./resu/cdata_"+str(dim),resu[3])
 #var = np.array(resu[0][3][0])**2 / (2*np.mean(data,0))
 #print np.std(resu[0][3][0]) , np.std(resu[0][3][0] / np.sqrt(2*np.mean(data,0))), np.std( var ), 1.4826*np.median(abs(var-np.median(var)))
 
+# enable color encoding of different types
+color_df = np.loadtxt("./data/v13lqphylotypePheno_rs.csv", delimiter=",")
+colors = []
+
+
+
+
 va, ve, Xe = cMDS(resu[3][dim])
+print("Xe shape is:", Xe.shape)
 plt.plot(Xe[:,0],Xe[:,1],'.')
 plt.legend(["QuantE+nSimplices"])
-plt.savefig("dim11.png")
+
+output_file = "dim" + str(dim)
+if len(sys.argv) != 0:
+    output_file += "_subset"
+plt.savefig("./resu/"+output_file+".png")
 
 
