@@ -225,7 +225,7 @@ def correct_projection(euc_coord, outlier_indices, subspace_dim):
     for comp in PCA_components:
         normal_mean = normal_mean - np.dot(normal_mean, comp) * comp 
         # standardize mean by PCA components, TODO: divide by |comp|^2
-    print("normal_mean is:", normal_mean)
+    # print("normal_mean is:", normal_mean)
     
     for idx in outlier_indices:
         outlier = euc_coord[idx]
@@ -234,9 +234,9 @@ def correct_projection(euc_coord, outlier_indices, subspace_dim):
         for comp in PCA_components:
             proj_coord += np.dot(outlier, comp) * comp
             print("proj_coord is:", proj_coord)
-        print("+normal_mean is:", proj_coord + normal_mean)
+        # print("+normal_mean is:", proj_coord + normal_mean)
         corr_coord[idx, :] = proj_coord + normal_mean
-        print("corr_coord is:", pd.DataFrame(corr_coord).head(20))
+        # print("corr_coord is:", pd.DataFrame(corr_coord).head(20))
 
     corr_pairwise_dis = squareform(pdist(corr_coord))
     #Then, the distances data is prepared for MDS.
@@ -285,14 +285,14 @@ def find_subspace_dim(pairwise_dis, dim_start, dim_end):
     
     # detect outliers in dimension subspace_dim
     subspace_heights = dim_height_map[subspace_dim]
-    print("subspace_heights for dimension", subspace_dim, "is:", subspace_heights)
+    # print("subspace_heights for dimension", subspace_dim, "is:", subspace_heights)
     subspace_height_size = subspace_heights.size
     
     subspace_med = np.median(subspace_heights)
     subspace_std = stats.median_abs_deviation(subspace_heights)
     subspace_mean = np.mean(subspace_heights)
     
-    thres = subspace_mean + 3 * subspace_std # TODO: consider make 5 a parameter
+    thres = subspace_mean + 5 * subspace_std # TODO: consider make 5 a parameter
     print("thres is:", thres, "mean is:", subspace_mean, "std is:", subspace_std)
     all_indices = np.array(range(subspace_height_size))
     outlier_indices = all_indices[subspace_heights > thres]
