@@ -27,7 +27,7 @@ def simplex_volume(indices,dis_sq,use_deno=False):
     dis_sq: list[float]
         The squared-form pairwise distances
     exact_dono: bool
-        Use denominator or not in the final volumn, default false
+        Use denominator or not in the final volume, default false
 
     Returns
     -------
@@ -95,9 +95,9 @@ def nsimplices_heights(dis_sq, num_total_point, num_group, point_index, num_simp
 def nsimplices_all_heights(num_total_point, dis_sq, num_simplex_point, \
     seed=1):
     """ 
-    For a set of num_total point points with pairwise distances dis_sq, determine \
+    For a set of num_total_point points with pairwise distances dis_sq, determine \
         the height of each point, by drawing 100 groups of simplices for each point, \
-        with each simplex has num_simple_point.
+        where each simplex has num_simple_point.
 
     Parameters
     ----------
@@ -177,7 +177,7 @@ def MDS(dis_sq,already_centered=False):
     evecst = evecs[:,idx]
     evalst= evals[idx] 
     
-    # Undelying coordinates 
+    # Underlying coordinates 
     idx_pos, = np.where(evalst>0) # only  consider eigenvalues > 0
     coords = np.dot(evecst[:,idx_pos], np.diag(evalst[idx_pos]**0.5))
     
@@ -250,7 +250,7 @@ def find_subspace_dim(pairwise_dis, dim_start, dim_end):
     Parameters
     ----------
     pairwise_dis: 2D np array of float
-        The squared matrix form of pairwise distancs
+        The squared matrix form of pairwise distances
     dim_start: int, default 2
         Lowest dimension to test (inclusive)
     dim_end: int, default 6
@@ -270,14 +270,14 @@ def find_subspace_dim(pairwise_dis, dim_start, dim_end):
     dim_height_map = {}
 
     
-    # determine of the screeplot nb_outliers function of the dimension tested
+    # Determine the screeplot nb_outliers as a function of the dimension tested
     for dim in range(dim_start,dim_end+1):           
         cur_height = nsimplices_all_heights(point_num, pairwise_dis, dim, seed=dim+1)     
         cur_height = np.array(cur_height)
         med_height[dim-dim_start] = np.median(cur_height)
         dim_height_map[dim] = cur_height
     
-    # determine of the subspace dimension
+    # Determine the subspace dimension
     dims = np.array(range(dim_start, dim_end+1),dtype=float)
     print("med_height is:", med_height)
     subspace_dim = dim_start
@@ -285,7 +285,7 @@ def find_subspace_dim(pairwise_dis, dim_start, dim_end):
         subspace_dim = np.argmax(med_height[0:len(dims)-1]/med_height[1:len(dims)])+dim_start+1
     print("subspace_dim one is:", subspace_dim)
     
-    # detect outliers in dimension subspace_dim
+    # Detect outliers in dimension subspace_dim
     subspace_heights = dim_height_map[subspace_dim]
     # print("subspace_heights for dimension", subspace_dim, "is:", subspace_heights)
     subspace_height_size = subspace_heights.size
@@ -303,7 +303,7 @@ def find_subspace_dim(pairwise_dis, dim_start, dim_end):
         print("idx is:", idx, "height is:", subspace_heights[idx], "thres is:", thres)
     
     
-    # correct the bias obtained by subspace dimension
+    # Correct the bias obtained by subspace dimension
     outlier_prop = outlier_indices.shape[0]/subspace_height_size
     subspace_dim = subspace_dim - int(subspace_dim * outlier_prop) # TODO: check this with Khanh, round vs. floor
 
@@ -336,7 +336,7 @@ def nsimplices(pairwise_dis, feature_num, dim_start, dim_end, euc_coord=None):
     corr_pairwise_dis: list[list[float]]
         The list of corrected pairwise distance 
     corr_coord: list[list[float]]
-        The list corrected coordinates
+        The list of corrected coordinates
     """
     
     subspace_dim, outlier_indices = find_subspace_dim(pairwise_dis, dim_start, dim_end)
@@ -380,14 +380,14 @@ def sim_outliers(df, prop, col_start, col_end, out_dist = alea.uniform(-100,100)
         A new dataframe with outliers
     """
 
-    # if there is no restriction on outlier indices, generate from all indices
+    # If there is no restriction on outlier indices, generate from all indices
     if res_outlier_indices is None:
         res_outlier_indices = range(df.shape[0])
 
     num_point = df.shape[0]
     df_new = df.copy()
     num_outliers=math.floor(np.ceil(prop * num_point))
-    # random draw of outliers 
+    # Random draw of outliers 
     outlier_indices=np.sort(alea.sample(res_outlier_indices,num_outliers))
     for n in outlier_indices:
         horsplan=out_dist
