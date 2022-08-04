@@ -1,6 +1,8 @@
+#!/bin/R
+
 #######################
 # - Quality control
-# - Norùalize to Rank or Quantile-transformed data
+# - Normalize to Rank or Quantile-transformed data
 #######################
 
 setwd(".")
