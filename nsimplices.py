@@ -280,7 +280,9 @@ def find_subspace_dim(pairwise_dis, dim_start, dim_end):
     # determine of the subspace dimension
     dims = np.array(range(dim_start, dim_end+1),dtype=float)
     print("med_height is:", med_height)
-    subspace_dim = np.argmax(med_height[0:len(dims)-1]/med_height[1:len(dims)])+dim_start+1
+    subspace_dim = dim_start
+    if dim_start != dim_end:
+        subspace_dim = np.argmax(med_height[0:len(dims)-1]/med_height[1:len(dims)])+dim_start+1
     print("subspace_dim one is:", subspace_dim)
     
     # detect outliers in dimension subspace_dim
