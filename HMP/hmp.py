@@ -41,26 +41,24 @@ exec(open("../nsimplices.py").read())
 alea.seed(42)
 
 
-lieudata="./data/"
-data_path = lieudata+"v13lqphylotypeQuantE_rs.csv"
+dir="./data/"
+data_path = dir+"v13lqphylotypeQuantE_rs.csv"
 if len(sys.argv) != 1:
     data_path = sys.argv[1] # TODO: remove argv[1] in the end
 
 df_hmp = np.loadtxt(data_path, delimiter=",")
-print("df_hmp len is:", len(df_hmp))
 ori_dis_sq=squareform(pdist(df_hmp))
 
-dim=11 # 5,10,15,20
-
-feature_num = 834
-dim_start = 11
-dim_end = 11
+feature_num = len(df_hmp[0])
+dim_start = 1
+dim_end = 30
 
 print("ori_dis_sq shape is:", ori_dis_sq.shape)
 outlier_indices, subspace_dim , corr_pairwise_dis, corr_coord = nsimplices(ori_dis_sq, feature_num, dim_start, dim_end)
 print("subspace dimension is:", subspace_dim)
 
 va, ve, Xe = MDS(corr_pairwise_dis)
+np.savetxt("./outputs/Xe_dim"+str(subspace_dim)+".txt", Xe, fmt='%f')
 
 num_eigen = 4
 
@@ -70,4 +68,4 @@ for first_dim in range(num_eigen):
         for i in range(Xe.shape[0]):
             plt.scatter(Xe[i, second_dim], Xe[i, first_dim], s=5, c=colors[i])
         plt.legend(["QuantE+nSimplices"])
-        plt.savefig("./outputs/"+"dim"+str(dim)+"_"+str(first_dim)+"_"+str(second_dim)+".png")
+        plt.savefig("./outputs/"+"dim"+str(subspace_dim)+"_"+str(first_dim)+"_"+str(second_dim)+".png")
