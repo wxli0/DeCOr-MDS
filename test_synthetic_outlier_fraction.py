@@ -17,7 +17,7 @@ plt.rcParams["savefig.directory"] = os.getcwd() # To save figures to directory
 
 
 # Read in dataset of main dimension 40
-df_dim40 = pd.read_csv(r'datasets/bdd_synthetic_rdim40.csv',sep=';',header=None)
+df_dim40 = pd.read_csv(r'data/synthetic_rdim40.csv',sep=';',header=None)
 df_dim40.head()
 
 # simulate outliers and calculate subspace dimensions

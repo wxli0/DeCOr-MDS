@@ -294,7 +294,7 @@ def find_subspace_dim(pairwise_dis, dim_start, dim_end):
     subspace_std = stats.median_abs_deviation(subspace_heights)
     subspace_mean = np.mean(subspace_heights)
     
-    thres = subspace_mean + 5 * subspace_std # TODO: consider make 5 a parameter
+    thres = subspace_mean + 3 * subspace_std # TODO: consider make 5 a parameter
     print("thres is:", thres, "mean is:", subspace_mean, "std is:", subspace_std)
     all_indices = np.array(range(subspace_height_size))
     outlier_indices = all_indices[subspace_heights > thres]
