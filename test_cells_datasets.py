@@ -160,11 +160,11 @@ for i in range(nb_cells):
 #     plt.axis('off')
 
 plt.savefig("./outputs/cells_"+file_id+"_outlier_normal.png")
+plt.close()
 
 ### Plot in 2D using the two largest eigenvalues
 
 plt.figure(3)
-# plot all cells
 va, ve, Xe = MDS(target_matrix)
 plt.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='steelblue')
 plt.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red')
