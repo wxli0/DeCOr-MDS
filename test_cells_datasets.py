@@ -165,8 +165,20 @@ plt.close()
 ### Plot in 2D using the two largest eigenvalues
 
 plt.figure(3)
+blue_outlier_idx = -1
 va, ve, Xe = MDS(target_matrix)
 plt.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='steelblue')
 plt.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red')
+for i in range(Xe.shape[0]):
+    if 0.6 < Xe[i, 0] and Xe[i, 0] < 0.7:
+        blue_outlier_idx = i
 plt.title("MDS embedding")
 plt.savefig("outputs/cells_"+file_id+"_MDS.png")
+plt.close()
+
+fig = plt.figure(4)
+plt.plot(cell[:, 0], cell[:, 1], color="blue")
+plt.axis('equal')
+plt.axis('off')
+plt.title('blue MDS outlier but not detected')
+plt.savefig('./outputs/cells_'+str(blue_outlier_idx)+".png")
