@@ -346,7 +346,7 @@ plt.hist(hcolls[10-start_dim],label='dim10',color=blues[4])
 
 plt.xticks(np.arange(0, 60, 5))
 plt.legend()
-plt.savefig("./outputs/synthetic_im10_height_dist.png")
+plt.savefig("./outputs/synthetic_dim10_height_dist.png")
 plt.close()
 
 # In[26]:
@@ -386,13 +386,6 @@ ax2.tick_params(axis ='y', labelcolor = color)
 # Show plot
 plt.savefig("./outputs/synthetic_ratio.png")
 plt.close()
-
-# plt.figure()
-# plt.scatter(list(range(start_dim, end_dim+1)), h_meds, c ="blue", s=2)
-# plt.plot(list(range(start_dim+1, end_dim+1)), h_med_ratios, c="black")
-# plt.xticks(np.arange(start_dim, end_dim+1, 1))
-# plt.show()
-
 
 # In[24]:
 
@@ -454,7 +447,7 @@ dim_raw_diff= []
 true_dim = 40
 num_components = 50
 df_prev = df_dim40
-props = np.arrange(prop_incre, prop_incre+outlier_num*prop_incre, prop_incre)
+props = np.arange(prop_incre, prop_incre+outlier_num*prop_incre, prop_incre)
 for i in range(len(res_outlier_indices_list)):
 
     res_outlier_indices =         range(int(res_outlier_indices_list[i] * df_prev.shape[0]),             int((res_outlier_indices_list[i]+outlier_indices_gap) * df_prev.shape[0]))
