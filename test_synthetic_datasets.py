@@ -27,7 +27,7 @@ plt.rcParams["savefig.directory"] = os.getcwd() # To save figures to directory
                                                 #   defined above
 
 
-# Section 2.1.1: Cross dataset
+""" Section 2.1.1: Cross dataset """
 
 # In[3]:
 
@@ -96,7 +96,7 @@ print("subspace dimension is:", subspace_dim)
 # In[7]:
 
 
-### Plot in 2D using the two largest eigenvalues - Fig.2
+""" Plot in 2D using the two largest eigenvalues - Fig.2 """
 
 normal_indices=[i for i in range(num_point) if i not in outlier_indices] # list of normal points 
 
@@ -128,7 +128,7 @@ plt.close()
 
 # 
 
-# Section 2.1.2: Main subspace of dimension 2
+""" Section 2.1.2: Main subspace of dimension 2 """
 
 # In[8]:
 
@@ -178,7 +178,7 @@ out_dis_sq=squareform(out_dis) # squared matrix form of D
 # In[12]:
 
 
-### Run n-Simplices method
+""" Run n-Simplices method """
 T1=time.time()
 outlier_indices,rdim,corr_dis_sq,corr_coord = nsimplices(out_dis_sq, df_dim2.shape[1], dim_start = 1, dim_end = 7)
 T2=time.time()
@@ -189,8 +189,7 @@ print("subspace dimension is:", rdim)
 # In[13]:
 
 
-### Section 2.1.2
-### Plot in 3D using the first three dimensions - Fig.3(A) 
+""" Section 2.1.2: Plot in 3D using the first three dimensions - Fig.3(A) """
 
 ori_coord=np.array(df_dim2)
 
@@ -230,8 +229,7 @@ print("corr_coord is:", pd.DataFrame(corr_coord).head(10))
 # In[14]:
 
 
-### Section 2.1.2
-### Plot in 2D using the two largest eigenvalues - Fig.3(B) 
+""" Section 2.1.2: Plot in 2D using the two largest eigenvalues - Fig.3(B) """
 
 normal_indices=[i for i in range(num_point) if i not in outlier_indices] # list of normal points 
 
@@ -260,7 +258,7 @@ plt.savefig("./outputs/synthetic_dim2_2D.png")
 plt.close()
 
 
-# Section 2.1.3: Main subspace of higher dimensions
+""" Section 2.1.3: Main subspace of higher dimensions """
 
 # In[15]:
 
@@ -283,7 +281,7 @@ num_point =df_dim10.shape[0]
 # In[17]:
 
 
-### Add outliers
+""" Add outliers """
 
 prop=0.05
 num_outliers=int(np.ceil(prop * num_point))
@@ -325,7 +323,7 @@ print("subspace dimension is:", subspace_dim)
 # In[20]:
 
 
-### Importance of dimension correction in higher dimension - Fig.4(A) height distribution 
+""" Importance of dimension correction in higher dimension - Fig.4(A) height distribution """
 
 hcolls = []
 start_dim = 2
@@ -352,7 +350,7 @@ plt.close()
 # In[26]:
 
 
-### Importance of dimension correction in higher dimension - Fig.4(B) dimensionality inference
+""" Importance of dimension correction in higher dimension - Fig.4(B) dimensionality inference """
 
 # calculate median heights for tested dimension from start_dim to end_dim
 h_meds = []
@@ -390,7 +388,7 @@ plt.close()
 # In[24]:
 
 
-### Importance of dimension correction in higher dimension - Fig.4(C) Shepard Diagram
+""" Importance of dimension correction in higher dimension - Fig.4(C) Shepard Diagram """
 
 out_dis_flat=out_dis_sq.flatten() # [200*200]
 ori_dis_flat=ori_dis_sq.flatten()

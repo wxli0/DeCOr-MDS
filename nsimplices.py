@@ -190,7 +190,7 @@ def MDS(dis_sq,already_centered=False):
     Correct the coordinates matrix, by projecting the outliers on the subspace of dimensionality n_bar
 """
 
-def correct_projection(euc_coord, outlier_indices, subspace_dim):
+def correct_proj(euc_coord, outlier_indices, subspace_dim):
     """
     Correct the outliers index by outlier_indices in euclidean coordinates euc_coord \
         in a subspace of dimension subspace_dim
@@ -309,6 +309,7 @@ def find_subspace_dim(pairwise_dis, dim_start, dim_end):
 
     return int(subspace_dim), outlier_indices
 
+
 def nsimplices(pairwise_dis, feature_num, dim_start, dim_end, euc_coord=None):
     """
     The nSimplices method
@@ -324,7 +325,7 @@ def nsimplices(pairwise_dis, feature_num, dim_start, dim_end, euc_coord=None):
         Largest dimension to test (inclusive)
     euc_coord: np 2D array
         Euclidean coordinates of the dataset containing the outliers, default None.\
-        If provided, pass euc_coord directly into correct_projection; otherwise, use \
+        If provided, pass euc_coord directly into correct_proj; otherwise, use \
         MDS to transform pairwise_dis 
 
     Returns
@@ -344,14 +345,66 @@ def nsimplices(pairwise_dis, feature_num, dim_start, dim_end, euc_coord=None):
     # Correction of outliers using MDS, PCA
     corr_coord = None
     if euc_coord is not None: # no need to apply MDS
-        print("no MDS")
-        corr_pairwise_dis, corr_coord = correct_projection(euc_coord, outlier_indices, subspace_dim)
+        corr_pairwise_dis, corr_coord = correct_proj(euc_coord, outlier_indices, subspace_dim)
     else:
         MDS_model = manifold.MDS(n_components=feature_num, max_iter=100000000000,dissimilarity='precomputed')
         euc_coord = MDS_model.fit_transform(pairwise_dis)
-        corr_pairwise_dis, corr_coord = correct_projection(euc_coord, outlier_indices, subspace_dim)
+        corr_pairwise_dis, corr_coord = correct_proj(euc_coord, outlier_indices, subspace_dim)
     
     return outlier_indices, subspace_dim , corr_pairwise_dis, corr_coord
+
+
+def remove_correct_proj(pairwise_dis, feature_num, subspace_dim, outlier_indices, remove_indices, euc_coord=None):
+    """
+    Remove outlier indices with abnormal data and correct coordinates using PCA
+    Parameters
+    ----------
+    pairwise_dis: 2D np array of float
+        The squared matrix form of pairwise distancs
+    feature_num: int
+        Number of components in MDS
+    subspace_dim: int
+        The subspace dimension estimated by nSimplices
+    outlier_indices: list[int]
+        The indices for the outliers estimated by nSimplices
+    remove_indices: list[int]
+        The indices in outlier_indices, but to be removed from the data. 
+        These data are more likely to involve sampling mistakes, rather than
+        outliers compared to normal data.
+        remove_indices has to be a subset of outlier_indices.
+    euc_coord: np 2D array
+        Euclidean coordinates of the dataset containing the outliers, default None.\
+        If provided, pass euc_coord directly into correct_proj; otherwise, use \
+        MDS to transform pairwise_dis 
+
+    Returns
+    -------
+    corr_pairwise_dis: list[list[float]]
+        The list of corrected pairwise distance 
+    corr_coord: list[list[float]]
+        The list of corrected coordinates
+    """
+    print("remove_indices is:", remove_indices)
+    print("outlier_indices is:", outlier_indices)
+    # Check if remove_indices are all in outlier_indices
+    if not all(elem in outlier_indices  for elem in remove_indices):
+        raise Exception("remove_indices should be all in outlier_indices")
+
+    # Correction of outliers using MDS, PCA
+    corr_coord = None
+    if euc_coord is not None: # no need to apply MDS
+        euc_coord = np.delete(euc_coord, remove_indices, 0)
+        corr_pairwise_dis, corr_coord = correct_proj(euc_coord, outlier_indices, subspace_dim)
+    else:
+        # remove data associated with remove_indices
+        pairwise_dis = np.array(pairwise_dis)
+        pairwise_dis = np.delete(pairwise_dis, remove_indices, 0)
+        pairwise_dis = np.delete(pairwise_dis, remove_indices, 1)
+        MDS_model = manifold.MDS(n_components=feature_num, max_iter=100000000000,dissimilarity='precomputed')
+        euc_coord = MDS_model.fit_transform(pairwise_dis)
+        corr_pairwise_dis, corr_coord = correct_proj(euc_coord, outlier_indices, subspace_dim)
+    
+    return corr_pairwise_dis, corr_coord
 
 
 def sim_outliers(df, prop, col_start, col_end, out_dist = alea.uniform(-100,100), \
@@ -394,3 +447,24 @@ def sim_outliers(df, prop, col_start, col_end, out_dist = alea.uniform(-100,100)
         i=alea.randint(col_start,col_end)
         df_new.loc[n,i] = horsplan
     return df_new
+
+def update_outlier_index(outlier_indices, remove_indices):
+    print("remove_indices is:", remove_indices)
+    print("outlier_indices is:", outlier_indices)
+    updated_outlier_indices = []
+    outlier_idx = 0
+    remove_idx = 0
+    forward_cnt = 0
+    while outlier_idx < len(outlier_indices):
+        if remove_idx == len(remove_indices) \
+            or outlier_indices[outlier_idx] < remove_indices[remove_idx]:
+            updated_outlier_indices.append(outlier_indices[outlier_idx]-forward_cnt)
+            outlier_idx += 1
+        elif outlier_indices[outlier_idx] == remove_indices[remove_idx]:
+            forward_cnt += 1
+            outlier_idx += 1
+            remove_idx += 1
+        else:
+            raise Exception("remove_idx cannot be greater than outlier_idx")
+    return updated_outlier_indices
+
