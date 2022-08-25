@@ -49,8 +49,8 @@ if len(sys.argv) != 1:
 df_hmp = np.loadtxt(data_path, delimiter=",")
 hmp_dis_sq=squareform(pdist(df_hmp))
 
-feature_num = 20
-dim_start = 1
+feature_num = 11
+dim_start = 11
 dim_end = feature_num
 
 print("hmp_dis_sq shape is:", hmp_dis_sq.shape)

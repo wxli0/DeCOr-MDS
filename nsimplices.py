@@ -271,7 +271,8 @@ def find_subspace_dim(pairwise_dis, dim_start, dim_end):
 
     
     # Determine the screeplot nb_outliers as a function of the dimension tested
-    for dim in range(dim_start,dim_end+1):           
+    for dim in range(dim_start,dim_end+1):       
+        print("dim in find_subspace_dim is:", dim)    
         cur_height = nsimplices_all_heights(point_num, pairwise_dis, dim, seed=dim+1)     
         cur_height = np.array(cur_height)
         med_height[dim-dim_start] = np.median(cur_height)

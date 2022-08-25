@@ -1,7 +1,10 @@
+### Compute AICs for the eigenvectors computed from test_hmp.py (current dimension is 11)
+
 library(MASS)
 library(nnet)
 # library(HelpersMG)
 
+# nSimplices + MDS
 Xe_df = data.frame(read.csv("outputs/hmp_Xe_dim11.txt", sep=" ", header=FALSE))
 hmp_df = data.frame(read.csv("./data/hmp_v13lqphylotypePheno_QIHP.csv"))
 # print(head(Xe_df))
@@ -23,3 +26,5 @@ for (pheno in phenos) {
     mn_aic = extractAIC(mn_model, show.option=TRUE)[2]
     print(paste("MN model AIC for", pheno, "is:", mn_aic))
 }
+
+# benchmark with other methods

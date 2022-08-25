@@ -74,58 +74,58 @@ print("outlier_indices len is:", len(outlier_indices))
 # plt.savefig("./outputs/cells_"+file_id+"_dim.png")
 
 
-# # In[3]:
-# """ Read in all cell shapes """
+# In[3]:
+""" Read in all cell shapes """
 
-# cells_reshaped = np.loadtxt("./data/cells_reshaped.txt")
-# cells_shape = [650, 100, 2]
-# cells = cells_reshaped.reshape(
-#     cells_reshaped.shape[0], cells_reshaped.shape[1] // cells_shape[2], cells_shape[2])
+cells_reshaped = np.loadtxt("./data/cells_reshaped.txt")
+cells_shape = [650, 100, 2]
+cells = cells_reshaped.reshape(
+    cells_reshaped.shape[0], cells_reshaped.shape[1] // cells_shape[2], cells_shape[2])
 
 
-# # In[5]:
+# In[5]:
 
-# """ Read in cell indices of a particular group """
+""" Read in cell indices of a particular group """
 
-# cells = np.array(cells)
-# print(len(cells[0]))
-# target_indexes = np.loadtxt("data/cells_"+file_id+"_indexes.txt")
-# target_indexes = [int(x) for x in target_indexes]
-# print(target_indexes)
-# target_cells = cells[target_indexes,:,:]
+cells = np.array(cells)
+print(len(cells[0]))
+target_indexes = np.loadtxt("data/cells_"+file_id+"_indexes.txt")
+target_indexes = [int(x) for x in target_indexes]
+print(target_indexes)
+target_cells = cells[target_indexes,:,:]
 normal_indices=[i for i in range(target_matrix.shape[0]) if i not in outlier_indices] # list of normal points 
 
-# """ Plot outlier cells against normal cells """
+""" Plot outlier cells against normal cells """
 
-# plt.figure(2)
+plt.figure(2)
 
-# nb_cells = len(outlier_indices)
-# print("outlier_indices are: ", outlier_indices)
+nb_cells = len(outlier_indices)
+print("outlier_indices are: ", outlier_indices)
 
-# fig = plt.figure(figsize=(15, 8))
+fig = plt.figure(figsize=(15, 8))
 
-# for i in range(nb_cells):
-#     outlier_idx = outlier_indices[i]
-#     cell = target_cells[outlier_idx]
-#     fig.add_subplot(2, nb_cells, i + 1)
-#     plt.plot(cell[:, 0], cell[:, 1], color="red")
-#     if i == nb_cells//2:
-#         plt.title("Outlier cells")
-#     plt.axis('equal')
-#     plt.axis('off')
+for i in range(nb_cells):
+    outlier_idx = outlier_indices[i]
+    cell = target_cells[outlier_idx]
+    fig.add_subplot(2, nb_cells, i + 1)
+    plt.plot(cell[:, 0], cell[:, 1], color="red")
+    if i == nb_cells//2:
+        plt.title("Outlier cells")
+    plt.axis('equal')
+    plt.axis('off')
     
-# for i in range(nb_cells):
-#     normal_idx = normal_indices[i]
-#     cell = target_cells[normal_idx]
-#     fig.add_subplot(2, nb_cells, i + nb_cells + 1)
-#     plt.plot(cell[:, 0], cell[:, 1], color="blue")
-#     if i == nb_cells//2:
-#         plt.title("normal cells")
-#     plt.axis('equal')
-#     plt.axis('off')
+for i in range(nb_cells):
+    normal_idx = normal_indices[i]
+    cell = target_cells[normal_idx]
+    fig.add_subplot(2, nb_cells, i + nb_cells + 1)
+    plt.plot(cell[:, 0], cell[:, 1], color="blue")
+    if i == nb_cells//2:
+        plt.title("Normal cells")
+    plt.axis('equal')
+    plt.axis('off')
 
-# plt.savefig("./outputs/cells_"+file_id+"_outlier_normal.png")
-# plt.close()
+plt.savefig("./outputs/cells_"+file_id+"_outlier_normal.png")
+plt.close()
 
 # """ Plot MDS embedding in 2D using the two largest eigenvalues """
 
@@ -148,33 +148,33 @@ normal_indices=[i for i in range(target_matrix.shape[0]) if i not in outlier_ind
 # plt.title('blue MDS outlier but not detected')
 # plt.savefig('./outputs/cells_'+str(blue_outlier_idx)+".png")
 
-""" Computes the corrected coordinates after removing the abnormal outliers """
-remove_indices = [42, 134, 203] # detected from cells_control_outlier_normal.png
-remove_corr_dis_sq, _ = \
-    remove_correct_proj(target_matrix, feature_num, subspace_dim, outlier_indices, remove_indices)
-print("target_matrix shape is:", target_matrix.shape)
-print("remove_corr_pairwise_dis shape is:", remove_corr_dis_sq.shape)
-remove_outlier_indices = update_outlier_index(outlier_indices, remove_indices)
-remove_normal_indices=[i for i in range(remove_corr_dis_sq.shape[0]) if i not in remove_outlier_indices] # list of normal points 
+# """ Computes the corrected coordinates after removing the abnormal outliers """
+# remove_indices = [42, 134, 203] # detected from cells_control_outlier_normal.png
+# remove_corr_dis_sq, _ = \
+#     remove_correct_proj(target_matrix, feature_num, subspace_dim, outlier_indices, remove_indices)
+# print("target_matrix shape is:", target_matrix.shape)
+# print("remove_corr_pairwise_dis shape is:", remove_corr_dis_sq.shape)
+# remove_outlier_indices = update_outlier_index(outlier_indices, remove_indices)
+# remove_normal_indices=[i for i in range(remove_corr_dis_sq.shape[0]) if i not in remove_outlier_indices] # list of normal points 
 
-""" Plot MDS embedding in 2D using the two largest eigenvalues. The corrected \
-    distance matrix are obtained by not removing the abnormal outliers """
-plt.figure(5)
-_, _, corr_Xe = MDS(corr_dis_sq)
-plt.plot(corr_Xe[normal_indices,0],corr_Xe[normal_indices,1],'.', color='steelblue')
-plt.plot(corr_Xe[outlier_indices,0],corr_Xe[outlier_indices,1],'.',color='red')
-plt.title("MDS embedding (corrected and without abnormal outliers removed)")
-plt.savefig("outputs/cells_"+file_id+"_MDS_corrected.png")
-plt.close()
+# """ Plot MDS embedding in 2D using the two largest eigenvalues. The corrected \
+#     distance matrix are obtained by not removing the abnormal outliers """
+# plt.figure(5)
+# _, _, corr_Xe = MDS(corr_dis_sq)
+# plt.plot(corr_Xe[normal_indices,0],corr_Xe[normal_indices,1],'.', color='steelblue')
+# plt.plot(corr_Xe[outlier_indices,0],corr_Xe[outlier_indices,1],'.',color='red')
+# plt.title("MDS embedding (corrected and without abnormal outliers removed)")
+# plt.savefig("outputs/cells_"+file_id+"_MDS_corrected.png")
+# plt.close()
 
-""" Plot MDS embedding in 2D using the two largest eigenvalues. The corrected \
-    distance matrix are obtained by removing the abnormal outliers """
-plt.figure(5)
-_, _, remove_Xe = MDS(remove_corr_dis_sq)
-plt.plot(remove_Xe[remove_normal_indices,0],remove_Xe[remove_normal_indices,1],'.', color='steelblue')
-plt.plot(remove_Xe[remove_outlier_indices,0],remove_Xe[remove_outlier_indices,1],'.',color='red')
-plt.title("MDS embedding (corrected and with abnormal outliers removed)")
-plt.savefig("outputs/cells_"+file_id+"_MDS_removed_corrected.png")
-plt.close()
+# """ Plot MDS embedding in 2D using the two largest eigenvalues. The corrected \
+#     distance matrix are obtained by removing the abnormal outliers """
+# plt.figure(5)
+# _, _, remove_Xe = MDS(remove_corr_dis_sq)
+# plt.plot(remove_Xe[remove_normal_indices,0],remove_Xe[remove_normal_indices,1],'.', color='steelblue')
+# plt.plot(remove_Xe[remove_outlier_indices,0],remove_Xe[remove_outlier_indices,1],'.',color='red')
+# plt.title("MDS embedding (corrected and with abnormal outliers removed)")
+# plt.savefig("outputs/cells_"+file_id+"_MDS_removed_corrected.png")
+# plt.close()
 
 
