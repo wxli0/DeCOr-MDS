@@ -11,7 +11,7 @@ library(MASS)
 ## Quality Control
 print("=== Qualilty Control ===")
 # Filter out if more than 10 non-zero fields, in Counts
-v13lqphylotypecounts_rs <- read.csv("./data/v13lqphylotypecounts_rs.csv", header=FALSE)
+v13lqphylotypecounts_rs <- read.csv("./data/hmp_v13lqphylotypecounts_rs.csv", header=FALSE)
 # v13lqphylotypecounts_rs <- head(v13lqphylotypecounts_rs, 100)
 v13lqphylotypecounts_rs_b <- v13lqphylotypecounts_rs[rowSums(v13lqphylotypecounts_rs!=0)>=10,]
 c(nrow(v13lqphylotypecounts_rs_b),ncol(v13lqphylotypecounts_rs_b))
@@ -21,7 +21,7 @@ c(nrow(v13lqphylotypecounts_rs_c),ncol(v13lqphylotypecounts_rs_c)) #2255,425
 # write.table(v13lqphylotypecounts_rs_c,file="v13lqphylotypecounts_rs_c.csv",row.names=FALSE,col.names=FALSE,sep=",")
 
 # Subset pheno accordingly
-v13lqphylotypePheno_rs <- read.csv("./data/v13lqphylotypePheno_rs.csv")
+v13lqphylotypePheno_rs <- read.csv("./data/hmp_v13lqphylotypePheno_rs.csv")
 c(nrow(v13lqphylotypePheno_rs),ncol(v13lqphylotypePheno_rs))
 v13lqphylotypePheno_rs_c <- v13lqphylotypePheno_rs[rowSums(v13lqphylotypecounts_rs!=0)>=10,]
 c(nrow(v13lqphylotypePheno_rs_c),ncol(v13lqphylotypePheno_rs_c)) #2255,24
@@ -110,10 +110,10 @@ for (i in 1:nSamples)
 
 # normalized matrix, NB
 c(nrow(v13lqphylotypeQuantNB),ncol(v13lqphylotypeQuantNB))
-# write.table(v13lqphylotypeQuantNB,file="v13lqphylotypeQuantNB.csv",row.names=FALSE,col.names=FALSE,sep=",")
+write.table(v13lqphylotypeQuantNB,file="./data/hmp_v13lqphylotypeQuantNB_rs.csv",row.names=FALSE,col.names=FALSE,sep=",")
 # normalized matrix, E
 c(nrow(v13lqphylotypeQuantE),ncol(v13lqphylotypeQuantE)) #2255,425
-write.table(v13lqphylotypeQuantE,file="./data/v13lqphylotypeQuantE_rs.csv",row.names=FALSE,col.names=FALSE,sep=",")
+write.table(v13lqphylotypeQuantE,file="./data/hmp_v13lqphylotypeQuantE_rs.csv",row.names=FALSE,col.names=FALSE,sep=",")
 
 
 
