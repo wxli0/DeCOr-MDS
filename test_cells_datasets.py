@@ -127,25 +127,25 @@ for i in range(nb_cells):
 plt.savefig("./outputs/cells_"+file_id+"_outlier_normal.png")
 plt.close()
 
-# """ Plot MDS embedding in 2D using the two largest eigenvalues """
+# """ Plot cMDS embedding in 2D using the two largest eigenvalues """
 
 # plt.figure(3)
 # blue_outlier_idx = -1
-# _, _, Xe = MDS(target_matrix)
+# _, _, Xe = cMDS(target_matrix)
 # plt.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='steelblue')
 # plt.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red')
 # for i in range(Xe.shape[0]):
 #     if 0.6 < Xe[i, 0] and Xe[i, 0] < 0.7:
 #         blue_outlier_idx = i
-# plt.title("MDS embedding")
-# plt.savefig("outputs/cells_"+file_id+"_MDS.png")
+# plt.title("cMDS embedding")
+# plt.savefig("outputs/cells_"+file_id+"_cMDS.png")
 # plt.close()
 
 # fig = plt.figure(4)
 # plt.plot(cell[:, 0], cell[:, 1], color="blue")
 # plt.axis('equal')
 # plt.axis('off')
-# plt.title('blue MDS outlier but not detected')
+# plt.title('blue cMDS outlier but not detected')
 # plt.savefig('./outputs/cells_'+str(blue_outlier_idx)+".png")
 
 # """ Computes the corrected coordinates after removing the abnormal outliers """
@@ -157,24 +157,24 @@ plt.close()
 # remove_outlier_indices = update_outlier_index(outlier_indices, remove_indices)
 # remove_normal_indices=[i for i in range(remove_corr_dis_sq.shape[0]) if i not in remove_outlier_indices] # list of normal points 
 
-# """ Plot MDS embedding in 2D using the two largest eigenvalues. The corrected \
+# """ Plot cMDS embedding in 2D using the two largest eigenvalues. The corrected \
 #     distance matrix are obtained by not removing the abnormal outliers """
 # plt.figure(5)
-# _, _, corr_Xe = MDS(corr_dis_sq)
+# _, _, corr_Xe = cMDS(corr_dis_sq)
 # plt.plot(corr_Xe[normal_indices,0],corr_Xe[normal_indices,1],'.', color='steelblue')
 # plt.plot(corr_Xe[outlier_indices,0],corr_Xe[outlier_indices,1],'.',color='red')
-# plt.title("MDS embedding (corrected and without abnormal outliers removed)")
-# plt.savefig("outputs/cells_"+file_id+"_MDS_corrected.png")
+# plt.title("cMDS embedding (corrected and without abnormal outliers removed)")
+# plt.savefig("outputs/cells_"+file_id+"_cMDS_corrected.png")
 # plt.close()
 
-# """ Plot MDS embedding in 2D using the two largest eigenvalues. The corrected \
+# """ Plot cMDS embedding in 2D using the two largest eigenvalues. The corrected \
 #     distance matrix are obtained by removing the abnormal outliers """
 # plt.figure(5)
-# _, _, remove_Xe = MDS(remove_corr_dis_sq)
+# _, _, remove_Xe = cMDS(remove_corr_dis_sq)
 # plt.plot(remove_Xe[remove_normal_indices,0],remove_Xe[remove_normal_indices,1],'.', color='steelblue')
 # plt.plot(remove_Xe[remove_outlier_indices,0],remove_Xe[remove_outlier_indices,1],'.',color='red')
-# plt.title("MDS embedding (corrected and with abnormal outliers removed)")
-# plt.savefig("outputs/cells_"+file_id+"_MDS_removed_corrected.png")
+# plt.title("cMDS embedding (corrected and with abnormal outliers removed)")
+# plt.savefig("outputs/cells_"+file_id+"_cMDS_removed_corrected.png")
 # plt.close()
 
 

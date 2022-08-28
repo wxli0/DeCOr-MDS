@@ -9,10 +9,10 @@ hmp_df = data.frame(read.csv("./data/hmp_v13lqphylotypePheno_QIHP.csv"))
 # print(head(hmp_df))
 
 phenos = list("THROAT", "EARS", "STOOL", "NOSE", "ELBOWS", "MOUTH", "VAGINA")
-methods = list("QE_nSimplices_MDS", "NB_nSimplices_MDS", "NB_MDS", "QE_MDS")
+methods = list("QE_nSimplices_cMDS", "NB_nSimplices_cMDS", "NB_cMDS", "QE_cMDS")
 
 for (method in methods) {
-    Xe_df = data.frame(read.csv(paste0("outputs/hmp_", method, "_Xe.txt"), sep=" ", header=FALSE))
+    Xe_df = data.frame(read.csv(paste0("./outputs/hmp_", method, "_Xe.txt"), sep=" ", header=FALSE))
 
     for (pheno in phenos) {
         pheno_index = grep(pheno, colnames(hmp_df))
@@ -27,7 +27,7 @@ for (method in methods) {
         mn_model = stepAIC(mn_model, direction = "backward", trace=0)
         mn_aic = extractAIC(mn_model, show.option=TRUE)[2]
         print(paste(method, "MN model AIC for", pheno, "is:", mn_aic))
-    }
+    }    
 }
 
 # benchmark with other methods

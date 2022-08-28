@@ -135,7 +135,7 @@ def nsimplices_all_heights(num_total_point, dis_sq, num_simplex_point, \
     return heights
 
 
-def MDS(dis_sq,already_centered=False):
+def cMDS(dis_sq,already_centered=False):
     """
     Classical multidimensional scaling for pairwise distances dis_sq
 

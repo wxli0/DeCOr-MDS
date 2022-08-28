@@ -11,7 +11,7 @@ library(MASS)
 ## Quality Control
 print("=== Qualilty Control ===")
 # Filter out if more than 10 non-zero fields, in Counts
-v13lqphylotypecounts_rs <- read.csv("./data/hmp_v13lqphylotypecounts_rs.csv", header=FALSE)
+v13lqphylotypecounts_rs <- read.csv("./data/hmp_v13lqphylotypecounts_rs.csv", header=FALSE) # (2300, 834)
 # v13lqphylotypecounts_rs <- head(v13lqphylotypecounts_rs, 100)
 v13lqphylotypecounts_rs_b <- v13lqphylotypecounts_rs[rowSums(v13lqphylotypecounts_rs!=0)>=10,]
 c(nrow(v13lqphylotypecounts_rs_b),ncol(v13lqphylotypecounts_rs_b))

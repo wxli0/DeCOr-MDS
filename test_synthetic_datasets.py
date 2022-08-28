@@ -103,20 +103,20 @@ normal_indices=[i for i in range(num_point) if i not in outlier_indices] # list 
 fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(10,3))
 
 # plot original graph
-va, ve, Xe = MDS(ori_dis_sq)
+va, ve, Xe = cMDS(ori_dis_sq)
 ax1.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.')
 ax1.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red')
 ax1.set_title("True data")
 ax1.grid()
 
 # plot original graphs with outliers added 
-va, ve, Xe = MDS(out_dis_sq)
+va, ve, Xe = cMDS(out_dis_sq)
 ax2.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='steelblue')
 ax2.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red')
 ax2.set_title("Outliers added")
 
 # plot correct outliers 
-va, ve, Xe = MDS(corr_dis_sq)   
+va, ve, Xe = cMDS(corr_dis_sq)   
 ax3.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='steelblue')
 ax3.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red')
 ax3.set_title("Corrected data")
@@ -236,20 +236,20 @@ normal_indices=[i for i in range(num_point) if i not in outlier_indices] # list 
 fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(10,3))
 
 # plot original graph
-va, ve, Xe = MDS(ori_dis_sq)
+va, ve, Xe = cMDS(ori_dis_sq)
 ax1.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.')
 ax1.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red')
 ax1.set_title("True data")
 ax1.grid()
 
 # plot original graphs with outliers added 
-va, ve, Xe = MDS(out_dis_sq)
+va, ve, Xe = cMDS(out_dis_sq)
 ax2.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='steelblue')
 ax2.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red')
 ax2.set_title("Outliers added")
 
 # plot correct outliers 
-va, ve, Xe = MDS(corr_dis_sq)   
+va, ve, Xe = cMDS(corr_dis_sq)   
 ax3.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='steelblue')
 ax3.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red')
 ax3.set_title("Corrected data")

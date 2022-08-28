@@ -40,7 +40,7 @@ colors = np.loadtxt("./data/hmp_colors.txt", dtype="str")
 exec(open("./nsimplices.py").read())
 alea.seed(42)
 
-""" NB normalization + nSimplices + MDS """ 
+""" NB normalization + nSimplices + cMDS """ 
 dir="./data/"
 data_path = dir+"hmp_v13lqphylotypeQuantNB_rs.csv"
 df_hmp = np.loadtxt(data_path, delimiter=",")
@@ -54,12 +54,12 @@ print("hmp_dis_sq shape is:", hmp_dis_sq.shape)
 outlier_indices, subspace_dim , corr_pairwise_dis, corr_coord = nsimplices(hmp_dis_sq, feature_num, dim_start, dim_end)
 print("subspace dimension is:", subspace_dim)
 
-""" (0) Plot MDS embedding using the pairs of axis from the four most significant axes """
-va, ve, Xe = MDS(corr_pairwise_dis)
-np.savetxt("./outputs/hmp_NB_nSimplices_MDS_Xe_dim"+str(subspace_dim)+".txt", Xe, fmt='%f')
+""" (0) Plot cMDS embedding using the pairs of axis from the four most significant axes """
+va, ve, Xe = cMDS(corr_pairwise_dis)
+np.savetxt("./outputs/hmp_NB_nSimplices_cMDS_Xe.txt", Xe, fmt='%f')
 
 
-""" QE normalization + nSimplices + MDS """ 
+""" QE normalization + nSimplices + cMDS """ 
 dir="./data/"
 data_path = dir+"hmp_v13lqphylotypeQuantE_rs.csv"
 
@@ -118,12 +118,12 @@ ax2.plot(list(range(dim_start+1, dim_end+1)), h_med_ratios, color = color)
 ax2.tick_params(axis ='y', labelcolor = color)
  
 # Show plot
-plt.savefig("./outputs/hmp_QE_nSimplices_MDS_ratio.png")
+plt.savefig("./outputs/hmp_QE_nSimplices_cMDS_ratio.png")
 plt.close()
 
-""" (1) Plot MDS embedding using the pairs of axis from the four most significant axes """
-va, ve, Xe = MDS(corr_pairwise_dis)
-np.savetxt("./outputs/hmp_QE_nSimplices_MDS_Xe_dim"+str(subspace_dim)+".txt", Xe, fmt='%f')
+""" (1) Plot cMDS embedding using the pairs of axis from the four most significant axes """
+va, ve, Xe = cMDS(corr_pairwise_dis)
+np.savetxt("./outputs/hmp_QE_nSimplices_cMDS_Xe.txt", Xe, fmt='%f')
 
 num_eigen = 4
 
@@ -133,4 +133,4 @@ for first_dim in range(num_eigen):
         for i in range(Xe.shape[0]):
             plt.scatter(Xe[i, second_dim], Xe[i, first_dim], s=5, c=colors[i])
         plt.legend(["QuantE+nSimplices"])
-        plt.savefig("./outputs/hmp_QE_nSimplices_MDS_dim"+str(subspace_dim)+"_"+str(first_dim)+"_"+str(second_dim)+".png")
+        plt.savefig("./outputs/hmp_QE_nSimplices_cMDS_"+str(first_dim)+"_"+str(second_dim)+".png")
