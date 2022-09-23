@@ -19,12 +19,12 @@ for (method in methods) {
         pheno_ind = hmp_df[, pheno_index]
         # print(paste(pheno, length(pheno_ind)))
         glm_model = glm(pheno_ind ~  V1+V2+V3+V4+V5+V6+V7+V8+V9+V10, data=Xe_df, family='binomial')
-        glm_model = stepAIC(glm_model, direction = "backward", trace=0)
-        glm_aic = extractAIC(glm_model, show.option=TRUE)[2]
+        glm_aic = stepAIC(glm_model, direction = "backward", trace=0)
+        glm_aic = extractAIC(glm_aic, show.option=TRUE)[2]
         print(paste(method, "GLM model AIC for", pheno, "is:", glm_aic))
     }
     
-    phenoSingleVector <- THROAT+STOOL*2+MOUTH*3+EARS*4+NOSE*5+ELBOWS*6+VAGINA*7
+    phenoSingleVector <- hmp_df[["THROAT"]]+hmp_df[["STOOL"]]*2+hmp_df[["MOUTH"]]*3+hmp_df[["EARS"]]*4+hmp_df[["NOSE"]]*5+hmp_df[["ELBOWS"]]*6+hmp_df[["VAGINA"]]*7
     phenoSV <- phenoSingleVector
     phenoSV[phenoSingleVector==1] <- "THROAT"
     phenoSV[phenoSingleVector==2] <- "STOOL"
@@ -35,7 +35,10 @@ for (method in methods) {
     phenoSV[phenoSingleVector==7] <- "VAGINA"
     phenoSV <- as.factor(phenoSV)
 
-    AIC.SITE <- AIC(stepAIC(multinom(phenoSV ~ V1+V2+V3+V4+V5+V6+V7+V8+V9+V10,data = data0)))    
+    mn_model = multinom(phenoSV ~ V1+V2+V3+V4+V5+V6+V7+V8+V9+V10, data = Xe_df)
+    mn_aic <- stepAIC(mn_model, direction = "backward", trace=0)
+    mn_aic = extractAIC(mn_aic, show.option=TRUE)[2]
+    print(paste(method, "MN model AIC for is:", mn_aic)) 
 }
 
 # benchmark with other methods

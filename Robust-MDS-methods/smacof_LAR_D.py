@@ -30,10 +30,10 @@ def LARsmacof_D(D,n=10,NbIter=1000,graine=123456789):
     previousStress= Stress+1000.
     
     for t in range(NbIter):
-        print 'Stress, previousStress= ',Stress, previousStress
+        print('Stress, previousStress= ',Stress, previousStress)
         if (previousStress-Stress)>epsilon:
         #if 1:
-            print 'iteration ',t,' of ',NbIter
+            print('iteration ',t,' of ',NbIter)
             #####################
             # Minimization step #
             ####################

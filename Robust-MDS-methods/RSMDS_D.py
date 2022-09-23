@@ -68,7 +68,7 @@ def RSMDS_D(D,n=10,NbIter=1000,graine=987654321,
                  ( tunGamma  *(sum([LA.norm(Btp1[:,j])       for j in range(p)]) +sum([LA.norm(Ctp1[i,:])       for i in range(p)])) +
                    tunLambda *(sum([LA.norm(Btp1[:,j],ord=1) for j in range(p)]) +sum([LA.norm(Ctp1[i,:],ord=1) for i in range(p)])) )
                  +tunMu/2.*(LA.norm(Btp1-Ctp1.T,ord='fro'))**2 )
-        print 'Stress=',Stress
+        print('Stress=',Stress)
         # Next iteration
         if 1:
         #if (previousStress-Stress)>epsilon:
@@ -137,5 +137,5 @@ def RSMDS_D(D,n=10,NbIter=1000,graine=987654321,
         # If stress is not improved by further iterations, then stop
         else :
             break
-    print 'Final stress=',Stress
+    print('Final stress=',Stress)
     return Xtp1,dXt, Btp1, Ctp1, Stress, previousStress

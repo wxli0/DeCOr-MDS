@@ -67,7 +67,7 @@ def RMDS_D(D,n=10,NbIter=1000,graine=987654321,tuningparameter=None):
     if tuningparameter is not None:
         tunPar=tuningparameter
     
-    print "tuning parameter = ",tunPar
+    print("tuning parameter = ",tunPar)
     
     
     
@@ -131,5 +131,5 @@ def RMDS_D(D,n=10,NbIter=1000,graine=987654321,tuningparameter=None):
         else :
             break
     
-    print 'Final stress=',Stress
+    print('Final stress=',Stress)
     return Xtp1,dXt, Otp1,Stress, previousStress

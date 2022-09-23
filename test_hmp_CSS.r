@@ -1,12 +1,13 @@
 library(metagenomeSeq)
 
+# TODO: missing v13lqphylotypecounts_rs_c.taxa, v13lqphylotypecounts_rs_c.clin
 #
 ## CSS-MDS, hmp
 #
 ## a- Data and formatting
 hmp <- load_meta("./data/hmp_v13lqphylotypecounts_rs_c.csv")
 hmp$counts[1:5,1:5]
-taxa = read.delim("v13lqphylotypecounts_rs_c.taxa",stringsAsFactors = F)[, 2]
+taxa = read.delim("v13lqphylotypecounts_rs_c.taxa",stringsAsFactors = F)[, 2] 
 otu =  read.delim("v13lqphylotypecounts_rs_c.taxa",stringsAsFactors = F)[, 1]
 clin = load_phenoData("v13lqphylotypecounts_rs_c.clin",tran = TRUE)
 #
