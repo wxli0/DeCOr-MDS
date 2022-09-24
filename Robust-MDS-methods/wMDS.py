@@ -81,6 +81,7 @@ def wcCounts_similDist(X,
         warnings.warn("Only one sample available. "
                       "You may want to reshape your data array")
 
+    print("input data X shape is:", X.shape)
     # Initialisations
     # P: nb of phylotypes ; n: nb of samples
     P,n=np.shape(X)
@@ -112,6 +113,7 @@ def wcCounts_similDist(X,
             W=W+w_p
         # Pairwise agreement matrix
         similDist= 1/W * a_xy
+        print("similDist in simpl shape is:", similDist.shape)
             
     elif distDesSxy:
         for p in range(P):

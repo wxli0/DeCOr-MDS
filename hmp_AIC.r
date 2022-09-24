@@ -9,7 +9,7 @@ hmp_df = data.frame(read.csv("./data/hmp_v13lqphylotypePheno_QIHP.csv"))
 # print(head(hmp_df))
 
 phenos = list("THROAT", "EARS", "STOOL", "NOSE", "ELBOWS", "MOUTH", "VAGINA")
-methods = list("QE_nSimplices_cMDS", "NB_nSimplices_cMDS", "NB_cMDS", "QE_cMDS")
+methods = list("wMDS", "QE_nSimplices_cMDS", "NB_nSimplices_cMDS", "NB_cMDS", "QE_cMDS")
 
 for (method in methods) {
     Xe_df = data.frame(read.csv(paste0("./outputs/hmp_", method, "_coord.txt"), sep=" ", header=FALSE))
