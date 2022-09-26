@@ -132,4 +132,7 @@ def RMDS_D(D,n=10,NbIter=1000,graine=987654321,tuningparameter=None):
             break
     
     print('Final stress=',Stress)
+    print("Xtp1 shape is:", Xtp1.shape)
+    print("dXt shape is:", dXt.shape)
+    print("Otp1 shape is:", Otp1.shape)
     return Xtp1,dXt, Otp1,Stress, previousStress

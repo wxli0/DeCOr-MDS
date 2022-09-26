@@ -138,4 +138,6 @@ def RSMDS_D(D,n=10,NbIter=1000,graine=987654321,
         else :
             break
     print('Final stress=',Stress)
+    # TODO: is Xtp1 the eigenvalues?
+    print("dXt shape is:", dXt.shape)
     return Xtp1,dXt, Btp1, Ctp1, Stress, previousStress

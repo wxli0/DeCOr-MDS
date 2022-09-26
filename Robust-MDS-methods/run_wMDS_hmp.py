@@ -12,9 +12,9 @@ df_hmp = np.loadtxt(data_path, delimiter=",")
     
 # wMDS
 # print "wcCounts mds"
-D=wcCounts_similDist(np.transpose(df_hmp), dist=True, simpl=True)
-print("output data shape is:", D.shape)
-vawMDS, vewMDS, XewMDS =  cMDS(D)
+similarity_matrix =wcCounts_similDist(np.transpose(df_hmp), dist=True, simpl=True)
+print("output data shape is:", similarity_matrix.shape)
+vawMDS, vewMDS, XewMDS =  cMDS(similarity_matrix)
 
 np.savetxt("./outputs/hmp_wMDS_coord.txt", XewMDS, fmt='%f')
    
