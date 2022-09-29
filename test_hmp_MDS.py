@@ -16,24 +16,24 @@ alea.seed(42)
 
 dir="./data/"
 
-# """ NB normalization + cMDS """ 
-# data_path = os.path.join(dir, "hmp_v13lqphylotypeQuantNB_rs_c.csv")
-# df_hmp = np.loadtxt(data_path, delimiter=",")
-# hmp_dis_sq=squareform(pdist(df_hmp))
+""" NB normalization + cMDS """ 
+data_path = os.path.join(dir, "hmp_v13lqphylotypeQuantNB_rs_c.csv")
+df_hmp = np.loadtxt(data_path, delimiter=",")
+hmp_dis_sq=squareform(pdist(df_hmp))
 
-# """ (0) Saving axes after cMDS """
-# va, ve, Xe = cMDS(hmp_dis_sq)
-# np.savetxt("./outputs/hmp_NB_cMDS_axes.txt", Xe, fmt='%f')
+""" (0) Saving axes after cMDS """
+va, ve, Xe = cMDS(hmp_dis_sq)
+np.savetxt("./outputs/hmp_NB_cMDS_axes.txt", Xe, fmt='%f')
 
 
-# """ QE normalization + cMDS """ 
-# data_path = os.path.join(dir, "hmp_v13lqphylotypeQuantE_rs_c.csv")
-# df_hmp = np.loadtxt(data_path, delimiter=",")
-# hmp_dis_sq = squareform(pdist(df_hmp))
+""" QE normalization + cMDS """ 
+data_path = os.path.join(dir, "hmp_v13lqphylotypeQuantE_rs_c.csv")
+df_hmp = np.loadtxt(data_path, delimiter=",")
+hmp_dis_sq = squareform(pdist(df_hmp))
 
-# """ (0) Saving axes after cMDS """
-# va, ve, Xe = cMDS(hmp_dis_sq)
-# np.savetxt("./outputs/hmp_QE_cMDS_axes.txt", Xe, fmt='%f')
+""" (0) Saving axes after cMDS """
+va, ve, Xe = cMDS(hmp_dis_sq)
+np.savetxt("./outputs/hmp_QE_cMDS_axes.txt", Xe, fmt='%f')
 
 
 """ MDS using Mahattan distance (MDSm) """
