@@ -125,12 +125,12 @@ plt.close()
 va, ve, Xe = cMDS(corr_pairwise_dis)
 np.savetxt("./outputs/hmp_QE_nSimplices_cMDS_Xe.txt", Xe, fmt='%f')
 
-num_eigen = 4
+# num_axes = 4
 
-for first_dim in range(num_eigen):
-    for second_dim in range(first_dim+1, num_eigen):
-        plt.figure()
-        for i in range(Xe.shape[0]):
-            plt.scatter(Xe[i, second_dim], Xe[i, first_dim], s=5, c=colors[i])
-        plt.legend(["QuantE+nSimplices"])
-        plt.savefig("./outputs/hmp_QE_nSimplices_cMDS_"+str(first_dim)+"_"+str(second_dim)+".png")
+# for first_dim in range(num_axes):
+#     for second_dim in range(first_dim+1, num_axes):
+#         plt.figure()
+#         for i in range(Xe.shape[0]):
+#             plt.scatter(Xe[i, second_dim], Xe[i, first_dim], s=5, c=colors[i])
+#         plt.legend(["QuantE+nSimplices"])
+#         plt.savefig("./outputs/hmp_QE_nSimplices_cMDS_"+str(first_dim)+"_"+str(second_dim)+".png")

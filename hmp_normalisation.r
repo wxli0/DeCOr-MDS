@@ -18,7 +18,7 @@ c(nrow(v13lqphylotypecounts_rs_b),ncol(v13lqphylotypecounts_rs_b))
 v13lqphylotypecounts_rs_c <- v13lqphylotypecounts_rs_b[,colSums(v13lqphylotypecounts_rs_b!=0)>=10]
 c(nrow(v13lqphylotypecounts_rs_c),ncol(v13lqphylotypecounts_rs_c)) #2255,425
 # # write to file
-write.table(v13lqphylotypecounts_rs_c,file="./data/v13lqphylotypecounts_rs_c.csv",row.names=FALSE,col.names=FALSE,sep=",")
+write.table(v13lqphylotypecounts_rs_c,file="./data/hmp_v13lqphylotypecounts_rs_c.csv",row.names=FALSE,col.names=FALSE,sep=",")
 
 # Subset pheno accordingly
 v13lqphylotypePheno_rs <- read.csv("./data/hmp_v13lqphylotypePheno_rs.csv")
@@ -26,7 +26,7 @@ c(nrow(v13lqphylotypePheno_rs),ncol(v13lqphylotypePheno_rs))
 v13lqphylotypePheno_rs_c <- v13lqphylotypePheno_rs[rowSums(v13lqphylotypecounts_rs!=0)>=10,]
 c(nrow(v13lqphylotypePheno_rs_c),ncol(v13lqphylotypePheno_rs_c)) #2255,24
 # # write pheno subset to file
-write.csv(v13lqphylotypePheno_rs_c,file="./data/v13lqphylotypePheno_QIHP.csv",row.names=FALSE)
+write.csv(v13lqphylotypePheno_rs_c,file="./data/hmp_v13lqphylotypePheno_rs_c.csv",row.names=FALSE)
 
 nSamples <- nrow(v13lqphylotypecounts_rs_c)
 nMeta    <- ncol(v13lqphylotypecounts_rs_c)
@@ -50,7 +50,7 @@ for (i in 1:nSamples) {
 }
 # normalized matrix, Rank
 c(nrow(v13lqphylotypeQuantRank),ncol(v13lqphylotypeQuantRank)) # 2255  425
-write.table(v13lqphylotypeQuantRank,file="./data/v13lqphylotypeQuantRank.csv",row.names=FALSE,col.names=FALSE,sep=",")
+write.table(v13lqphylotypeQuantRank,file="./data/hmp_v13lqphylotypeQuantRank_rs_c.csv",row.names=FALSE,col.names=FALSE,sep=",")
 
 ######
 # Turn Counts into Z quantiles
@@ -75,7 +75,7 @@ for (i in 1:nSamples) {
 }
 # normalized matrix, Rank
 c(nrow(v13lqphylotypeQuantZ),ncol(v13lqphylotypeQuantZ)) # 2255  425
-write.table(v13lqphylotypeQuantZ,file="./data/v13lqphylotypeQuantZ.csv",row.names=FALSE,col.names=FALSE,sep=",")
+write.table(v13lqphylotypeQuantZ,file="./data/hmp_v13lqphylotypeQuantZ_rs_c.csv",row.names=FALSE,col.names=FALSE,sep=",")
 
 
 ######
@@ -110,10 +110,10 @@ for (i in 1:nSamples)
 
 # normalized matrix, NB
 c(nrow(v13lqphylotypeQuantNB),ncol(v13lqphylotypeQuantNB))
-write.table(v13lqphylotypeQuantNB,file="./data/hmp_v13lqphylotypeQuantNB_rs.csv",row.names=FALSE,col.names=FALSE,sep=",")
+write.table(v13lqphylotypeQuantNB,file="./data/hmp_v13lqphylotypeQuantNB_rs_c.csv",row.names=FALSE,col.names=FALSE,sep=",")
 # normalized matrix, E
 c(nrow(v13lqphylotypeQuantE),ncol(v13lqphylotypeQuantE)) #2255,425
-write.table(v13lqphylotypeQuantE,file="./data/hmp_v13lqphylotypeQuantE_rs.csv",row.names=FALSE,col.names=FALSE,sep=",")
+write.table(v13lqphylotypeQuantE,file="./data/hmp_v13lqphylotypeQuantE_rs_c.csv",row.names=FALSE,col.names=FALSE,sep=",")
 
 
 
