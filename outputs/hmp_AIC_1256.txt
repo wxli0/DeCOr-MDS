@@ -1,0 +1,1985 @@
+[1] "wMDS GLM model AIC for THROAT is: 1018.23584699655"
+[1] "wMDS GLM model AIC for STOOL is: 705.764311315351"
+[1] "wMDS GLM model AIC for NOSE is: 1026.66500405229"
+[1] "wMDS GLM model AIC for ELBOWS is: 1126.33219997837"
+# weights:  60 (44 variable)
+initial  value 3629.282493 
+iter  10 value 1943.932499
+iter  20 value 1830.660325
+iter  30 value 1787.332870
+iter  40 value 1734.465955
+iter  50 value 1718.813799
+iter  60 value 1702.018728
+iter  70 value 1690.920202
+iter  80 value 1686.915245
+iter  90 value 1679.754029
+iter 100 value 1678.144930
+final  value 1678.144930 
+stopped after 100 iterations
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 2107.597942
+iter  20 value 2041.111257
+iter  30 value 2002.403729
+iter  40 value 1994.175911
+iter  50 value 1991.041976
+iter  60 value 1990.018935
+iter  70 value 1989.714232
+iter  80 value 1989.607326
+final  value 1989.596234 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 1951.903641
+iter  20 value 1840.177996
+iter  30 value 1809.916254
+iter  40 value 1782.646906
+iter  50 value 1772.050366
+iter  60 value 1756.460103
+iter  70 value 1749.656285
+iter  80 value 1746.191278
+iter  90 value 1742.567525
+iter 100 value 1741.097444
+final  value 1741.097444 
+stopped after 100 iterations
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 1945.991528
+iter  20 value 1843.397951
+iter  30 value 1790.517319
+iter  40 value 1734.366514
+iter  50 value 1717.643458
+iter  60 value 1699.921962
+iter  70 value 1691.175683
+iter  80 value 1686.138608
+iter  90 value 1684.624736
+iter 100 value 1683.192091
+final  value 1683.192091 
+stopped after 100 iterations
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 1959.681917
+iter  20 value 1852.885282
+iter  30 value 1807.403970
+iter  40 value 1763.388301
+iter  50 value 1742.549739
+iter  60 value 1721.874475
+iter  70 value 1712.379742
+iter  80 value 1706.829723
+iter  90 value 1704.966122
+iter 100 value 1703.749038
+final  value 1703.749038 
+stopped after 100 iterations
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 1945.884201
+iter  20 value 1841.140551
+iter  30 value 1801.967709
+iter  40 value 1748.713524
+iter  50 value 1734.576488
+iter  60 value 1712.250858
+iter  70 value 1704.077133
+iter  80 value 1699.599705
+iter  90 value 1695.761642
+iter 100 value 1693.900094
+final  value 1693.900094 
+stopped after 100 iterations
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 1947.710183
+iter  20 value 1851.348438
+iter  30 value 1817.990447
+iter  40 value 1798.954019
+iter  50 value 1788.713200
+iter  60 value 1786.973381
+iter  70 value 1786.050558
+iter  80 value 1785.462216
+iter  90 value 1785.242738
+iter 100 value 1785.162809
+final  value 1785.162809 
+stopped after 100 iterations
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 1979.358270
+iter  20 value 1852.602429
+iter  30 value 1806.625788
+iter  40 value 1750.475107
+iter  50 value 1732.667840
+iter  60 value 1714.582007
+iter  70 value 1706.245302
+iter  80 value 1700.211158
+iter  90 value 1695.392800
+iter 100 value 1693.436129
+final  value 1693.436129 
+stopped after 100 iterations
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 2005.476147
+iter  20 value 1915.081320
+iter  30 value 1880.842408
+iter  40 value 1848.444802
+iter  50 value 1834.165466
+iter  60 value 1821.413547
+iter  70 value 1816.637329
+iter  80 value 1814.359761
+iter  90 value 1813.498231
+iter 100 value 1813.204043
+final  value 1813.204043 
+stopped after 100 iterations
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 1944.283145
+iter  20 value 1828.594657
+iter  30 value 1782.556613
+iter  40 value 1740.109626
+iter  50 value 1721.022763
+iter  60 value 1702.573229
+iter  70 value 1696.097000
+iter  80 value 1689.598679
+iter  90 value 1686.436983
+iter 100 value 1683.956030
+final  value 1683.956030 
+stopped after 100 iterations
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 1945.988501
+iter  20 value 1823.550058
+iter  30 value 1786.777141
+iter  40 value 1736.516239
+iter  50 value 1716.249638
+iter  60 value 1700.597759
+iter  70 value 1693.156611
+iter  80 value 1687.610279
+iter  90 value 1684.875998
+iter 100 value 1682.650486
+final  value 1682.650486 
+stopped after 100 iterations
+[1] "wMDS MN model AIC for is: 3444.28985972891"
+[1] "RMDS_D GLM model AIC for THROAT is: 883.496169500121"
+[1] "RMDS_D GLM model AIC for STOOL is: 474.675005767937"
+[1] "RMDS_D GLM model AIC for NOSE is: 895.014360818455"
+[1] "RMDS_D GLM model AIC for ELBOWS is: 1242.42629871152"
+# weights:  60 (44 variable)
+initial  value 3629.282493 
+iter  10 value 3307.436120
+iter  20 value 3193.311641
+iter  30 value 3181.732093
+iter  40 value 2221.257143
+iter  50 value 1606.993166
+iter  60 value 1594.772225
+final  value 1594.739360 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 3341.133089
+iter  20 value 3235.761270
+iter  30 value 3210.465409
+iter  40 value 1881.869358
+iter  50 value 1714.138076
+iter  60 value 1713.993743
+final  value 1713.993650 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 3388.489587
+iter  20 value 3266.010646
+iter  30 value 3242.191755
+iter  40 value 2099.933034
+iter  50 value 1723.404527
+iter  60 value 1723.213981
+final  value 1723.213929 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 3306.035098
+iter  20 value 3167.511277
+iter  30 value 3012.715863
+iter  40 value 2061.541427
+iter  50 value 1626.559897
+iter  60 value 1626.197247
+final  value 1626.196257 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 3336.699561
+iter  20 value 3233.361636
+iter  30 value 3209.890194
+iter  40 value 2154.378657
+iter  50 value 1608.415877
+iter  60 value 1608.180064
+final  value 1608.179839 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 3344.075260
+iter  20 value 3227.331637
+iter  30 value 3217.110222
+iter  40 value 1787.787884
+iter  50 value 1615.522561
+iter  60 value 1615.360228
+final  value 1615.359981 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 3353.279104
+iter  20 value 3250.753091
+iter  30 value 3243.588265
+iter  40 value 2123.948299
+iter  50 value 1653.938343
+iter  60 value 1653.124869
+final  value 1653.124192 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 3314.899339
+iter  20 value 3200.521036
+iter  30 value 3191.212873
+iter  40 value 2127.750541
+iter  50 value 1599.485469
+iter  60 value 1598.893841
+final  value 1598.892929 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 3348.789925
+iter  20 value 3260.651347
+iter  30 value 3251.074300
+iter  40 value 2545.267563
+iter  50 value 1657.537320
+iter  60 value 1656.231483
+final  value 1656.228013 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 3321.868510
+iter  20 value 3239.656560
+iter  30 value 3227.649820
+iter  40 value 1906.866601
+iter  50 value 1631.369364
+iter  60 value 1631.179024
+final  value 1631.178736 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 3335.175382
+iter  20 value 3263.687647
+iter  30 value 3254.419890
+iter  40 value 2201.266362
+iter  50 value 1675.906532
+iter  60 value 1675.031422
+final  value 1675.027597 
+converged
+[1] "RMDS_D MN model AIC for is: 3277.47872018982"
+[1] "RSMDS_D GLM model AIC for THROAT is: 989.29027352728"
+[1] "RSMDS_D GLM model AIC for STOOL is: 1073.10039651457"
+[1] "RSMDS_D GLM model AIC for NOSE is: 1014.03094595902"
+[1] "RSMDS_D GLM model AIC for ELBOWS is: 1596.42954554287"
+# weights:  60 (44 variable)
+initial  value 3629.282493 
+iter  10 value 2256.863711
+iter  20 value 2238.364232
+iter  30 value 2231.564562
+iter  40 value 2230.276757
+iter  50 value 2229.926558
+iter  60 value 2229.843933
+iter  70 value 2229.832499
+final  value 2229.830734 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 2259.597732
+iter  20 value 2246.835150
+iter  30 value 2243.968689
+iter  40 value 2243.467440
+iter  50 value 2243.342819
+iter  60 value 2243.310250
+iter  70 value 2243.307870
+final  value 2243.307336 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 2260.334755
+iter  20 value 2239.742661
+iter  30 value 2232.689038
+iter  40 value 2231.459547
+iter  50 value 2231.109612
+iter  60 value 2231.021208
+iter  70 value 2231.009879
+final  value 2231.008085 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 2260.875496
+iter  20 value 2240.635939
+iter  30 value 2234.844682
+iter  40 value 2234.259414
+iter  50 value 2233.975689
+iter  60 value 2233.926707
+iter  70 value 2233.920350
+final  value 2233.919412 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 2257.680286
+iter  20 value 2238.740393
+iter  30 value 2234.380546
+iter  40 value 2233.686651
+iter  50 value 2233.367659
+iter  60 value 2233.340475
+final  value 2233.336816 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 2257.752529
+iter  20 value 2249.320051
+iter  30 value 2243.123361
+iter  40 value 2242.483934
+iter  50 value 2242.128725
+iter  60 value 2242.066937
+iter  70 value 2242.049597
+final  value 2242.048720 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 2256.913848
+iter  20 value 2239.167337
+iter  30 value 2232.744808
+iter  40 value 2231.497272
+iter  50 value 2231.158541
+iter  60 value 2231.098387
+iter  70 value 2231.087930
+final  value 2231.086709 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 2256.900756
+iter  20 value 2239.267951
+iter  30 value 2233.282761
+iter  40 value 2231.949583
+iter  50 value 2231.612326
+iter  60 value 2231.543425
+iter  70 value 2231.532486
+final  value 2231.531271 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 2256.994180
+iter  20 value 2241.423531
+iter  30 value 2237.317124
+iter  40 value 2236.097322
+iter  50 value 2235.757636
+iter  60 value 2235.689853
+iter  70 value 2235.674597
+final  value 2235.673380 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 2256.898180
+iter  20 value 2239.101585
+iter  30 value 2232.891799
+iter  40 value 2231.672299
+iter  50 value 2231.309239
+iter  60 value 2231.225869
+iter  70 value 2231.214862
+final  value 2231.213260 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 2256.895327
+iter  20 value 2239.179078
+iter  30 value 2233.608767
+iter  40 value 2232.850933
+iter  50 value 2232.810157
+iter  60 value 2232.802790
+iter  70 value 2232.801492
+final  value 2232.801363 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 2260.334755
+iter  20 value 2239.742661
+iter  30 value 2232.689038
+iter  40 value 2231.459547
+iter  50 value 2231.109612
+iter  60 value 2231.021208
+iter  70 value 2231.009879
+final  value 2231.008085 
+converged
+# weights:  50 (36 variable)
+initial  value 3629.282493 
+iter  10 value 2261.438565
+iter  20 value 2248.033477
+iter  30 value 2245.209758
+iter  40 value 2244.718242
+iter  50 value 2244.589820
+iter  60 value 2244.559139
+iter  70 value 2244.556762
+final  value 2244.556247 
+converged
+# weights:  50 (36 variable)
+initial  value 3629.282493 
+iter  10 value 2262.326760
+iter  20 value 2239.572530
+iter  30 value 2236.117582
+iter  40 value 2235.489655
+iter  50 value 2235.309649
+iter  60 value 2235.269525
+iter  70 value 2235.265220
+final  value 2235.264558 
+converged
+# weights:  50 (36 variable)
+initial  value 3629.282493 
+iter  10 value 2261.329925
+iter  20 value 2239.863189
+iter  30 value 2235.529406
+iter  40 value 2234.819275
+iter  50 value 2234.524245
+iter  60 value 2234.497569
+final  value 2234.493935 
+converged
+# weights:  50 (36 variable)
+initial  value 3629.282493 
+iter  10 value 2261.441579
+iter  20 value 2250.478380
+iter  30 value 2244.292656
+iter  40 value 2243.687799
+iter  50 value 2243.333274
+iter  60 value 2243.270519
+iter  70 value 2243.253490
+final  value 2243.252602 
+converged
+# weights:  50 (36 variable)
+initial  value 3629.282493 
+iter  10 value 2260.397741
+iter  20 value 2240.540545
+iter  30 value 2233.885078
+iter  40 value 2232.679129
+iter  50 value 2232.345949
+iter  60 value 2232.280701
+iter  70 value 2232.270069
+final  value 2232.268788 
+converged
+# weights:  50 (36 variable)
+initial  value 3629.282493 
+iter  10 value 2260.382135
+iter  20 value 2240.608017
+iter  30 value 2234.382009
+iter  40 value 2233.120512
+iter  50 value 2232.789163
+iter  60 value 2232.712722
+iter  70 value 2232.701390
+final  value 2232.700782 
+converged
+# weights:  50 (36 variable)
+initial  value 3629.282493 
+iter  10 value 2260.504737
+iter  20 value 2242.690520
+iter  30 value 2238.437846
+iter  40 value 2237.279112
+iter  50 value 2236.936803
+iter  60 value 2236.865229
+iter  70 value 2236.849858
+final  value 2236.849352 
+converged
+# weights:  50 (36 variable)
+initial  value 3629.282493 
+iter  10 value 2260.378676
+iter  20 value 2240.459735
+iter  30 value 2234.020168
+iter  40 value 2232.851506
+iter  50 value 2232.491816
+iter  60 value 2232.401907
+iter  70 value 2232.390771
+final  value 2232.389752 
+converged
+# weights:  50 (36 variable)
+initial  value 3629.282493 
+iter  10 value 2260.374024
+iter  20 value 2240.533558
+iter  30 value 2234.756504
+iter  40 value 2234.047699
+iter  50 value 2234.008026
+iter  60 value 2233.999795
+iter  70 value 2233.998648
+final  value 2233.998502 
+converged
+# weights:  50 (36 variable)
+initial  value 3629.282493 
+iter  10 value 2260.397741
+iter  20 value 2240.540545
+iter  30 value 2233.885078
+iter  40 value 2232.679129
+iter  50 value 2232.345949
+iter  60 value 2232.280701
+iter  70 value 2232.270069
+final  value 2232.268788 
+converged
+# weights:  45 (32 variable)
+initial  value 3629.282493 
+iter  10 value 2261.863439
+iter  20 value 2249.002454
+iter  30 value 2246.133863
+iter  40 value 2245.659291
+iter  50 value 2245.532438
+iter  60 value 2245.510472
+final  value 2245.508411 
+converged
+# weights:  45 (32 variable)
+initial  value 3629.282493 
+iter  10 value 2262.397473
+iter  20 value 2240.609670
+iter  30 value 2237.364480
+iter  40 value 2236.752868
+iter  50 value 2236.570965
+iter  60 value 2236.536966
+final  value 2236.533556 
+converged
+# weights:  45 (32 variable)
+initial  value 3629.282493 
+iter  10 value 2261.391461
+iter  20 value 2240.843164
+iter  30 value 2236.717670
+iter  40 value 2236.045917
+iter  50 value 2235.760696
+iter  60 value 2235.744607
+final  value 2235.741425 
+converged
+# weights:  45 (32 variable)
+initial  value 3629.282493 
+iter  10 value 2261.501883
+iter  20 value 2251.206298
+iter  30 value 2245.318492
+iter  40 value 2244.851174
+iter  50 value 2244.546350
+iter  60 value 2244.488078
+final  value 2244.480175 
+converged
+# weights:  45 (32 variable)
+initial  value 3629.282493 
+iter  10 value 2260.444960
+iter  20 value 2241.380911
+iter  30 value 2235.556467
+iter  40 value 2234.342572
+iter  50 value 2234.045770
+iter  60 value 2233.979472
+final  value 2233.972809 
+converged
+# weights:  45 (32 variable)
+initial  value 3629.282493 
+iter  10 value 2260.567431
+iter  20 value 2243.487161
+iter  30 value 2239.643712
+iter  40 value 2238.494373
+iter  50 value 2238.210175
+iter  60 value 2238.150638
+final  value 2238.139814 
+converged
+# weights:  45 (32 variable)
+initial  value 3629.282493 
+iter  10 value 2260.441565
+iter  20 value 2241.253219
+iter  30 value 2235.227223
+iter  40 value 2234.080230
+iter  50 value 2233.749776
+iter  60 value 2233.679936
+final  value 2233.670428 
+converged
+# weights:  45 (32 variable)
+initial  value 3629.282493 
+iter  10 value 2260.436859
+iter  20 value 2241.307033
+iter  30 value 2235.846286
+iter  40 value 2235.119447
+iter  50 value 2235.078577
+iter  60 value 2235.070111
+final  value 2235.068783 
+converged
+# weights:  45 (32 variable)
+initial  value 3629.282493 
+iter  10 value 2260.441565
+iter  20 value 2241.253219
+iter  30 value 2235.227223
+iter  40 value 2234.080230
+iter  50 value 2233.749776
+iter  60 value 2233.679936
+final  value 2233.670428 
+converged
+# weights:  40 (28 variable)
+initial  value 3629.282493 
+iter  10 value 2262.173763
+iter  20 value 2250.118715
+iter  30 value 2247.582317
+iter  40 value 2247.100899
+iter  50 value 2246.966285
+final  value 2246.947333 
+converged
+# weights:  40 (28 variable)
+initial  value 3629.282493 
+iter  10 value 2262.446988
+iter  20 value 2241.618294
+iter  30 value 2238.748149
+iter  40 value 2238.202593
+iter  50 value 2237.992893
+final  value 2237.965337 
+converged
+# weights:  40 (28 variable)
+initial  value 3629.282493 
+iter  10 value 2261.433764
+iter  20 value 2241.715332
+iter  30 value 2238.105042
+iter  40 value 2237.437121
+iter  50 value 2237.150163
+final  value 2237.132893 
+converged
+# weights:  40 (28 variable)
+initial  value 3629.282493 
+iter  10 value 2259.563483
+iter  20 value 2251.178933
+iter  30 value 2246.809436
+iter  40 value 2246.359909
+iter  50 value 2246.079871
+final  value 2246.028516 
+converged
+# weights:  40 (28 variable)
+initial  value 3629.282493 
+iter  10 value 2260.488707
+iter  20 value 2242.075670
+iter  30 value 2236.845098
+iter  40 value 2235.692833
+iter  50 value 2235.404179
+iter  60 value 2235.337493
+final  value 2235.337351 
+converged
+# weights:  40 (28 variable)
+initial  value 3629.282493 
+iter  10 value 2260.610967
+iter  20 value 2244.165865
+iter  30 value 2240.891814
+iter  40 value 2239.821980
+iter  50 value 2239.564984
+final  value 2239.516804 
+converged
+# weights:  40 (28 variable)
+initial  value 3629.282493 
+iter  10 value 2260.480623
+iter  20 value 2242.008557
+iter  30 value 2237.137732
+iter  40 value 2236.501627
+iter  50 value 2236.475960
+final  value 2236.471081 
+converged
+# weights:  40 (28 variable)
+initial  value 3629.282493 
+iter  10 value 2260.488707
+iter  20 value 2242.075670
+iter  30 value 2236.845098
+iter  40 value 2235.692833
+iter  50 value 2235.404179
+iter  60 value 2235.337493
+final  value 2235.337351 
+converged
+# weights:  35 (24 variable)
+initial  value 3629.282493 
+iter  10 value 2262.486481
+iter  20 value 2251.349505
+iter  30 value 2249.081256
+iter  40 value 2248.621025
+iter  50 value 2248.486412
+iter  60 value 2248.470766
+iter  70 value 2248.465921
+iter  80 value 2248.463463
+final  value 2248.462825 
+converged
+# weights:  35 (24 variable)
+initial  value 3629.282493 
+iter  10 value 2262.501619
+iter  20 value 2242.860007
+iter  30 value 2240.243620
+iter  40 value 2239.877581
+iter  50 value 2239.654447
+final  value 2239.654112 
+converged
+# weights:  35 (24 variable)
+initial  value 3629.282493 
+iter  10 value 2261.479213
+iter  20 value 2242.764601
+iter  30 value 2239.795374
+iter  40 value 2239.187232
+iter  50 value 2238.915946
+iter  50 value 2238.915928
+final  value 2238.915928 
+converged
+# weights:  35 (24 variable)
+initial  value 3629.282493 
+iter  10 value 2259.601363
+iter  20 value 2252.059263
+iter  30 value 2248.246870
+iter  40 value 2247.849107
+iter  50 value 2247.540468
+iter  50 value 2247.540445
+final  value 2247.540445 
+converged
+# weights:  35 (24 variable)
+initial  value 3629.282493 
+iter  10 value 2260.657789
+iter  20 value 2244.933351
+iter  30 value 2242.402021
+iter  40 value 2241.310484
+iter  50 value 2241.186250
+iter  60 value 2241.180759
+iter  70 value 2241.168624
+iter  80 value 2241.164542
+iter  90 value 2241.163656
+iter  90 value 2241.163651
+iter  90 value 2241.163651
+final  value 2241.163651 
+converged
+# weights:  35 (24 variable)
+initial  value 3629.282493 
+iter  10 value 2260.527700
+iter  20 value 2242.813788
+iter  30 value 2238.685689
+iter  40 value 2238.119212
+iter  50 value 2238.099381
+final  value 2238.098758 
+converged
+# weights:  35 (24 variable)
+initial  value 3629.282493 
+iter  10 value 2260.527700
+iter  20 value 2242.813788
+iter  30 value 2238.685689
+iter  40 value 2238.119212
+iter  50 value 2238.099381
+final  value 2238.098758 
+converged
+# weights:  30 (20 variable)
+initial  value 3629.282493 
+iter  10 value 2262.785412
+iter  20 value 2252.719117
+iter  30 value 2251.479885
+iter  40 value 2251.367539
+final  value 2251.366938 
+converged
+# weights:  30 (20 variable)
+initial  value 3629.282493 
+iter  10 value 2262.546482
+iter  20 value 2244.040775
+iter  30 value 2242.493328
+iter  40 value 2242.431119
+final  value 2242.423735 
+converged
+# weights:  30 (20 variable)
+initial  value 3629.282493 
+iter  10 value 2261.516910
+iter  20 value 2243.702307
+iter  30 value 2241.812868
+iter  40 value 2241.681619
+iter  50 value 2241.659265
+iter  60 value 2241.653651
+final  value 2241.652519 
+converged
+# weights:  30 (20 variable)
+initial  value 3629.282493 
+iter  10 value 2259.633699
+iter  20 value 2252.897681
+iter  30 value 2250.467766
+iter  40 value 2250.397353
+iter  50 value 2250.379013
+iter  60 value 2250.371018
+iter  70 value 2250.364392
+final  value 2250.364023 
+converged
+# weights:  30 (20 variable)
+initial  value 3629.282493 
+iter  10 value 2260.696555
+iter  20 value 2245.630338
+iter  30 value 2243.925498
+iter  40 value 2243.912210
+final  value 2243.911899 
+converged
+# weights:  30 (20 variable)
+initial  value 3629.282493 
+iter  10 value 2261.516910
+iter  20 value 2243.702307
+iter  30 value 2241.812868
+iter  40 value 2241.681619
+iter  50 value 2241.659265
+iter  60 value 2241.653651
+final  value 2241.652519 
+converged
+# weights:  25 (16 variable)
+initial  value 3629.282493 
+iter  10 value 2265.741914
+iter  20 value 2255.924008
+iter  30 value 2254.960069
+iter  40 value 2254.949789
+iter  50 value 2254.923344
+iter  60 value 2254.920490
+iter  60 value 2254.920479
+iter  60 value 2254.920479
+final  value 2254.920479 
+converged
+# weights:  25 (16 variable)
+initial  value 3629.282493 
+iter  10 value 2263.602726
+iter  20 value 2247.848959
+iter  30 value 2246.127859
+iter  40 value 2246.114583
+iter  50 value 2246.079036
+final  value 2246.074829 
+converged
+# weights:  25 (16 variable)
+initial  value 3629.282493 
+iter  10 value 2260.468052
+iter  20 value 2254.503971
+iter  30 value 2254.308150
+final  value 2254.304269 
+converged
+# weights:  25 (16 variable)
+initial  value 3629.282493 
+iter  10 value 2259.695618
+iter  20 value 2247.354844
+iter  30 value 2247.293671
+final  value 2247.288049 
+converged
+[1] "RSMDS_D MN model AIC for is: 4523.30503752108"
+[1] "LAR GLM model AIC for THROAT is: 1018.45620658464"
+[1] "LAR GLM model AIC for STOOL is: 1078.65976041073"
+[1] "LAR GLM model AIC for NOSE is: 1029.47182937361"
+[1] "LAR GLM model AIC for ELBOWS is: 1593.34723775962"
+# weights:  60 (44 variable)
+initial  value 3629.282493 
+iter  10 value 3618.867621
+iter  20 value 3031.267637
+iter  30 value 2469.662664
+iter  40 value 2458.812324
+iter  50 value 2335.014551
+iter  60 value 2270.594578
+iter  70 value 2267.879584
+iter  80 value 2267.267924
+iter  80 value 2267.267903
+iter  90 value 2267.191338
+iter  90 value 2267.191323
+final  value 2267.191034 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 3619.844170
+iter  20 value 2503.475540
+iter  30 value 2443.353667
+iter  40 value 2443.120614
+iter  50 value 2356.853570
+iter  50 value 2356.853563
+iter  60 value 2270.910905
+iter  70 value 2269.621907
+iter  70 value 2269.621898
+iter  80 value 2269.482474
+final  value 2269.480888 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 3619.394929
+iter  20 value 2390.350290
+iter  30 value 2353.496305
+iter  40 value 2280.669140
+iter  50 value 2275.318989
+iter  60 value 2274.789325
+final  value 2274.785227 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 3619.276303
+iter  20 value 3218.091842
+iter  30 value 2837.577778
+iter  40 value 2828.415189
+iter  50 value 2619.424215
+iter  60 value 2550.320428
+iter  70 value 2419.032708
+iter  80 value 2418.909919
+iter  90 value 2311.247512
+iter 100 value 2275.687887
+final  value 2275.687887 
+stopped after 100 iterations
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 3623.157695
+iter  20 value 3622.805604
+iter  30 value 2422.556113
+iter  40 value 2416.013139
+iter  50 value 2352.493548
+iter  60 value 2301.391802
+iter  70 value 2279.342122
+iter  80 value 2277.943088
+iter  90 value 2277.797113
+iter 100 value 2269.362659
+final  value 2269.362659 
+stopped after 100 iterations
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 3619.585692
+iter  20 value 3010.177948
+iter  30 value 2412.531388
+iter  40 value 2410.371493
+iter  50 value 2307.130373
+iter  60 value 2276.268165
+iter  70 value 2266.739961
+iter  80 value 2266.093543
+iter  90 value 2265.993040
+final  value 2265.988802 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 3619.471211
+iter  20 value 2899.348488
+iter  30 value 2336.579797
+iter  40 value 2308.366311
+iter  50 value 2280.157291
+iter  60 value 2264.210200
+iter  60 value 2264.210199
+iter  70 value 2262.597554
+final  value 2262.595483 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 3619.628418
+iter  20 value 3163.124055
+iter  30 value 2459.568141
+iter  40 value 2424.716600
+iter  50 value 2423.514027
+iter  60 value 2332.587814
+iter  70 value 2286.683134
+iter  80 value 2278.267381
+iter  90 value 2268.099234
+iter 100 value 2265.487502
+final  value 2265.487502 
+stopped after 100 iterations
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 3619.365887
+iter  20 value 2954.877612
+iter  30 value 2455.414775
+iter  40 value 2443.265551
+iter  50 value 2335.931958
+iter  60 value 2330.075724
+iter  70 value 2275.778413
+iter  80 value 2267.775221
+iter  90 value 2267.698613
+iter  90 value 2267.698604
+final  value 2267.697661 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 3620.925728
+iter  20 value 2850.261092
+iter  30 value 2475.884542
+iter  40 value 2472.477449
+iter  50 value 2349.400689
+iter  60 value 2294.133502
+iter  70 value 2276.620412
+iter  80 value 2273.407414
+iter  80 value 2273.407394
+iter  90 value 2272.906342
+final  value 2272.903294 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 3619.372955
+iter  20 value 3311.321276
+iter  30 value 3001.507520
+iter  30 value 3001.507510
+iter  40 value 2775.155111
+iter  50 value 2733.354189
+iter  60 value 2507.672634
+iter  70 value 2307.093340
+iter  80 value 2276.055166
+iter  90 value 2272.507436
+iter 100 value 2271.943510
+final  value 2271.943510 
+stopped after 100 iterations
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 3619.471211
+iter  20 value 2899.348488
+iter  30 value 2336.579797
+iter  40 value 2308.366311
+iter  50 value 2280.157291
+iter  60 value 2264.210200
+iter  60 value 2264.210199
+iter  70 value 2262.597554
+final  value 2262.595483 
+converged
+# weights:  50 (36 variable)
+initial  value 3629.282493 
+iter  10 value 3620.395896
+iter  20 value 2737.102566
+iter  30 value 2578.261091
+iter  40 value 2577.538080
+iter  50 value 2399.383061
+iter  60 value 2368.928168
+iter  70 value 2263.859348
+final  value 2263.762046 
+converged
+# weights:  50 (36 variable)
+initial  value 3629.282493 
+iter  10 value 3619.987144
+iter  20 value 2463.582903
+iter  30 value 2420.987562
+iter  40 value 2418.863234
+iter  50 value 2325.423116
+iter  60 value 2266.610274
+iter  60 value 2266.610273
+iter  70 value 2263.305164
+iter  80 value 2263.295536
+iter  80 value 2263.295532
+iter  80 value 2263.295531
+final  value 2263.295531 
+converged
+# weights:  50 (36 variable)
+initial  value 3629.282493 
+iter  10 value 3619.898546
+iter  20 value 3164.195027
+iter  30 value 2741.846210
+iter  40 value 2739.701712
+iter  50 value 2507.868779
+iter  60 value 2446.372789
+iter  60 value 2446.372777
+iter  70 value 2319.105179
+iter  80 value 2312.759293
+iter  90 value 2277.955156
+iter 100 value 2264.696426
+final  value 2264.696426 
+stopped after 100 iterations
+# weights:  50 (36 variable)
+initial  value 3629.282493 
+iter  10 value 3623.767275
+iter  20 value 3132.202936
+iter  30 value 2297.631972
+iter  40 value 2277.562555
+iter  50 value 2276.294067
+iter  60 value 2275.973848
+iter  70 value 2275.955895
+iter  80 value 2275.948852
+final  value 2275.948632 
+converged
+# weights:  50 (36 variable)
+initial  value 3629.282493 
+iter  10 value 3620.180206
+iter  20 value 2745.386620
+iter  30 value 2433.199827
+iter  40 value 2427.551400
+iter  50 value 2291.718591
+iter  60 value 2281.738742
+iter  60 value 2281.738740
+iter  70 value 2267.141936
+iter  80 value 2266.725153
+iter  90 value 2266.603649
+iter 100 value 2266.597405
+final  value 2266.597405 
+stopped after 100 iterations
+# weights:  50 (36 variable)
+initial  value 3629.282493 
+iter  10 value 3620.255038
+iter  20 value 2676.296003
+iter  30 value 2457.618418
+iter  40 value 2452.322788
+iter  50 value 2336.295163
+iter  60 value 2322.396845
+iter  70 value 2268.415650
+iter  80 value 2266.686989
+iter  90 value 2266.641279
+final  value 2266.640272 
+converged
+# weights:  50 (36 variable)
+initial  value 3629.282493 
+iter  10 value 3619.960278
+iter  20 value 2826.470882
+iter  30 value 2561.495147
+iter  40 value 2263.347186
+final  value 2262.933746 
+converged
+# weights:  50 (36 variable)
+initial  value 3629.282493 
+iter  10 value 3621.581902
+iter  20 value 2986.804713
+iter  30 value 2702.494457
+iter  40 value 2689.123514
+iter  50 value 2680.322748
+iter  60 value 2435.684974
+iter  70 value 2376.388735
+iter  80 value 2275.571911
+iter  90 value 2271.687863
+iter 100 value 2271.484288
+final  value 2271.484288 
+stopped after 100 iterations
+# weights:  50 (36 variable)
+initial  value 3629.282493 
+iter  10 value 3619.967913
+iter  20 value 2664.410052
+iter  30 value 2491.146078
+iter  40 value 2263.158461
+final  value 2262.668539 
+converged
+# weights:  50 (36 variable)
+initial  value 3629.282493 
+iter  10 value 3619.967913
+iter  20 value 2664.410052
+iter  30 value 2491.146078
+iter  40 value 2263.158461
+final  value 2262.668539 
+converged
+# weights:  45 (32 variable)
+initial  value 3629.282493 
+iter  10 value 3620.964241
+iter  20 value 2399.185367
+iter  30 value 2361.078267
+iter  40 value 2357.939126
+iter  50 value 2275.284938
+iter  60 value 2266.410777
+iter  70 value 2265.653183
+iter  80 value 2265.599108
+iter  80 value 2265.599096
+final  value 2265.595892 
+converged
+# weights:  45 (32 variable)
+initial  value 3629.282493 
+iter  10 value 3620.471197
+iter  20 value 2544.783137
+iter  30 value 2471.057069
+iter  40 value 2342.128387
+iter  50 value 2341.811576
+iter  60 value 2273.891779
+iter  70 value 2265.425847
+iter  80 value 2263.879965
+iter  90 value 2263.841847
+iter  90 value 2263.841827
+final  value 2263.841417 
+converged
+# weights:  45 (32 variable)
+initial  value 3629.282493 
+iter  10 value 3620.390090
+iter  20 value 2438.404668
+iter  30 value 2342.742476
+iter  40 value 2321.645310
+iter  50 value 2299.081159
+iter  60 value 2270.184430
+iter  70 value 2266.111810
+iter  80 value 2265.848783
+iter  80 value 2265.848762
+final  value 2265.832415 
+converged
+# weights:  45 (32 variable)
+initial  value 3629.282493 
+iter  10 value 3624.291875
+iter  20 value 2491.773272
+iter  30 value 2353.918449
+iter  40 value 2353.619484
+iter  50 value 2283.830954
+iter  60 value 2280.548066
+iter  70 value 2279.935786
+final  value 2279.931236 
+converged
+# weights:  45 (32 variable)
+initial  value 3629.282493 
+iter  10 value 3620.665531
+iter  20 value 2583.403379
+iter  30 value 2562.364880
+iter  40 value 2263.822838
+final  value 2263.821510 
+converged
+# weights:  45 (32 variable)
+initial  value 3629.282493 
+iter  10 value 3620.749230
+iter  20 value 2745.796601
+iter  30 value 2577.920406
+iter  40 value 2577.699829
+iter  50 value 2404.948038
+iter  60 value 2273.541595
+iter  70 value 2263.347923
+final  value 2263.347601 
+converged
+# weights:  45 (32 variable)
+initial  value 3629.282493 
+iter  10 value 3620.459997
+iter  20 value 2420.381964
+iter  30 value 2291.240801
+iter  40 value 2275.636756
+iter  50 value 2274.779683
+iter  60 value 2274.655751
+final  value 2274.654982 
+converged
+# weights:  45 (32 variable)
+initial  value 3629.282493 
+iter  10 value 3622.094471
+iter  20 value 2503.878748
+iter  30 value 2488.567736
+iter  40 value 2266.306163
+final  value 2266.304644 
+converged
+# weights:  45 (32 variable)
+initial  value 3629.282493 
+iter  10 value 3620.749230
+iter  20 value 2745.796601
+iter  30 value 2577.920406
+iter  40 value 2577.699829
+iter  50 value 2404.948038
+iter  60 value 2273.541595
+iter  70 value 2263.347923
+final  value 2263.347601 
+converged
+# weights:  40 (28 variable)
+initial  value 3629.282493 
+iter  10 value 3621.574593
+iter  20 value 2436.002715
+iter  30 value 2297.926312
+final  value 2265.296860 
+converged
+# weights:  40 (28 variable)
+initial  value 3629.282493 
+iter  10 value 3621.225258
+iter  20 value 2678.515611
+iter  30 value 2357.678455
+final  value 2264.078763 
+converged
+# weights:  40 (28 variable)
+initial  value 3629.282493 
+iter  10 value 3621.124308
+iter  20 value 2312.397587
+iter  30 value 2271.048594
+final  value 2263.826545 
+converged
+# weights:  40 (28 variable)
+initial  value 3629.282493 
+iter  10 value 3625.024779
+iter  20 value 2696.236062
+iter  30 value 2290.764882
+final  value 2267.074399 
+converged
+# weights:  40 (28 variable)
+initial  value 3629.282493 
+iter  10 value 3621.447719
+iter  20 value 2353.800964
+iter  30 value 2319.084127
+iter  40 value 2282.390817
+iter  50 value 2274.312684
+iter  50 value 2274.312680
+iter  60 value 2272.853581
+iter  70 value 2272.823871
+iter  70 value 2272.823857
+iter  70 value 2272.823850
+final  value 2272.823850 
+converged
+# weights:  40 (28 variable)
+initial  value 3629.282493 
+iter  10 value 3621.237947
+iter  20 value 2322.795971
+iter  30 value 2281.754752
+iter  40 value 2278.435852
+iter  50 value 2278.373454
+iter  60 value 2272.607946
+iter  70 value 2271.108859
+iter  80 value 2271.036373
+final  value 2271.036183 
+converged
+# weights:  40 (28 variable)
+initial  value 3629.282493 
+iter  10 value 3622.862337
+iter  20 value 2575.956559
+iter  30 value 2495.602071
+iter  40 value 2438.024624
+iter  50 value 2300.935475
+iter  50 value 2300.935455
+iter  60 value 2279.193706
+iter  70 value 2279.055427
+iter  70 value 2279.055416
+final  value 2279.055380 
+converged
+# weights:  40 (28 variable)
+initial  value 3629.282493 
+iter  10 value 3621.124308
+iter  20 value 2312.397587
+iter  30 value 2271.048594
+final  value 2263.826545 
+converged
+# weights:  35 (24 variable)
+initial  value 3629.282493 
+iter  10 value 3621.821277
+iter  20 value 2419.013903
+iter  30 value 2265.729139
+final  value 2265.685555 
+converged
+# weights:  35 (24 variable)
+initial  value 3629.282493 
+iter  10 value 3621.584903
+iter  20 value 2414.037834
+iter  30 value 2264.608610
+final  value 2264.573187 
+converged
+# weights:  35 (24 variable)
+initial  value 3629.282493 
+iter  10 value 3625.324318
+iter  20 value 2329.716746
+iter  30 value 2267.607164
+final  value 2267.602652 
+converged
+# weights:  35 (24 variable)
+initial  value 3629.282493 
+iter  10 value 3621.808529
+iter  20 value 2391.424312
+iter  30 value 2264.966334
+final  value 2264.961218 
+converged
+# weights:  35 (24 variable)
+initial  value 3629.282493 
+iter  10 value 3621.635955
+iter  20 value 2860.053460
+iter  30 value 2270.880335
+iter  40 value 2264.993529
+final  value 2264.993411 
+converged
+# weights:  35 (24 variable)
+initial  value 3629.282493 
+iter  10 value 3623.230603
+iter  20 value 2350.933618
+iter  30 value 2291.133185
+iter  40 value 2286.185116
+iter  50 value 2285.650249
+iter  60 value 2285.640251
+iter  60 value 2285.640241
+iter  60 value 2285.640225
+final  value 2285.640225 
+converged
+# weights:  35 (24 variable)
+initial  value 3629.282493 
+iter  10 value 3621.584903
+iter  20 value 2414.037834
+iter  30 value 2264.608610
+final  value 2264.573187 
+converged
+# weights:  30 (20 variable)
+initial  value 3629.282493 
+iter  10 value 3622.523097
+iter  20 value 2355.273324
+iter  30 value 2345.061374
+iter  40 value 2279.393466
+iter  50 value 2273.398042
+iter  60 value 2273.045019
+final  value 2273.037646 
+converged
+# weights:  30 (20 variable)
+initial  value 3629.282493 
+iter  10 value 3625.809374
+iter  20 value 2297.425014
+iter  30 value 2268.449425
+iter  30 value 2268.449420
+iter  30 value 2268.449419
+final  value 2268.449419 
+converged
+# weights:  30 (20 variable)
+initial  value 3629.282493 
+iter  10 value 3622.234051
+iter  20 value 2310.000118
+iter  30 value 2265.680328
+iter  30 value 2265.680326
+iter  30 value 2265.680325
+final  value 2265.680325 
+converged
+# weights:  30 (20 variable)
+initial  value 3629.282493 
+iter  10 value 3622.056858
+iter  20 value 2378.941642
+final  value 2265.684824 
+converged
+# weights:  30 (20 variable)
+initial  value 3629.282493 
+iter  10 value 3623.725413
+iter  20 value 2470.686218
+iter  30 value 2268.368043
+final  value 2268.368008 
+converged
+# weights:  30 (20 variable)
+initial  value 3629.282493 
+iter  10 value 3622.234051
+iter  20 value 2310.000118
+iter  30 value 2265.680328
+iter  30 value 2265.680326
+iter  30 value 2265.680325
+final  value 2265.680325 
+converged
+# weights:  25 (16 variable)
+initial  value 3629.282493 
+iter  10 value 3623.196125
+iter  20 value 2293.936462
+final  value 2267.914715 
+converged
+# weights:  25 (16 variable)
+initial  value 3629.282493 
+iter  10 value 3626.701854
+iter  20 value 2270.763095
+final  value 2269.731017 
+converged
+# weights:  25 (16 variable)
+initial  value 3629.282493 
+iter  10 value 3622.682910
+iter  20 value 2266.808479
+final  value 2266.704708 
+converged
+# weights:  25 (16 variable)
+initial  value 3629.282493 
+iter  10 value 3624.402169
+iter  20 value 2269.553503
+final  value 2269.475968 
+converged
+# weights:  25 (16 variable)
+initial  value 3629.282493 
+iter  10 value 3622.682910
+iter  20 value 2266.808479
+final  value 2266.704708 
+converged
+# weights:  20 (12 variable)
+initial  value 3629.282493 
+iter  10 value 2310.699004
+iter  20 value 2268.965562
+final  value 2268.965460 
+converged
+# weights:  20 (12 variable)
+initial  value 3629.282493 
+iter  10 value 2418.054507
+iter  20 value 2270.701854
+final  value 2270.701789 
+converged
+# weights:  20 (12 variable)
+initial  value 3629.282493 
+iter  10 value 3228.625295
+iter  20 value 2270.511907
+final  value 2270.496327 
+converged
+# weights:  20 (12 variable)
+initial  value 3629.282493 
+iter  10 value 2310.699004
+iter  20 value 2268.965562
+final  value 2268.965460 
+converged
+# weights:  15 (8 variable)
+initial  value 3629.282493 
+iter  10 value 2698.781276
+iter  20 value 2272.961414
+iter  20 value 2272.961397
+iter  30 value 2272.956955
+iter  30 value 2272.956946
+iter  30 value 2272.956941
+final  value 2272.956941 
+converged
+# weights:  15 (8 variable)
+initial  value 3629.282493 
+iter  10 value 2362.435332
+iter  20 value 2272.998775
+iter  20 value 2272.998774
+final  value 2272.998660 
+converged
+# weights:  15 (8 variable)
+initial  value 3629.282493 
+iter  10 value 2698.781276
+iter  20 value 2272.961414
+iter  20 value 2272.961397
+iter  30 value 2272.956955
+iter  30 value 2272.956946
+iter  30 value 2272.956941
+final  value 2272.956941 
+converged
+# weights:  10 (4 variable)
+initial  value 3629.282493 
+final  value 2276.954767 
+converged
+# weights:  10 (4 variable)
+initial  value 3629.282493 
+final  value 2276.954767 
+converged
+[1] "LAR MN model AIC for is: 4561.90953424286"
+[1] "NB_nSimplices_cMDS GLM model AIC for THROAT is: 623.714026368936"
+[1] "NB_nSimplices_cMDS GLM model AIC for STOOL is: 12.0000037793542"
+[1] "NB_nSimplices_cMDS GLM model AIC for NOSE is: 483.044849620287"
+[1] "NB_nSimplices_cMDS GLM model AIC for ELBOWS is: 800.460480145918"
+# weights:  60 (44 variable)
+initial  value 3629.282493 
+iter  10 value 1062.960315
+iter  20 value 910.499153
+iter  30 value 889.950864
+iter  40 value 884.596654
+iter  50 value 880.502276
+iter  60 value 876.364710
+iter  70 value 876.325917
+final  value 876.325840 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 1237.541975
+iter  20 value 1128.112972
+iter  30 value 1102.978614
+iter  40 value 1090.181127
+iter  50 value 1080.170408
+iter  60 value 1078.363544
+final  value 1078.357379 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 1350.542709
+iter  20 value 1230.366486
+iter  30 value 1213.713239
+iter  40 value 1211.593415
+iter  50 value 1210.959170
+final  value 1210.936196 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 1130.032643
+iter  20 value 1026.557445
+iter  30 value 1004.771505
+iter  40 value 1000.153125
+iter  50 value 996.602475
+iter  60 value 993.974474
+final  value 993.973738 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 1113.663284
+iter  20 value 975.950166
+iter  30 value 953.584883
+iter  40 value 950.823047
+iter  50 value 943.126147
+iter  60 value 937.340070
+iter  70 value 937.230948
+final  value 937.230641 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 1098.960498
+iter  20 value 967.320723
+iter  30 value 950.674786
+iter  40 value 947.627682
+iter  50 value 942.220574
+iter  60 value 939.899138
+iter  70 value 939.888632
+final  value 939.888611 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 1060.834002
+iter  20 value 946.974531
+iter  30 value 928.150386
+iter  40 value 924.571933
+iter  50 value 917.602263
+iter  60 value 915.984568
+final  value 915.980520 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 1035.780357
+iter  20 value 919.142987
+iter  30 value 899.182494
+iter  40 value 895.087339
+iter  50 value 891.158827
+iter  60 value 890.806025
+final  value 890.805638 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 1242.409877
+iter  20 value 993.561115
+iter  30 value 973.400375
+iter  40 value 967.091885
+iter  50 value 964.369853
+iter  60 value 960.930005
+iter  70 value 960.824018
+final  value 960.822996 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 1054.686860
+iter  20 value 936.293732
+iter  30 value 913.708692
+iter  40 value 908.590254
+iter  50 value 902.812635
+iter  60 value 900.593644
+iter  70 value 900.578530
+final  value 900.578507 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 1062.299727
+iter  20 value 920.267030
+iter  30 value 898.112604
+iter  40 value 895.280489
+iter  50 value 890.776378
+iter  60 value 886.328994
+iter  70 value 886.272365
+final  value 886.272111 
+converged
+[1] "NB_nSimplices_cMDS MN model AIC for is: 1840.65168093685"
+[1] "NB_cMDS GLM model AIC for THROAT is: 628.113093761441"
+[1] "NB_cMDS GLM model AIC for STOOL is: 32.6914029407029"
+[1] "NB_cMDS GLM model AIC for NOSE is: 463.224667346967"
+[1] "NB_cMDS GLM model AIC for ELBOWS is: 755.75844534255"
+# weights:  60 (44 variable)
+initial  value 3629.282493 
+iter  10 value 984.069124
+iter  20 value 878.502398
+iter  30 value 862.687877
+iter  40 value 858.769123
+iter  50 value 854.697449
+iter  60 value 853.348002
+iter  70 value 852.917150
+iter  80 value 852.896735
+final  value 852.894862 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 1202.710238
+iter  20 value 1030.828685
+iter  30 value 1002.849758
+iter  40 value 995.162675
+iter  50 value 992.363206
+iter  60 value 992.210247
+iter  70 value 992.204192
+final  value 992.204008 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 1237.170867
+iter  20 value 1051.059934
+iter  30 value 1020.387577
+iter  40 value 1008.100436
+iter  50 value 1006.776837
+final  value 1006.774623 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 1053.881877
+iter  20 value 938.446431
+iter  30 value 920.934315
+iter  40 value 918.912745
+iter  50 value 916.932239
+final  value 916.922827 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 1077.755566
+iter  20 value 925.690338
+iter  30 value 903.220945
+iter  40 value 897.662965
+iter  50 value 894.247209
+iter  60 value 894.124249
+final  value 894.123883 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 1015.397525
+iter  20 value 899.670138
+iter  30 value 886.114535
+iter  40 value 883.525178
+iter  50 value 880.530789
+iter  60 value 879.888405
+iter  70 value 879.743934
+final  value 879.742383 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 1014.141061
+iter  20 value 896.486374
+iter  30 value 876.893156
+iter  40 value 874.075394
+iter  50 value 869.462441
+iter  60 value 868.884296
+iter  70 value 868.815087
+iter  80 value 868.805094
+final  value 868.804988 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 987.547106
+iter  20 value 877.083143
+iter  30 value 864.190497
+iter  40 value 861.855206
+iter  50 value 860.486672
+iter  60 value 860.366795
+final  value 860.366594 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 1152.578989
+iter  20 value 1000.817593
+iter  30 value 972.664630
+iter  40 value 967.758681
+iter  50 value 965.763198
+iter  60 value 964.799714
+iter  70 value 964.749618
+final  value 964.749304 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 1015.452643
+iter  20 value 894.187401
+iter  30 value 878.376431
+iter  40 value 874.982209
+iter  50 value 871.113120
+iter  60 value 869.791223
+iter  70 value 869.571086
+iter  80 value 869.569550
+final  value 869.569526 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 999.333003
+iter  20 value 893.282354
+iter  30 value 876.427904
+iter  40 value 873.615799
+iter  50 value 869.879601
+iter  60 value 869.171149
+iter  70 value 869.164450
+final  value 869.164259 
+converged
+[1] "NB_cMDS MN model AIC for is: 1793.78972438619"
+[1] "QE_nSimplices_cMDS GLM model AIC for THROAT is: 673.819578825908"
+[1] "QE_nSimplices_cMDS GLM model AIC for STOOL is: 31.6734884014116"
+[1] "QE_nSimplices_cMDS GLM model AIC for NOSE is: 415.86842057215"
+[1] "QE_nSimplices_cMDS GLM model AIC for ELBOWS is: 715.636435396242"
+# weights:  60 (44 variable)
+initial  value 3629.282493 
+iter  10 value 925.845602
+iter  20 value 848.240561
+iter  30 value 830.774336
+iter  40 value 818.049794
+iter  50 value 812.060345
+iter  60 value 808.168325
+iter  70 value 807.743009
+iter  80 value 807.529268
+iter  90 value 807.512199
+iter 100 value 807.511529
+final  value 807.511529 
+stopped after 100 iterations
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 1218.509056
+iter  20 value 1026.343314
+iter  30 value 997.651753
+iter  40 value 995.395812
+iter  50 value 995.203441
+iter  60 value 993.767433
+final  value 993.652038 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 1109.443587
+iter  20 value 1013.584097
+iter  30 value 991.849121
+iter  40 value 979.205663
+iter  50 value 978.498764
+final  value 978.487290 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 955.050153
+iter  20 value 880.874423
+iter  30 value 862.965218
+iter  40 value 848.864837
+iter  50 value 842.766838
+iter  60 value 841.862125
+iter  70 value 841.774123
+final  value 841.773801 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 945.486752
+iter  20 value 862.811090
+iter  30 value 846.294949
+iter  40 value 829.946276
+iter  50 value 824.368856
+iter  60 value 824.071445
+iter  70 value 824.068231
+iter  70 value 824.068224
+iter  70 value 824.068224
+final  value 824.068224 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 1007.313876
+iter  20 value 931.042339
+iter  30 value 914.185755
+iter  40 value 900.059874
+iter  50 value 897.787064
+final  value 897.783286 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 961.197599
+iter  20 value 856.026628
+iter  30 value 837.047818
+iter  40 value 826.350605
+iter  50 value 824.989489
+iter  60 value 824.957168
+final  value 824.957150 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 946.655551
+iter  20 value 873.353423
+iter  30 value 860.470454
+iter  40 value 849.852884
+iter  50 value 846.595130
+iter  60 value 846.559342
+final  value 846.552911 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 1053.501620
+iter  20 value 958.746520
+iter  30 value 939.281886
+iter  40 value 924.631872
+iter  50 value 918.077346
+iter  60 value 917.033669
+iter  70 value 917.019813
+final  value 917.019635 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 927.495266
+iter  20 value 850.245878
+iter  30 value 835.039410
+iter  40 value 824.281870
+iter  50 value 820.299924
+iter  60 value 819.787932
+final  value 819.766050 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 940.137449
+iter  20 value 860.088128
+iter  30 value 843.664333
+iter  40 value 830.654606
+iter  50 value 824.038203
+iter  60 value 823.477726
+iter  70 value 823.194931
+final  value 823.194566 
+converged
+[1] "QE_nSimplices_cMDS MN model AIC for is: 1703.02305793705"
+[1] "QE_cMDS GLM model AIC for THROAT is: 696.637951551237"
+[1] "QE_cMDS GLM model AIC for STOOL is: 50.8337474328599"
+[1] "QE_cMDS GLM model AIC for NOSE is: 429.016412372316"
+[1] "QE_cMDS GLM model AIC for ELBOWS is: 690.106033102547"
+# weights:  60 (44 variable)
+initial  value 3629.282493 
+iter  10 value 906.253624
+iter  20 value 845.381180
+iter  30 value 831.532035
+iter  40 value 824.937109
+iter  50 value 824.222819
+iter  60 value 824.176881
+iter  70 value 824.164766
+final  value 824.164646 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 1211.755747
+iter  20 value 980.673331
+iter  30 value 968.327642
+iter  40 value 965.108273
+iter  50 value 964.410728
+iter  60 value 963.092535
+iter  70 value 962.117396
+iter  70 value 962.117390
+iter  70 value 962.117390
+final  value 962.117390 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 1031.648969
+iter  20 value 952.936934
+iter  30 value 917.323001
+iter  40 value 907.403072
+iter  50 value 907.152803
+final  value 907.152623 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 929.162825
+iter  20 value 857.894403
+iter  30 value 842.100731
+iter  40 value 837.332173
+iter  50 value 836.622179
+iter  60 value 836.594114
+final  value 836.591272 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 915.111083
+iter  20 value 860.414962
+iter  30 value 839.260109
+iter  40 value 832.472034
+iter  50 value 831.698494
+iter  60 value 831.577135
+iter  70 value 831.568928
+iter  70 value 831.568921
+iter  70 value 831.568921
+final  value 831.568921 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 974.311274
+iter  20 value 905.447002
+iter  30 value 886.866999
+iter  40 value 880.705534
+iter  50 value 880.309218
+iter  60 value 880.293812
+final  value 880.293398 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 909.771322
+iter  20 value 848.303416
+iter  30 value 835.898249
+iter  40 value 829.569704
+iter  50 value 829.356627
+iter  60 value 829.342046
+final  value 829.341831 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 955.170007
+iter  20 value 879.013678
+iter  30 value 867.728394
+iter  40 value 857.519856
+iter  50 value 855.464492
+iter  60 value 854.488824
+iter  70 value 854.410004
+final  value 854.409823 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 965.261030
+iter  20 value 896.738673
+iter  30 value 876.900073
+iter  40 value 868.283517
+iter  50 value 867.093200
+iter  60 value 866.713936
+final  value 866.696392 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 908.365527
+iter  20 value 850.401198
+iter  30 value 837.981425
+iter  40 value 832.056058
+iter  50 value 831.646084
+iter  60 value 831.637172
+final  value 831.637125 
+converged
+# weights:  55 (40 variable)
+initial  value 3629.282493 
+iter  10 value 913.983163
+iter  20 value 852.494218
+iter  30 value 837.991731
+iter  40 value 831.230359
+iter  50 value 830.721286
+iter  60 value 830.711238
+final  value 830.711130 
+converged
+[1] "QE_cMDS MN model AIC for is: 1736.32929290121"
