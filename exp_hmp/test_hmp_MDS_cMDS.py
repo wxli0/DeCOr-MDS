@@ -26,22 +26,14 @@ print("df_shape original shape is:", df_hmp.shape)
 # print("df_shape new shape is:", df_hmp.shape)
 hmp_dis_sq=squareform(pdist(df_hmp))
 
-feature_num = 11
-dim_start = 11
-dim_end = feature_num
-
 
 """ (1) Plot cMDS embedding using the pairs of axis from the four most significant axes """
-# va, ve, Xe = cMDS(hmp_dis_sq)
-# np.savetxt("./outputs/hmp_QE_cMDS_Xe.txt", Xe, fmt='%f')
-embedding = MDS(n_components=11)
+embedding = MDS(n_components=11) # enforcing dimension 11 to be consistent with QE+nsimplices+cMDS
 corr_coord = embedding.fit_transform(hmp_dis_sq)
 corr_dis_sq=squareform(pdist(corr_coord))
 _, _, Xe = cMDS(corr_dis_sq)
 
 np.savetxt("./outputs/hmp_QE_MDS_cMDS_axes.txt", Xe, fmt='%f')
-
-
 
 num_axes = 4
 
