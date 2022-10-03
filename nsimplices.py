@@ -135,7 +135,7 @@ def nsimplices_all_heights(num_total_point, dis_sq, num_simplex_point, \
     return heights
 
 
-def cMDS(dis_sq,already_centered=False):
+def cMDS(dis_sq,num_component=None, already_centered=False):
     """
     Classical multidimensional scaling for pairwise distances dis_sq
 
@@ -176,6 +176,8 @@ def cMDS(dis_sq,already_centered=False):
     idx = np.argsort(abs(evals))[::-1]
     evecst = evecs[:,idx]
     evalst= evals[idx] 
+    # if num_component is not None:
+
     
     # Underlying coordinates 
     idx_pos, = np.where(evalst>0) # only  consider eigenvalues > 0
