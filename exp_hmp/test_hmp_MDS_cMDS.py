@@ -57,11 +57,11 @@ if not os.path.exists(figure_output_path):
             plt.figure()
             # only plot stool (blue), ears (black), throad (pink) points 
             for i in range(Xe.shape[0]):
-                if colors[i] not in ["cornflowerblue", "black", "deeppink"]:
+                if colors[i] not in ["cornflowerblue", "black", "orange"]:
                     continue
                 plt.scatter(Xe[i, second_dim], Xe[i, first_dim], s=5, c=colors[i])
             plt.legend(["QuantE"])
-            plt.savefig("./outputs/hmp_QE_MDS_cMDS_subset_"+str(first_dim)+"_"+str(second_dim)+".png")
+            plt.savefig("./outputs/hmp_QE_MDS_cMDS_subset_247_"+str(first_dim)+"_"+str(second_dim)+".png")
 
 
 """ NB normalization + MDS + cMDS """ 
