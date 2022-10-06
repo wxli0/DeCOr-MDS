@@ -219,7 +219,7 @@ if not os.path.exists(axes_figure_output_path):
                     label_list.append(label)
             axes[row][col].legend(handle_list, label_list, prop={'size': 6})
             row += 1
-    axes[0][1].set_title("QE+nSimplices")
+    axes[0][1].set_title(r'$Q_{E}+nSimplices$')
 
 
     QE_MDS_cMDS_Xe = np.loadtxt(QE_MDS_cMDS_axes_output_path)
@@ -247,7 +247,7 @@ if not os.path.exists(axes_figure_output_path):
             axes[row][col].legend(handle_list, label_list, prop={'size': 6})
             row += 1
 
-    axes[0][0].set_title("QE+MDS")      
+    axes[0][0].set_title(r'$Q_{E}+MDS$')      
 
     plt.savefig(axes_figure_output_path)
     plt.close()
