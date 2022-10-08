@@ -48,7 +48,7 @@ for i in range(len(res_outlier_indices_list)):
 plt.figure()
 props = np.arange(prop_incre, prop_incre+len(dim_pred_diff)*prop_incre, prop_incre)
 plt.plot(props, dim_pred_diff, c="red", label = "after correction")
-plt.plot(props, dim_raw_diff, c="blue", label = "before correction")
+plt.plot(props, dim_raw_diff, c="black", label = "before correction")
 plt.xticks(props)
 plt.xlabel(r'fraction of outliers $p$')
 plt.ylabel(r'$\bar{n}-d^{*}$')

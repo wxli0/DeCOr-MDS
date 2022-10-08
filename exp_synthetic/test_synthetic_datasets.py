@@ -107,20 +107,20 @@ if not os.path.exists(cross_fig_path):
 
     # plot original graph
     va, ve, Xe = cMDS(ori_dis_sq)
-    ax1.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.')
+    ax1.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black')
     ax1.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red')
     ax1.set_title("True data")
     ax1.grid()
 
     # plot original graphs with outliers added 
     va, ve, Xe = cMDS(out_dis_sq)
-    ax2.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='steelblue')
+    ax2.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black')
     ax2.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red')
     ax2.set_title("Outliers added")
 
     # plot correct outliers 
     va, ve, Xe = cMDS(corr_dis_sq)   
-    ax3.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='steelblue')
+    ax3.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black')
     ax3.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red')
     ax3.set_title("Corrected data")
     ax3.grid()
@@ -211,7 +211,7 @@ if not os.path.exists(dim2_fig_path):
             print("outlier:", e)
             ax1.scatter(e[0],e[1],e[2], s=5, color='red')
         else:
-            ax1.scatter(e[0],e[1],e[2], s=5, color='steelblue')
+            ax1.scatter(e[0],e[1],e[2], s=5, color='black')
     # plt.show()
 
     ax2 = fig.add_subplot(122, projection='3d')
@@ -224,7 +224,7 @@ if not os.path.exists(dim2_fig_path):
             print("outlier corrected:", e)
             ax2.scatter(e[0],e[1],e[2], s=5, color='red')
         else:
-            ax2.scatter(e[0],e[1],e[2], s=5, color='steelblue')
+            ax2.scatter(e[0],e[1],e[2], s=5, color='black')
     plt.savefig("./outputs/synthetic_dim2_3D.png")
     plt.close()
 
@@ -244,20 +244,20 @@ if not os.path.exists(dim2_fig_path):
 
     # plot original graph
     va, ve, Xe = cMDS(ori_dis_sq)
-    ax1.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.')
+    ax1.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black')
     ax1.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red')
     ax1.set_title("True data")
     ax1.grid()
 
     # plot original graphs with outliers added 
     va, ve, Xe = cMDS(out_dis_sq)
-    ax2.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='steelblue')
+    ax2.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black')
     ax2.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red')
     ax2.set_title("Outliers added")
 
     # plot correct outliers 
     va, ve, Xe = cMDS(corr_dis_sq)   
-    ax3.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='steelblue')
+    ax3.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black')
     ax3.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red')
     ax3.set_title("Corrected data")
     ax3.grid()
@@ -267,7 +267,7 @@ if not os.path.exists(dim2_fig_path):
 
 """ Section 2.1.3: Main subspace of higher dimensions """
 
-dim10_fig_path = "./outputs/synthetic_dim10_shepard.png"
+dim10_fig_path = "./outputs/synthetic_dim10.png"
 if not os.path.exists(dim10_fig_path):
     print(" ====== Running dimension 10 dataset =====")
 
@@ -329,6 +329,8 @@ if not os.path.exists(dim10_fig_path):
     print("running time is:", T2-T1)
     print("subspace dimension is:", subspace_dim)
 
+    fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(10*2.5,3*2.5))
+    fig.tight_layout(pad=3, w_pad=5, h_pad=1.0)
 
     # In[20]:
 
@@ -344,18 +346,26 @@ if not os.path.exists(dim10_fig_path):
 
     blues=np.array([[255,255,217,256*0.8],[199,233,180,256*0.8], [65,182,196,256*0.9], [34,94,168,256*0.9], [8,29,88,256*0.8]])/256
 
-    plt.figure()
+    # plt.figure()
     # select a few dimensions (i.e. 2,6,8,9,10) for demonstrating the distributions of heights
-    plt.hist(hcolls[2-start_dim],label='dim2',color=blues[0])
-    plt.hist(hcolls[6-start_dim],label='dim6',color=blues[1])
-    plt.hist(hcolls[8-start_dim],label='dim8',color=blues[2])
-    plt.hist(hcolls[9-start_dim],label='dim9',color=blues[3])
-    plt.hist(hcolls[10-start_dim],label='dim10',color=blues[4])
+    ax1.hist(hcolls[2-start_dim],label='dim2',color=blues[0])
+    ax1.hist(hcolls[6-start_dim],label='dim6',color=blues[1])
+    ax1.hist(hcolls[8-start_dim],label='dim8',color=blues[2])
+    ax1.hist(hcolls[9-start_dim],label='dim9',color=blues[3])
+    ax1.hist(hcolls[10-start_dim],label='dim10',color=blues[4])
 
-    plt.xticks(np.arange(0, 60, 5))
-    plt.legend()
-    plt.savefig("./outputs/synthetic_dim10_height_dist.png")
-    plt.close()
+    ax1.set_xticks(np.arange(0, 60, 5))
+    ax1.tick_params(axis='x', labelsize=6)
+    ax1.tick_params(axis='y', labelsize=8)
+    ax1.set_ylabel("frequency")
+    ax1.set_xlabel(r'median of the heights $h^{n}_i$')
+    ax1.legend()
+
+
+
+    
+    # plt.savefig("./outputs/synthetic_dim10_height_dist.png")
+    # plt.close()
 
     # In[26]:
 
@@ -376,24 +386,29 @@ if not os.path.exists(dim10_fig_path):
 
     # plot the height scatterplot and the ratios
 
-    fig, ax1 = plt.subplots()
-    color = 'tab:red'
-    ax1.set_xlabel(r'dimension tested $n$')
-    ax1.set_ylabel(r'median of heights', color = color)
-    ax1.scatter(list(range(start_dim, end_dim+1)), h_meds, color = color)
-    ax1.tick_params(axis ='y', labelcolor = color)
+    # fig, sub_ax1 = plt.subplots()
+    color = 'red'
+    ax2.set_xlabel(r'dimension tested $n$')
+    ax2.set_ylabel(r'median of heights', color = color)
+    ax2.set_xticks(np.arange(2, 16, 1))
+    ax2.scatter(list(range(start_dim, end_dim+1)), h_meds, color = color, s=6)
+    ax2.tick_params(axis ='y', labelcolor = color)
+    ax2.tick_params(axis='x', labelsize=6)
+    ax2.tick_params(axis='y', labelsize=7)
     
     # Adding Twin Axes to plot using dataset_2
-    ax2 = ax1.twinx()
+    sub_ax2 = ax2.twinx()
     
-    color = 'tab:green'
-    ax2.set_ylabel(r'heights median ratio: $h_{n-1}/h_n$', color = color)
-    ax2.plot(list(range(start_dim+1, end_dim+1)), h_med_ratios, color = color)
-    ax2.tick_params(axis ='y', labelcolor = color)
+    color = 'black'
+    sub_ax2.set_ylabel(r'heights median ratio: $h_{n-1}/h_n$', color = color)
+    sub_ax2.plot(list(range(start_dim+1, end_dim+1)), h_med_ratios, color = color)
+    sub_ax2.tick_params(axis ='y', labelcolor = color)
+    sub_ax2.tick_params(axis='x', labelsize=6)
+    sub_ax2.tick_params(axis='y', labelsize=7)
     
-    # Show plot
-    plt.savefig("./outputs/synthetic_dim10_ratio.png")
-    plt.close()
+    # # Show plot
+    # plt.savefig("./outputs/synthetic_dim10_ratio.png")
+    # plt.close()
 
     # In[24]:
 
@@ -404,18 +419,23 @@ if not os.path.exists(dim10_fig_path):
     ori_dis_flat=ori_dis_sq.flatten()
     corr_dis_flat=corr_dis_sq.flatten()
 
-    plt.figure()
+    # plt.figure()
     SMALL_SIZE=18
-    plt.rc('xtick', labelsize=SMALL_SIZE)    # fontsize of the tick labels
-    plt.rc('ytick', labelsize=SMALL_SIZE)    # fontsize of the tick labels
-    plt.scatter(ori_dis_flat,out_dis_flat,color='red',alpha=0.2,s=10)
-    plt.scatter(ori_dis_flat,corr_dis_flat,color='mediumblue',alpha=0.05,s=10)
+    # ax3.rc('xtick', labelsize=SMALL_SIZE)    # fontsize of the tick labels
+    # ax3.rc('ytick', labelsize=SMALL_SIZE)    # fontsize of the tick labels
+    ax3.tick_params(axis='x', labelsize=6)
+    ax3.tick_params(axis='y', labelsize=8)
 
-    plt.xlabel(r"true $\delta_{ij}$")
-    plt.ylabel(r'$\delta_{ij}$')
-    axes = plt.gca()
-    axes.set_xlim(5,50)
-    axes.set_ylim(2,70)
+    ax3.scatter(ori_dis_flat,out_dis_flat,color='red',alpha=0.2,s=6)
+    ax3.scatter(ori_dis_flat,corr_dis_flat,color='black',alpha=0.05,s=6)
+    ax3.tick_params(axis='x', labelsize=6)
+    ax3.tick_params(axis='y', labelsize=8)
+
+    ax3.set_xlabel(r"true $\delta_{ij}$")
+    ax3.set_ylabel(r'$\delta_{ij}$')
+    # axes = ax3.gca()
+    ax3.set_xlim(5,50)
+    ax3.set_ylim(2,70)
 
     plt.savefig(dim10_fig_path)
     plt.close()
