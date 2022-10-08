@@ -7,12 +7,13 @@ import pandas as pd
 import random as alea
 from scipy.spatial.distance import pdist, squareform
 from sklearn.manifold import MDS
+import plotly.express as px
 
 
 """ Prepare colors (only once) """
-if not os.path.exists("./data/colors.txt"):
+if not os.path.exists("./data/hmp_colors.txt"):
     print("======== loading colors ========")
-    color_df = pd.read_csv("./data/v13lqphylotypePheno_rs_c.csv", header=0)
+    color_df = pd.read_csv("./data/hmp_v13lqphylotypePheno_rs_c.csv", header=0)
     colors = []
 
     print(color_df)
@@ -35,7 +36,7 @@ if not os.path.exists("./data/colors.txt"):
 
     colors = np.array(colors)
 
-    np.savetxt("./data/colors.txt", colors, fmt="%s")
+    np.savetxt("./data/hmp_colors.txt", colors, fmt="%s")
 
 
 """ Run nSimplices on HMP dataset """
@@ -137,10 +138,28 @@ def color_to_site(color):
     if color == "red":
         return "ELBOWS"
     if color == "gray":
-        return ["MOUTH"]
+        return "MOUTH"
     if color == "orange":
         return "VAGINA"
 
+def site_to_color(site):
+    """
+    Returns the site to color mapping
+    """
+    if site == "THROAT":
+        return "deeppink"
+    if site == "EARS":
+        return "black"
+    if site == "STOOL":
+        return "cornflowerblue"
+    if site == "NOSE":
+        return "darkgreen"
+    if site == "ELBOWS":
+        return "red"
+    if site == "MOUTH":
+        return "gray"
+    if site == "VAGINA":
+        return "orange"
 
 """ QE normalization + MDS + cMDS """ 
 QE_MDS_cMDS_axes_output_path = "./outputs/hmp_QE_MDS_cMDS_axes.txt"
@@ -191,8 +210,11 @@ if not os.path.exists(figure_output_path):
             plt.savefig("./outputs/hmp_QE_MDS_cMDS_subset_247_"+str(first_dim)+"_"+str(second_dim)+".png")
 
 # combine all plots to one
-axes_figure_output_path = "./outputs/hmp_axes_main.png"
+axes_figure_output_path = "./outputs/hmp_axes_main_127.png"
 fig, axes = plt.subplots(3, 2, figsize=(8,10))
+focus_sites = ["STOOL", "THROAT", "VAGINA"] 
+focus_colors = [site_to_color(site) for site in focus_sites]
+# corresponding colors: 
 if not os.path.exists(axes_figure_output_path):
     print("======== plot pairwise 2D plot (subset) in one plot ========")
     QE_nSimplices_cMDS_Xe = np.loadtxt(QE_nSimplices_cMDS_axes_output_path)
@@ -204,7 +226,7 @@ if not os.path.exists(axes_figure_output_path):
         for second_dim in range(first_dim+1, num_axes):
             # only plot stool (blue), ears (black), throad (pink) points 
             for i in range(QE_nSimplices_cMDS_Xe.shape[0]):
-                if colors[i] not in ["cornflowerblue", "black", "orange"]:
+                if colors[i] not in focus_colors:
                     continue
                 axes[row][col].scatter(QE_nSimplices_cMDS_Xe[i, second_dim], \
                     QE_nSimplices_cMDS_Xe[i, first_dim], s=5, c=colors[i], label = color_to_site(colors[i]))
@@ -231,7 +253,7 @@ if not os.path.exists(axes_figure_output_path):
         for second_dim in range(first_dim+1, num_axes):
             # only plot stool (blue), ears (black), throad (pink) points 
             for i in range(QE_MDS_cMDS_Xe.shape[0]):
-                if colors[i] not in ["cornflowerblue", "black", "orange"]:
+                if colors[i] not in focus_colors:
                     continue
                 axes[row][col].scatter(QE_MDS_cMDS_Xe[i, second_dim], \
                     QE_MDS_cMDS_Xe[i, first_dim], s=5, c=colors[i], label = color_to_site(colors[i]))
@@ -251,6 +273,44 @@ if not os.path.exists(axes_figure_output_path):
 
     plt.savefig(axes_figure_output_path)
     plt.close()
+
+# generate 3D plot of the first three axes
+nSimplices_dynamic_figure_path = "./outputs/hmp_nSimplices_axes_3D.html"
+MDS_dynamic_figure_path = "./outputs/hmp_MDS_axes_3D.html"
+
+if not os.path.exists(nSimplices_dynamic_figure_path) or not os.path.exists(MDS_dynamic_figure_path):
+    print("======== generate 3D plot of the first three axes ========")
+
+    QE_nSimplices_cMDS_Xe = np.loadtxt(QE_nSimplices_cMDS_axes_output_path)
+    QE_nSimplices_cMDS_Xe_df = pd.DataFrame(QE_nSimplices_cMDS_Xe[:,:3], columns = ["axes_0", "axes_1", "axes_2"])
+    QE_nSimplices_cMDS_Xe_df['color'] = colors
+    print(QE_nSimplices_cMDS_Xe_df.head())
+    print("QE_nSimplices_cMDS_Xe_df shape is:", QE_nSimplices_cMDS_Xe_df.shape)
+
+    QE_nSimplices_cMDS_Xe_df['label'] = \
+        QE_nSimplices_cMDS_Xe_df.apply(lambda row: color_to_site(row['color']), axis=1)
+    QE_nSimplices_cMDS_Xe_df = \
+        QE_nSimplices_cMDS_Xe_df.loc[QE_nSimplices_cMDS_Xe_df['label'].isin(focus_sites)]
+    
+
+
+    fig = px.scatter_3d(QE_nSimplices_cMDS_Xe_df, x='axes_0', y='axes_1', z='axes_2',
+              color='label')
+    fig.write_html(nSimplices_dynamic_figure_path)
+
+    QE_MDS_cMDS_Xe = np.loadtxt(QE_MDS_cMDS_axes_output_path)
+    QE_MDS_cMDS_Xe_df = pd.DataFrame(QE_MDS_cMDS_Xe[:,:3], columns = ["axes_0", "axes_1", "axes_2"])
+    QE_MDS_cMDS_Xe_df['color'] = colors
+
+    QE_MDS_cMDS_Xe_df['label'] = \
+        QE_MDS_cMDS_Xe_df.apply(lambda row: color_to_site(row['color']), axis=1)
+    QE_MDS_cMDS_Xe_df = \
+        QE_MDS_cMDS_Xe_df.loc[QE_MDS_cMDS_Xe_df['label'].isin(focus_sites)]
+
+    fig = px.scatter_3d(QE_MDS_cMDS_Xe_df, x='axes_0', y='axes_1', z='axes_2',
+              color='label')
+    fig.write_html(MDS_dynamic_figure_path)
+
 
 
 """ NB normalization + MDS + cMDS """ 
