@@ -234,6 +234,10 @@ if not os.path.exists(dim2_fig_path) or  not os.path.exists(before_correction_dy
     ori_coords_df['label'] = outlier_array
     fig_dy1 = px.scatter_3d(ori_coords_df, x='axis_0', y='axis_1', z='axis_2',
             color='label', color_discrete_map=color_discrete_map)
+    fig_dy1.update_layout(scene = dict(
+                xaxis_title='axis 0',
+                yaxis_title='axis 1',
+                zaxis_title='axis 2'))
     fig_dy1.write_html(before_correction_dynamic_figure_path)
 
 
@@ -263,6 +267,10 @@ if not os.path.exists(dim2_fig_path) or  not os.path.exists(before_correction_dy
     coords_df['label'] = outlier_array
     fig_dy2 = px.scatter_3d(coords_df, x='axis_0', y='axis_1', z='axis_2',
             color='label', color_discrete_map=color_discrete_map)
+    fig_dy2.update_layout(scene = dict(
+                xaxis_title='axis 0',
+                yaxis_title='axis 1',
+                zaxis_title='axis 2'))
     fig_dy2.write_html(after_correction_dynamic_figure_path)
 
 
