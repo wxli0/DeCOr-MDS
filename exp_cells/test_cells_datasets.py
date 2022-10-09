@@ -81,7 +81,7 @@ ax2.plot(list(range(start_dim+1, end_dim+1)), h_med_ratios, color = color)
 ax2.tick_params(axis ='y', labelcolor = color)
  
 # Show plot
-plt.savefig("./outputs/cells_"+file_id+"_dim.png")
+plt.savefig("./outputs/cells_"+file_id+"_ratio.png")
 
 
 # In[3]:
@@ -137,26 +137,26 @@ for i in range(nb_cells):
 plt.savefig("./outputs/cells_"+file_id+"_outlier_normal.png")
 plt.close()
 
-""" Plot cMDS embedding in 2D using the two largest eigenvalues """
+# """ Plot cMDS embedding in 2D using the two largest eigenvalues """
 
-plt.figure(3)
-blue_outlier_idx = -1
-_, _, Xe = cMDS(target_matrix)
-plt.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black')
-plt.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red')
-for i in range(Xe.shape[0]):
-    if 0.6 < Xe[i, 0] and Xe[i, 0] < 0.7:
-        blue_outlier_idx = i
-plt.title("cMDS embedding")
-plt.savefig("outputs/cells_"+file_id+"_cMDS.png")
-plt.close()
+# plt.figure(3)
+# blue_outlier_idx = -1
+# _, _, Xe = cMDS(target_matrix)
+# plt.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black')
+# plt.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red')
+# for i in range(Xe.shape[0]):
+#     if 0.6 < Xe[i, 0] and Xe[i, 0] < 0.7:
+#         blue_outlier_idx = i
+# plt.title("cMDS embedding")
+# plt.savefig("outputs/cells_"+file_id+"_cMDS.png")
+# plt.close()
 
-fig = plt.figure(4)
-plt.plot(cell[:, 0], cell[:, 1], color="red")
-plt.axis('equal')
-plt.axis('off')
-plt.title('blue cMDS outlier but not detected')
-plt.savefig('./outputs/cells_'+str(blue_outlier_idx)+".png")
+# fig = plt.figure(4)
+# plt.plot(cell[:, 0], cell[:, 1], color="red")
+# plt.axis('equal')
+# plt.axis('off')
+# plt.title('blue cMDS outlier but not detected')
+# plt.savefig('./outputs/cells_'+str(blue_outlier_idx)+".png")
 
 """ Computes the corrected coordinates after removing the abnormal outliers """
 remove_indices = [42, 134, 203] # detected from cells_control_outlier_normal.png
@@ -171,9 +171,10 @@ remove_normal_indices=[i for i in range(remove_corr_dis_sq.shape[0]) if i not in
     distance matrix are obtained by not removing the abnormal outliers """
 plt.figure(5)
 _, _, corr_Xe = cMDS(corr_dis_sq)
-plt.plot(corr_Xe[normal_indices,0],corr_Xe[normal_indices,1],'.', color='black')
-plt.plot(corr_Xe[outlier_indices,0],corr_Xe[outlier_indices,1],'.',color='red')
+plt.plot(corr_Xe[normal_indices,0],corr_Xe[normal_indices,1],'.', color='black', label="normal")
+plt.plot(corr_Xe[outlier_indices,0],corr_Xe[outlier_indices,1],'.',color='red', label="outlier")
 plt.title("cMDS embedding (corrected and without abnormal outliers removed)")
+plt.legend()
 plt.savefig("outputs/cells_"+file_id+"_cMDS_corrected.png")
 plt.close()
 
@@ -181,9 +182,10 @@ plt.close()
     distance matrix are obtained by removing the abnormal outliers """
 plt.figure(5)
 _, _, remove_Xe = cMDS(remove_corr_dis_sq)
-plt.plot(remove_Xe[remove_normal_indices,0],remove_Xe[remove_normal_indices,1],'.', color='black')
-plt.plot(remove_Xe[remove_outlier_indices,0],remove_Xe[remove_outlier_indices,1],'.',color='red')
+plt.plot(remove_Xe[remove_normal_indices,0],remove_Xe[remove_normal_indices,1],'.', color='black', label="normal")
+plt.plot(remove_Xe[remove_outlier_indices,0],remove_Xe[remove_outlier_indices,1],'.',color='red', label="outlier")
 plt.title("cMDS embedding (corrected and with abnormal outliers removed)")
+plt.legend()
 plt.savefig("outputs/cells_"+file_id+"_cMDS_removed_corrected.png")
 plt.close()
 

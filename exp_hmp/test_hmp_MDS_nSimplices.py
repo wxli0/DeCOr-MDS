@@ -99,7 +99,7 @@ if not os.path.exists(figure_output_path):
     for first_dim in range(num_axes):
         for second_dim in range(first_dim+1, num_axes):
             plt.figure()
-            # only plot stool (blue), ears (black), throad (pink) points 
+            # only plot stool (blue), ears (black), throat (pink) points 
             for i in range(Xe.shape[0]):
                 plt.scatter(Xe[i, second_dim], Xe[i, first_dim], s=5, c=colors[i])
             plt.legend(["QuantE+nSimplices"])
@@ -114,7 +114,7 @@ if not os.path.exists(figure_output_path):
     for first_dim in range(num_axes):
         for second_dim in range(first_dim+1, num_axes):
             plt.figure()
-            # only plot stool (blue), ears (black), throad (pink) points 
+            # only plot stool (blue), ears (black), throat (pink) points 
             for i in range(Xe.shape[0]):
                 if colors[i] not in ["cornflowerblue", "black", "orange"]:
                     continue
@@ -201,7 +201,7 @@ if not os.path.exists(figure_output_path):
     for first_dim in range(num_axes):
         for second_dim in range(first_dim+1, num_axes):
             plt.figure()
-            # only plot stool (blue), ears (black), throad (pink) points 
+            # only plot stool (blue), ears (black), throat (pink) points 
             for i in range(Xe.shape[0]):
                 if colors[i] not in ["cornflowerblue", "black", "orange"]:
                     continue
@@ -211,7 +211,8 @@ if not os.path.exists(figure_output_path):
 
 # combine all plots to one
 axes_figure_output_path = "./outputs/hmp_axes_main_127.png"
-fig, axes = plt.subplots(3, 2, figsize=(8,10))
+fig, axes = plt.subplots(1, 2, figsize=(10*2/3,3))
+fig.tight_layout(pad=2, w_pad=2, h_pad=2)
 focus_sites = ["STOOL", "THROAT", "VAGINA"] 
 focus_colors = [site_to_color(site) for site in focus_sites]
 # corresponding colors: 
@@ -220,34 +221,34 @@ if not os.path.exists(axes_figure_output_path):
     QE_nSimplices_cMDS_Xe = np.loadtxt(QE_nSimplices_cMDS_axes_output_path)
     row = 0
     col = 1
-    num_axes = 3 # show pairwise 2D plot to decompose the 3D plot
+    num_axes = 2 # show pairwise 2D plot to decompose the 3D plot
     for first_dim in range(num_axes):
         label_list = []
         for second_dim in range(first_dim+1, num_axes):
-            # only plot stool (blue), ears (black), throad (pink) points 
+            # only plot stool (blue), ears (black), throat (pink) points 
             for i in range(QE_nSimplices_cMDS_Xe.shape[0]):
                 if colors[i] not in focus_colors:
                     continue
-                axes[row][col].scatter(QE_nSimplices_cMDS_Xe[i, second_dim], \
+                axes[col].scatter(QE_nSimplices_cMDS_Xe[i, second_dim], \
                     QE_nSimplices_cMDS_Xe[i, first_dim], s=5, c=colors[i], label = color_to_site(colors[i]))
-            axes[row][col].set_xlabel('axes ' + str(first_dim))
-            axes[row][col].set_ylabel('axes ' + str(second_dim))
+            axes[col].set_xlabel('axis ' + str(first_dim))
+            axes[col].set_ylabel('axis ' + str(second_dim))
 
-            handles, labels = axes[row][col].get_legend_handles_labels()
+            handles, labels = axes[col].get_legend_handles_labels()
             handle_list, label_list = [], []
             for handle, label in zip(handles, labels):
                 if label not in label_list:
                     handle_list.append(handle)
                     label_list.append(label)
-            axes[row][col].legend(handle_list, label_list, prop={'size': 6})
+            axes[col].legend(handle_list, label_list, prop={'size': 6})
             row += 1
-    axes[0][1].set_title(r'$Q_{E}+nSimplices$')
+    axes[col].set_title(r'$Q_{E}+nSimplices$')
 
 
     QE_MDS_cMDS_Xe = np.loadtxt(QE_MDS_cMDS_axes_output_path)
     row = 0
     col = 0
-    num_axes = 3 # show pairwise 2D plot to decompose the 3D plot
+    num_axes = 2 # show pairwise 2D plot to decompose the 3D plot
     for first_dim in range(num_axes):
         label_list = []
         for second_dim in range(first_dim+1, num_axes):
@@ -255,21 +256,21 @@ if not os.path.exists(axes_figure_output_path):
             for i in range(QE_MDS_cMDS_Xe.shape[0]):
                 if colors[i] not in focus_colors:
                     continue
-                axes[row][col].scatter(QE_MDS_cMDS_Xe[i, second_dim], \
+                axes[col].scatter(QE_MDS_cMDS_Xe[i, second_dim], \
                     QE_MDS_cMDS_Xe[i, first_dim], s=5, c=colors[i], label = color_to_site(colors[i]))
-            axes[row][col].set_xlabel('axes ' + str(first_dim))
-            axes[row][col].set_ylabel('axes ' + str(second_dim))
+            axes[col].set_xlabel('axis ' + str(first_dim))
+            axes[col].set_ylabel('axis ' + str(second_dim))
 
-            handles, labels = axes[row][col].get_legend_handles_labels()
+            handles, labels = axes[col].get_legend_handles_labels()
             handle_list, label_list = [], []
             for handle, label in zip(handles, labels):
                 if label not in label_list:
                     handle_list.append(handle)
                     label_list.append(label)
-            axes[row][col].legend(handle_list, label_list, prop={'size': 6})
+            axes[col].legend(handle_list, label_list, prop={'size': 6})
             row += 1
 
-    axes[0][0].set_title(r'$Q_{E}+MDS$')      
+    axes[col].set_title(r'$Q_{E}+MDS$')      
 
     plt.savefig(axes_figure_output_path)
     plt.close()
@@ -282,7 +283,7 @@ if not os.path.exists(nSimplices_dynamic_figure_path) or not os.path.exists(MDS_
     print("======== generate 3D plot of the first three axes ========")
 
     QE_nSimplices_cMDS_Xe = np.loadtxt(QE_nSimplices_cMDS_axes_output_path)
-    QE_nSimplices_cMDS_Xe_df = pd.DataFrame(QE_nSimplices_cMDS_Xe[:,:3], columns = ["axes_0", "axes_1", "axes_2"])
+    QE_nSimplices_cMDS_Xe_df = pd.DataFrame(QE_nSimplices_cMDS_Xe[:,:3], columns = ["axis_0", "axis_1", "axis_2"])
     QE_nSimplices_cMDS_Xe_df['color'] = colors
     print(QE_nSimplices_cMDS_Xe_df.head())
     print("QE_nSimplices_cMDS_Xe_df shape is:", QE_nSimplices_cMDS_Xe_df.shape)
@@ -293,13 +294,17 @@ if not os.path.exists(nSimplices_dynamic_figure_path) or not os.path.exists(MDS_
         QE_nSimplices_cMDS_Xe_df.loc[QE_nSimplices_cMDS_Xe_df['label'].isin(focus_sites)]
     
 
-
-    fig = px.scatter_3d(QE_nSimplices_cMDS_Xe_df, x='axes_0', y='axes_1', z='axes_2',
-              color='label')
+    color_discrete_map = {'STOOL': 'cornflowerblue', 'THROAT': 'deeppink', 'VAGINA': 'orange'}
+    fig = px.scatter_3d(QE_nSimplices_cMDS_Xe_df, x='axis_0', y='axis_1', z='axis_2',
+              color='label', color_discrete_map=color_discrete_map)
+    fig.update_layout(scene = dict(
+                    xaxis_title='axis 0',
+                    yaxis_title='axis 1',
+                    zaxis_title='axis 2'))
     fig.write_html(nSimplices_dynamic_figure_path)
 
     QE_MDS_cMDS_Xe = np.loadtxt(QE_MDS_cMDS_axes_output_path)
-    QE_MDS_cMDS_Xe_df = pd.DataFrame(QE_MDS_cMDS_Xe[:,:3], columns = ["axes_0", "axes_1", "axes_2"])
+    QE_MDS_cMDS_Xe_df = pd.DataFrame(QE_MDS_cMDS_Xe[:,:3], columns = ["axis_0", "axis_1", "axis_2"])
     QE_MDS_cMDS_Xe_df['color'] = colors
 
     QE_MDS_cMDS_Xe_df['label'] = \
@@ -307,8 +312,12 @@ if not os.path.exists(nSimplices_dynamic_figure_path) or not os.path.exists(MDS_
     QE_MDS_cMDS_Xe_df = \
         QE_MDS_cMDS_Xe_df.loc[QE_MDS_cMDS_Xe_df['label'].isin(focus_sites)]
 
-    fig = px.scatter_3d(QE_MDS_cMDS_Xe_df, x='axes_0', y='axes_1', z='axes_2',
-              color='label')
+    fig = px.scatter_3d(QE_MDS_cMDS_Xe_df, x='axis_0', y='axis_1', z='axis_2',
+              color='label', color_discrete_map=color_discrete_map)
+    fig.update_layout(scene = dict(
+                xaxis_title='axis 0',
+                yaxis_title='axis 1',
+                zaxis_title='axis 2'))
     fig.write_html(MDS_dynamic_figure_path)
 
 

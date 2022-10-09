@@ -3,7 +3,6 @@
 
 # In[1]:
 
-
 import numpy as np
 import matplotlib.pyplot as plt
 import os
@@ -11,6 +10,7 @@ import random as alea
 from scipy.linalg import solve,pinv,pinv2
 from scipy.spatial.distance import pdist, squareform
 import pandas as pd
+import plotly.express as px
 from sklearn.decomposition import PCA
 import time
 
@@ -107,21 +107,22 @@ if not os.path.exists(cross_fig_path):
 
     # plot original graph
     va, ve, Xe = cMDS(ori_dis_sq)
-    ax1.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black')
-    ax1.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red')
+    ax1.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black', label="normal")
+    ax1.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red', label="outlier")
     ax1.set_title("True data")
+    ax1.legend()
     ax1.grid()
 
     # plot original graphs with outliers added 
     va, ve, Xe = cMDS(out_dis_sq)
-    ax2.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black')
-    ax2.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red')
+    ax2.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black', label="normal")
+    ax2.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red', label="outlier")
     ax2.set_title("Outliers added")
 
     # plot correct outliers 
     va, ve, Xe = cMDS(corr_dis_sq)   
-    ax3.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black')
-    ax3.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red')
+    ax3.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black', label="normal")
+    ax3.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red', label="outlier")
     ax3.set_title("Corrected data")
     ax3.grid()
     plt.savefig(cross_fig_path)
@@ -134,8 +135,10 @@ if not os.path.exists(cross_fig_path):
 """ Section 2.1.2: Main subspace of dimension 2 """
 
 dim2_fig_path = "./outputs/synthetic_dim2_2D.png"
-
-if not os.path.exists(dim2_fig_path):
+after_correction_dynamic_figure_path = "./outputs/synthetic_dim2_after_correction_dynamic.html"
+before_correction_dynamic_figure_path = "./outputs/synthetic_dim2_before_correction_dynamic.html"
+if not os.path.exists(dim2_fig_path) or  not os.path.exists(before_correction_dynamic_figure_path)  \
+    or  not os.path.exists(after_correction_dynamic_figure_path) :
     print(" ====== Running dimension 2 dataset =====")
 
     # In[8]:
@@ -209,12 +212,35 @@ if not os.path.exists(dim2_fig_path):
         e=ori_coord[i]
         if (i in outlier_indices):
             print("outlier:", e)
-            ax1.scatter(e[0],e[1],e[2], s=5, color='red')
+            ax1.scatter(e[0],e[1],e[2], s=5, color='red', label="outlier")
         else:
-            ax1.scatter(e[0],e[1],e[2], s=5, color='black')
-    # plt.show()
+            ax1.scatter(e[0],e[1],e[2], s=5, color='black', label="normal")
+    
+    def legend_without_duplicate_labels(ax):
+        handles, labels = ax.get_legend_handles_labels()
+        unique = [(h, l) for i, (h, l) in enumerate(zip(handles, labels)) if l not in labels[:i]]
+        ax.legend(*zip(*unique))
+
+    legend_without_duplicate_labels(ax1)
+
+    outlier_array = []
+    for i in range(corr_coord.shape[0]):
+        if i in outlier_indices:
+            outlier_array.append("outlier")
+        else:
+            outlier_array.append("normal")
+    color_discrete_map = {'outlier': 'red', 'normal': 'black'}
+    ori_coords_df = pd.DataFrame(ori_coord[:,:3], columns = ["axis_0", "axis_1", "axis_2"])
+    ori_coords_df['label'] = outlier_array
+    fig_dy1 = px.scatter_3d(ori_coords_df, x='axis_0', y='axis_1', z='axis_2',
+            color='label', color_discrete_map=color_discrete_map)
+    fig_dy1.write_html(before_correction_dynamic_figure_path)
+
 
     ax2 = fig.add_subplot(122, projection='3d')
+    ax2.set_xlim3d(-6, 6)
+    ax2.set_ylim3d(-10, 5)
+    ax2.set_zlim3d(-6, 6)
 
     # plot the corrected coordinates
 
@@ -222,15 +248,23 @@ if not os.path.exists(dim2_fig_path):
         e=corr_coord[i]
         if (i in outlier_indices):
             print("outlier corrected:", e)
-            ax2.scatter(e[0],e[1],e[2], s=5, color='red')
+            ax2.scatter(e[0],e[1],e[2], s=5, color='red', label="outlier")
         else:
-            ax2.scatter(e[0],e[1],e[2], s=5, color='black')
+            ax2.scatter(e[0],e[1],e[2], s=5, color='black', label="normal")
+    
     plt.savefig("./outputs/synthetic_dim2_3D.png")
     plt.close()
 
 
     print("original coord is:", df_dim2.head(10))
     print("corr_coord is:", pd.DataFrame(corr_coord).head(10))
+
+    coords_df = pd.DataFrame(corr_coord[:,:3], columns = ["axis_0", "axis_1", "axis_2"])
+    coords_df['label'] = outlier_array
+    fig_dy2 = px.scatter_3d(coords_df, x='axis_0', y='axis_1', z='axis_2',
+            color='label', color_discrete_map=color_discrete_map)
+    fig_dy2.write_html(after_correction_dynamic_figure_path)
+
 
 
     # In[14]:
@@ -244,21 +278,22 @@ if not os.path.exists(dim2_fig_path):
 
     # plot original graph
     va, ve, Xe = cMDS(ori_dis_sq)
-    ax1.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black')
-    ax1.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red')
+    ax1.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black', label="normal")
+    ax1.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red',label="outlier")
     ax1.set_title("True data")
+    ax1.legend()
     ax1.grid()
 
     # plot original graphs with outliers added 
     va, ve, Xe = cMDS(out_dis_sq)
-    ax2.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black')
-    ax2.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red')
+    ax2.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black', label="normal")
+    ax2.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red', label="outlier")
     ax2.set_title("Outliers added")
 
     # plot correct outliers 
     va, ve, Xe = cMDS(corr_dis_sq)   
-    ax3.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black')
-    ax3.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red')
+    ax3.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black', label="normal")
+    ax3.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red', label="outlier")
     ax3.set_title("Corrected data")
     ax3.grid()
     plt.savefig(dim2_fig_path)
@@ -426,16 +461,16 @@ if not os.path.exists(dim10_fig_path):
     ax3.tick_params(axis='x', labelsize=6)
     ax3.tick_params(axis='y', labelsize=8)
 
-    ax3.scatter(ori_dis_flat,out_dis_flat,color='red',alpha=0.2,s=6)
-    ax3.scatter(ori_dis_flat,corr_dis_flat,color='black',alpha=0.05,s=6)
+    ax3.scatter(ori_dis_flat,out_dis_flat,color='red',alpha=0.2,s=6, label="outlier")
+    ax3.scatter(ori_dis_flat,corr_dis_flat,color='black',alpha=0.05,s=6, label="normal")
     ax3.tick_params(axis='x', labelsize=6)
     ax3.tick_params(axis='y', labelsize=8)
 
     ax3.set_xlabel(r"true $\delta_{ij}$")
     ax3.set_ylabel(r'$\delta_{ij}$')
-    # axes = ax3.gca()
     ax3.set_xlim(5,50)
     ax3.set_ylim(2,70)
+    ax3.legend()
 
     plt.savefig(dim10_fig_path)
     plt.close()
