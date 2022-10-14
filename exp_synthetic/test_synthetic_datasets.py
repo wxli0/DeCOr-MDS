@@ -391,24 +391,26 @@ if not os.path.exists(dim10_fig_path):
 
     # plt.figure()
     # select a few dimensions (i.e. 2,6,8,9,10) for demonstrating the distributions of heights
-    ax1.hist(hcolls[2-start_dim],label='dim2',color=blues[0])
-    ax1.hist(hcolls[6-start_dim],label='dim6',color=blues[1])
-    ax1.hist(hcolls[8-start_dim],label='dim8',color=blues[2])
-    ax1.hist(hcolls[9-start_dim],label='dim9',color=blues[3])
-    ax1.hist(hcolls[10-start_dim],label='dim10',color=blues[4])
+    max_x = 30
+    bin_width=2
+    ax1.hist(hcolls[2-start_dim],label='dim2',color=blues[0], \
+        bins=np.arange(min(hcolls[2-start_dim]), 30 + bin_width, bin_width))
+    ax1.hist(hcolls[6-start_dim],label='dim6',color=blues[1], \
+        bins=np.arange(min(hcolls[6-start_dim]), 30 + bin_width, bin_width))
+    ax1.hist(hcolls[8-start_dim],label='dim8',color=blues[2], \
+        bins=np.arange(min(hcolls[8-start_dim]), 30 + bin_width, bin_width))
+    ax1.hist(hcolls[9-start_dim],label='dim9',color=blues[3], \
+        bins=np.arange(min(hcolls[9-start_dim]), 30 + bin_width, bin_width))
+    ax1.hist(hcolls[10-start_dim],label='dim10',color=blues[4], \
+        bins=np.arange(min(hcolls[10-start_dim]), 30 + bin_width, bin_width))
 
-    ax1.set_xticks(np.arange(0, 60, 5))
+    ax1.set_xticks(np.arange(0, 35, 5))
     ax1.tick_params(axis='x', labelsize=6)
     ax1.tick_params(axis='y', labelsize=8)
     ax1.set_ylabel("frequency")
     ax1.set_xlabel(r'median of the heights $h^{n}_i$')
     ax1.legend()
 
-
-
-    
-    # plt.savefig("./outputs/synthetic_dim10_height_dist.png")
-    # plt.close()
 
     # In[26]:
 
