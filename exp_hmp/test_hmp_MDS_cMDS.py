@@ -30,6 +30,7 @@ if not os.path.exists(axes_output_path):
     embedding = MDS(n_components=enforce_dim) 
     corr_coord = embedding.fit_transform(hmp_dis_sq)
     corr_dis_sq=squareform(pdist(corr_coord))
+    np.savetxt("./outputs/hmp_QE_MDS_coords.txt", corr_coord, fmt='%f')
     _, _, Xe = cMDS(corr_dis_sq)
 
     np.savetxt(axes_output_path, Xe, fmt='%f')
@@ -79,6 +80,8 @@ if not os.path.exists("./outputs/hmp_NB_MDS_cMDS_axes.txt"):
     embedding = MDS(n_components=enforce_dim) 
     corr_coord = embedding.fit_transform(hmp_dis_sq)
     corr_dis_sq=squareform(pdist(corr_coord))
+    np.savetxt("./outputs/hmp_NB_MDS_coords.txt", corr_coord, fmt='%f')
+
 
     # run cMDS to get the corrected coordinates in importance decreasing order
     _, _, Xe = cMDS(corr_dis_sq)

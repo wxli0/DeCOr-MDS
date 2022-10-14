@@ -1,0 +1,464 @@
+[1] "NB_MDS GLM model AIC for THROAT is: 710.463718758017"
+[1] "NB_MDS GLM model AIC for STOOL is: 34.2070831595814"
+[1] "NB_MDS GLM model AIC for MOUTH is: 846.338201954317"
+[1] "NB_MDS GLM model AIC for EARS is: 816.750045243427"
+[1] "NB_MDS GLM model AIC for NOSE is: 645.067722974369"
+[1] "NB_MDS GLM model AIC for ELBOWS is: 797.933592023468"
+[1] "NB_MDS GLM model AIC for VAGINA is: 100.538979303284"
+# weights:  84 (66 variable)
+initial  value 4388.027386 
+iter  10 value 1536.814740
+iter  20 value 1425.688220
+iter  30 value 1336.877262
+iter  40 value 1141.103787
+iter  50 value 1052.377269
+iter  60 value 994.906998
+iter  70 value 947.335176
+iter  80 value 918.901662
+iter  90 value 916.186876
+iter 100 value 914.117911
+final  value 914.117911 
+stopped after 100 iterations
+# weights:  77 (60 variable)
+initial  value 4388.027386 
+iter  10 value 1719.455030
+iter  20 value 1513.944961
+iter  30 value 1428.654913
+iter  40 value 1318.445614
+iter  50 value 1143.323909
+iter  60 value 1048.005635
+iter  70 value 960.311858
+iter  80 value 950.390328
+iter  90 value 949.024729
+iter 100 value 948.928186
+final  value 948.928186 
+stopped after 100 iterations
+# weights:  77 (60 variable)
+initial  value 4388.027386 
+iter  10 value 1485.441178
+iter  20 value 1362.977252
+iter  30 value 1296.931365
+iter  40 value 1194.772884
+iter  50 value 1108.910138
+iter  60 value 1052.673695
+iter  70 value 980.886318
+iter  80 value 977.231093
+iter  90 value 974.898851
+iter 100 value 973.778128
+final  value 973.778128 
+stopped after 100 iterations
+# weights:  77 (60 variable)
+initial  value 4388.027386 
+iter  10 value 1432.562461
+iter  20 value 1292.875793
+iter  30 value 1215.308925
+iter  40 value 1107.792101
+iter  50 value 1039.561464
+iter  60 value 981.563437
+iter  70 value 932.418767
+iter  80 value 926.109824
+iter  90 value 924.957985
+iter 100 value 924.492458
+final  value 924.492458 
+stopped after 100 iterations
+# weights:  77 (60 variable)
+initial  value 4388.027386 
+iter  10 value 1488.883364
+iter  20 value 1371.070096
+iter  30 value 1305.195545
+iter  40 value 1200.891303
+iter  50 value 1125.503284
+iter  60 value 1017.956867
+iter  70 value 958.061183
+iter  80 value 950.641265
+iter  90 value 949.629204
+iter 100 value 949.454694
+final  value 949.454694 
+stopped after 100 iterations
+# weights:  77 (60 variable)
+initial  value 4388.027386 
+iter  10 value 1882.777978
+iter  20 value 1532.587905
+iter  30 value 1293.600181
+iter  40 value 1226.978259
+iter  50 value 1058.827871
+iter  60 value 989.158748
+iter  70 value 932.610106
+iter  80 value 925.660117
+iter  90 value 925.361505
+iter 100 value 925.304282
+final  value 925.304282 
+stopped after 100 iterations
+# weights:  77 (60 variable)
+initial  value 4388.027386 
+iter  10 value 1429.680729
+iter  20 value 1265.817474
+iter  30 value 1212.794497
+iter  40 value 1104.720200
+iter  50 value 1052.649216
+iter  60 value 992.019948
+iter  70 value 949.337636
+iter  80 value 943.975425
+iter  90 value 941.739984
+iter 100 value 941.333933
+final  value 941.333933 
+stopped after 100 iterations
+# weights:  77 (60 variable)
+initial  value 4388.027386 
+iter  10 value 1545.760256
+iter  20 value 1444.145472
+iter  30 value 1344.988561
+iter  40 value 1189.527809
+iter  50 value 1073.595195
+iter  60 value 1003.849744
+iter  70 value 943.313573
+iter  80 value 936.560992
+iter  90 value 934.705202
+iter 100 value 933.851136
+final  value 933.851136 
+stopped after 100 iterations
+# weights:  77 (60 variable)
+initial  value 4388.027386 
+iter  10 value 1502.025181
+iter  20 value 1368.210769
+iter  30 value 1292.487834
+iter  40 value 1149.126574
+iter  50 value 1084.243712
+iter  60 value 1002.469305
+iter  70 value 945.279238
+iter  80 value 943.494794
+iter  90 value 941.888482
+iter 100 value 941.475573
+final  value 941.475573 
+stopped after 100 iterations
+# weights:  77 (60 variable)
+initial  value 4388.027386 
+iter  10 value 1711.200473
+iter  20 value 1505.961253
+iter  30 value 1417.283114
+iter  40 value 1288.726167
+iter  50 value 1083.660696
+iter  60 value 998.421315
+iter  70 value 928.457446
+iter  80 value 921.784759
+iter  90 value 918.582626
+iter 100 value 917.945088
+final  value 917.945088 
+stopped after 100 iterations
+# weights:  77 (60 variable)
+initial  value 4388.027386 
+iter  10 value 1692.469759
+iter  20 value 1506.052396
+iter  30 value 1385.131786
+iter  40 value 1229.014413
+iter  50 value 1136.021568
+iter  60 value 1009.915704
+iter  70 value 940.352809
+iter  80 value 932.131675
+iter  90 value 928.801981
+iter 100 value 928.100803
+final  value 928.100803 
+stopped after 100 iterations
+# weights:  77 (60 variable)
+initial  value 4388.027386 
+iter  10 value 1711.200473
+iter  20 value 1505.961253
+iter  30 value 1417.283114
+iter  40 value 1288.726167
+iter  50 value 1083.660696
+iter  60 value 998.421315
+iter  70 value 928.457446
+iter  80 value 921.784759
+iter  90 value 918.582626
+iter 100 value 917.945088
+final  value 917.945088 
+stopped after 100 iterations
+# weights:  70 (54 variable)
+initial  value 4388.027386 
+iter  10 value 1657.681378
+iter  20 value 1478.396062
+iter  30 value 1359.854266
+iter  40 value 1210.807233
+iter  50 value 1112.426118
+iter  60 value 979.577912
+iter  70 value 959.191491
+iter  80 value 953.999483
+iter  90 value 953.882794
+iter 100 value 953.834132
+final  value 953.834132 
+stopped after 100 iterations
+# weights:  70 (54 variable)
+initial  value 4388.027386 
+iter  10 value 1506.251037
+iter  20 value 1383.719050
+iter  30 value 1308.000908
+iter  40 value 1169.114546
+iter  50 value 1076.967894
+iter  60 value 1004.468459
+iter  70 value 986.748081
+iter  80 value 983.008026
+iter  90 value 982.077053
+iter 100 value 981.862731
+final  value 981.862731 
+stopped after 100 iterations
+# weights:  70 (54 variable)
+initial  value 4388.027386 
+iter  10 value 1382.137017
+iter  20 value 1269.104327
+iter  30 value 1212.686916
+iter  40 value 1120.718124
+iter  50 value 1048.584784
+iter  60 value 950.380298
+iter  70 value 929.832046
+iter  80 value 927.675721
+iter  90 value 927.194334
+iter 100 value 926.546057
+final  value 926.546057 
+stopped after 100 iterations
+# weights:  70 (54 variable)
+initial  value 4388.027386 
+iter  10 value 1463.843995
+iter  20 value 1345.475015
+iter  30 value 1264.093542
+iter  40 value 1170.470736
+iter  50 value 1086.044171
+iter  60 value 972.867588
+iter  70 value 958.023210
+iter  80 value 955.304292
+iter  90 value 955.093322
+iter 100 value 955.001097
+final  value 955.001097 
+stopped after 100 iterations
+# weights:  70 (54 variable)
+initial  value 4388.027386 
+iter  10 value 1656.992906
+iter  20 value 1484.889880
+iter  30 value 1349.133928
+iter  40 value 1154.401408
+iter  50 value 1056.701059
+iter  60 value 951.562606
+iter  70 value 933.087402
+iter  80 value 931.391907
+iter  90 value 930.428101
+iter 100 value 930.356161
+final  value 930.356161 
+stopped after 100 iterations
+# weights:  70 (54 variable)
+initial  value 4388.027386 
+iter  10 value 1409.824065
+iter  20 value 1308.077575
+iter  30 value 1237.678931
+iter  40 value 1134.585030
+iter  50 value 1060.691357
+iter  60 value 964.910911
+iter  70 value 951.090960
+iter  80 value 947.587805
+iter  90 value 946.650299
+iter 100 value 946.388915
+final  value 946.388915 
+stopped after 100 iterations
+# weights:  70 (54 variable)
+initial  value 4388.027386 
+iter  10 value 1526.446627
+iter  20 value 1417.618036
+iter  30 value 1332.128486
+iter  40 value 1210.557330
+iter  50 value 1097.438410
+iter  60 value 962.201176
+iter  70 value 944.122985
+iter  80 value 941.864411
+iter  90 value 940.572306
+iter 100 value 939.667428
+final  value 939.667428 
+stopped after 100 iterations
+# weights:  70 (54 variable)
+initial  value 4388.027386 
+iter  10 value 1496.122923
+iter  20 value 1365.726942
+iter  30 value 1296.712928
+iter  40 value 1147.114111
+iter  50 value 1074.758847
+iter  60 value 967.546469
+iter  70 value 949.579604
+iter  80 value 947.338072
+iter  90 value 946.315287
+iter 100 value 946.097864
+final  value 946.097864 
+stopped after 100 iterations
+# weights:  70 (54 variable)
+initial  value 4388.027386 
+iter  10 value 1613.909810
+iter  20 value 1463.433443
+iter  30 value 1361.952554
+iter  40 value 1201.616958
+iter  50 value 1114.521123
+iter  60 value 954.651597
+iter  70 value 937.329910
+iter  80 value 934.671413
+iter  90 value 932.403079
+iter 100 value 932.090880
+final  value 932.090880 
+stopped after 100 iterations
+[1] "NB_MDS MN model AIC for is: 1955.89017618289"
+[1] "QE_MDS GLM model AIC for THROAT is: 729.495933770409"
+[1] "QE_MDS GLM model AIC for STOOL is: 56.4099949005203"
+[1] "QE_MDS GLM model AIC for MOUTH is: 1000.52770258124"
+[1] "QE_MDS GLM model AIC for EARS is: 577.684805989676"
+[1] "QE_MDS GLM model AIC for NOSE is: 540.636059469313"
+[1] "QE_MDS GLM model AIC for ELBOWS is: 874.134392877992"
+[1] "QE_MDS GLM model AIC for VAGINA is: 12.0000054919448"
+# weights:  84 (66 variable)
+initial  value 4388.027386 
+iter  10 value 1309.373201
+iter  20 value 1151.848222
+iter  30 value 1071.728120
+iter  40 value 1007.167342
+iter  50 value 953.308051
+iter  60 value 905.985065
+iter  70 value 843.148844
+iter  80 value 813.610664
+iter  90 value 808.558805
+iter 100 value 807.498806
+final  value 807.498806 
+stopped after 100 iterations
+# weights:  77 (60 variable)
+initial  value 4388.027386 
+iter  10 value 1480.632462
+iter  20 value 1201.621160
+iter  30 value 1112.585395
+iter  40 value 1019.950051
+iter  50 value 933.062924
+iter  60 value 868.400205
+iter  70 value 830.530562
+iter  80 value 823.439776
+iter  90 value 822.415231
+iter 100 value 821.847173
+final  value 821.847173 
+stopped after 100 iterations
+# weights:  77 (60 variable)
+initial  value 4388.027386 
+iter  10 value 1340.613984
+iter  20 value 1196.279037
+iter  30 value 1091.143534
+iter  40 value 1044.432404
+iter  50 value 982.707399
+iter  60 value 879.575298
+iter  70 value 834.164672
+iter  80 value 824.496131
+iter  90 value 822.655882
+iter 100 value 821.959571
+final  value 821.959571 
+stopped after 100 iterations
+# weights:  77 (60 variable)
+initial  value 4388.027386 
+iter  10 value 1231.706614
+iter  20 value 1094.026885
+iter  30 value 1012.026153
+iter  40 value 980.970504
+iter  50 value 941.449566
+iter  60 value 897.675679
+iter  70 value 861.017059
+iter  80 value 854.890438
+iter  90 value 853.912126
+iter 100 value 853.377636
+final  value 853.377636 
+stopped after 100 iterations
+# weights:  77 (60 variable)
+initial  value 4388.027386 
+iter  10 value 1296.161651
+iter  20 value 1140.977248
+iter  30 value 1063.861706
+iter  40 value 993.370109
+iter  50 value 948.776807
+iter  60 value 882.112721
+iter  70 value 829.469715
+iter  80 value 820.231275
+iter  90 value 818.260142
+iter 100 value 817.619672
+final  value 817.619672 
+stopped after 100 iterations
+# weights:  77 (60 variable)
+initial  value 4388.027386 
+iter  10 value 1419.640997
+iter  20 value 1219.267147
+iter  30 value 1091.223300
+iter  40 value 1042.589973
+iter  50 value 911.814252
+iter  60 value 865.116445
+iter  70 value 835.737523
+iter  80 value 831.365582
+iter  90 value 830.980307
+iter 100 value 830.903484
+final  value 830.903484 
+stopped after 100 iterations
+# weights:  77 (60 variable)
+initial  value 4388.027386 
+iter  10 value 1618.953481
+iter  20 value 1457.082384
+iter  30 value 1373.545356
+iter  40 value 1268.526471
+iter  50 value 1138.576699
+iter  60 value 1010.803456
+iter  70 value 871.358006
+iter  80 value 861.016855
+iter  90 value 858.611218
+iter 100 value 857.646121
+final  value 857.646121 
+stopped after 100 iterations
+# weights:  77 (60 variable)
+initial  value 4388.027386 
+iter  10 value 1280.152258
+iter  20 value 1174.343388
+iter  30 value 1090.590501
+iter  40 value 1024.007684
+iter  50 value 945.817314
+iter  60 value 883.808576
+iter  70 value 840.634054
+iter  80 value 833.618030
+iter  90 value 831.986657
+iter 100 value 831.679559
+final  value 831.679559 
+stopped after 100 iterations
+# weights:  77 (60 variable)
+initial  value 4388.027386 
+iter  10 value 1226.995442
+iter  20 value 1105.167822
+iter  30 value 1020.316470
+iter  40 value 963.586029
+iter  50 value 913.458339
+iter  60 value 870.501126
+iter  70 value 825.220232
+iter  80 value 821.431077
+iter  90 value 820.793407
+iter 100 value 820.502554
+final  value 820.502554 
+stopped after 100 iterations
+# weights:  77 (60 variable)
+initial  value 4388.027386 
+iter  10 value 1375.798993
+iter  20 value 1184.316612
+iter  30 value 1096.425861
+iter  40 value 1038.413860
+iter  50 value 941.399265
+iter  60 value 879.447692
+iter  70 value 842.219695
+iter  80 value 835.620155
+iter  90 value 835.150488
+iter 100 value 835.100887
+final  value 835.100887 
+stopped after 100 iterations
+# weights:  77 (60 variable)
+initial  value 4388.027386 
+iter  10 value 1353.091558
+iter  20 value 1226.283636
+iter  30 value 1146.739385
+iter  40 value 1094.521361
+iter  50 value 1003.345134
+iter  60 value 911.241639
+iter  70 value 832.230628
+iter  80 value 819.591716
+iter  90 value 816.003694
+iter 100 value 815.267712
+final  value 815.267712 
+stopped after 100 iterations
+[1] "QE_MDS MN model AIC for is: 1746.9976117607"
