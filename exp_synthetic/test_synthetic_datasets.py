@@ -376,7 +376,7 @@ if not os.path.exists(dim10_fig_path):
     print("subspace dimension is:", subspace_dim)
 
     fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(10*2.5,3*2.5))
-    fig.tight_layout(pad=3, w_pad=8, h_pad=1.0)
+    fig.tight_layout(pad=5, w_pad=8, h_pad=1.0)
 
     # In[20]:
 
@@ -412,7 +412,7 @@ if not os.path.exists(dim10_fig_path):
     ax1.tick_params(axis='y', labelsize=12)
     ax1.set_ylabel("frequency", fontsize=14)
     ax1.set_xlabel(r'median of the heights $h^{n}_i$', fontsize=18)
-    ax1.set_title("(A) Distribution of medians of heights")
+    ax1.set_title("(A) Distribution of medians of heights", fontsize=20)
     ax1.legend()
 
 
@@ -444,7 +444,7 @@ if not os.path.exists(dim10_fig_path):
     ax2.tick_params(axis ='y', labelcolor = color)
     ax2.tick_params(axis='x', labelsize=12)
     ax2.tick_params(axis='y', labelsize=12)
-    ax2.set_title("(B) Dimensionality inference")
+    ax2.set_title("(B) Dimensionality inference", fontsize=20)
     
     # Adding Twin Axes to plot using dataset_2
     sub_ax2 = ax2.twinx()
@@ -482,7 +482,7 @@ if not os.path.exists(dim10_fig_path):
     ax3.set_ylabel(r'$\delta_{ij}$', fontsize=14)
     ax3.set_xlim(5,50)
     ax3.set_ylim(2,70)
-    ax3.set_title("(C) Shepard diagram")
+    ax3.set_title("(C) Shepard diagram", fontsize=15)
     ax3.legend()
 
     plt.savefig(dim10_fig_path)
