@@ -109,7 +109,8 @@ if not os.path.exists(cross_fig_path):
     va, ve, Xe = cMDS(ori_dis_sq)
     ax1.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black', label="normal")
     ax1.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red', label="outlier")
-    ax1.set_title("True data")
+    ax1.set_title("(A) True data")
+
     ax1.legend()
     ax1.grid()
 
@@ -117,13 +118,13 @@ if not os.path.exists(cross_fig_path):
     va, ve, Xe = cMDS(out_dis_sq)
     ax2.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black', label="normal")
     ax2.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red', label="outlier")
-    ax2.set_title("Outliers added")
+    ax2.set_title("(B) Outliers added")
 
     # plot correct outliers 
     va, ve, Xe = cMDS(corr_dis_sq)   
     ax3.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black', label="normal")
     ax3.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red', label="outlier")
-    ax3.set_title("Corrected data")
+    ax3.set_title("(C) Corrected data")
     ax3.grid()
     plt.savefig(cross_fig_path)
     plt.close()
@@ -215,6 +216,7 @@ if not os.path.exists(dim2_fig_path) or  not os.path.exists(before_correction_dy
             ax1.scatter(e[0],e[1],e[2], s=5, color='red', label="outlier")
         else:
             ax1.scatter(e[0],e[1],e[2], s=5, color='black', label="normal")
+    ax1.set_title("(A) Outliers added")
     
     def legend_without_duplicate_labels(ax):
         handles, labels = ax.get_legend_handles_labels()
@@ -245,6 +247,7 @@ if not os.path.exists(dim2_fig_path) or  not os.path.exists(before_correction_dy
     ax2.set_xlim3d(-6, 6)
     ax2.set_ylim3d(-10, 5)
     ax2.set_zlim3d(-6, 6)
+    ax2.set_title("(C) Corrected data")
 
     # plot the corrected coordinates
 
@@ -288,7 +291,7 @@ if not os.path.exists(dim2_fig_path) or  not os.path.exists(before_correction_dy
     va, ve, Xe = cMDS(ori_dis_sq)
     ax1.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black', label="normal")
     ax1.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red',label="outlier")
-    ax1.set_title("True data")
+    ax1.set_title("(A) True data")
     ax1.legend()
     ax1.grid()
 
@@ -296,13 +299,13 @@ if not os.path.exists(dim2_fig_path) or  not os.path.exists(before_correction_dy
     va, ve, Xe = cMDS(out_dis_sq)
     ax2.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black', label="normal")
     ax2.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red', label="outlier")
-    ax2.set_title("Outliers added")
+    ax2.set_title("(B) Outliers added")
 
     # plot correct outliers 
     va, ve, Xe = cMDS(corr_dis_sq)   
     ax3.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black', label="normal")
     ax3.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red', label="outlier")
-    ax3.set_title("Corrected data")
+    ax3.set_title("(C) Corrected data")
     ax3.grid()
     plt.savefig(dim2_fig_path)
     plt.close()
@@ -409,6 +412,7 @@ if not os.path.exists(dim10_fig_path):
     ax1.tick_params(axis='y', labelsize=12)
     ax1.set_ylabel("frequency", fontsize=14)
     ax1.set_xlabel(r'median of the heights $h^{n}_i$', fontsize=18)
+    ax1.set_title("(A) Distribution of medians of heights")
     ax1.legend()
 
 
@@ -440,6 +444,7 @@ if not os.path.exists(dim10_fig_path):
     ax2.tick_params(axis ='y', labelcolor = color)
     ax2.tick_params(axis='x', labelsize=12)
     ax2.tick_params(axis='y', labelsize=12)
+    ax2.set_title("(B) Dimensionality inference")
     
     # Adding Twin Axes to plot using dataset_2
     sub_ax2 = ax2.twinx()
@@ -477,6 +482,7 @@ if not os.path.exists(dim10_fig_path):
     ax3.set_ylabel(r'$\delta_{ij}$', fontsize=14)
     ax3.set_xlim(5,50)
     ax3.set_ylim(2,70)
+    ax3.set_title("(C) Shepard diagram")
     ax3.legend()
 
     plt.savefig(dim10_fig_path)

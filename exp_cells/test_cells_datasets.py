@@ -118,10 +118,10 @@ for i in range(nb_cells):
     outlier_idx = outlier_indices[i]
     cell = target_cells[outlier_idx]
     fig.add_subplot(2, nb_cells, i + 1)
-    plt.gca().set_title(i)
+    # plt.gca().set_title(i)
     plt.plot(cell[:, 0], cell[:, 1], color="red")
     if i == nb_cells//2:
-        plt.title("Outlier cells", fontdict={'fontsize': 20})
+        plt.title("(A) Outlier cells", fontdict={'fontsize': 20})
     plt.axis('equal')
     plt.axis('off')
     
@@ -131,7 +131,7 @@ for i in range(nb_cells):
     fig.add_subplot(2, nb_cells, i + nb_cells + 1)
     plt.plot(cell[:, 0], cell[:, 1], color="black")
     if i == nb_cells//2:
-        plt.title("Normal cells", fontdict={'fontsize': 20})
+        plt.title("(B) Normal cells", fontdict={'fontsize': 20})
     plt.axis('equal')
     plt.axis('off')
 
