@@ -211,66 +211,61 @@ if not os.path.exists(figure_output_path):
 
 # combine all plots to one
 axes_figure_output_path = "./outputs/hmp_axes_main_127.png"
-fig, axes = plt.subplots(1, 2, figsize=(10*2/3,3))
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10*2/3,3))
 fig.tight_layout(pad=2, w_pad=2, h_pad=2)
 focus_sites = ["STOOL", "THROAT", "VAGINA"] 
 focus_colors = [site_to_color(site) for site in focus_sites]
 # corresponding colors: 
 if not os.path.exists(axes_figure_output_path):
     print("======== plot pairwise 2D plot (subset) in one plot ========")
-    QE_nSimplices_cMDS_Xe = np.loadtxt(QE_nSimplices_cMDS_axes_output_path)
-    row = 0
-    col = 1
-    num_axes = 2 # show pairwise 2D plot to decompose the 3D plot
-    for first_dim in range(num_axes):
-        label_list = []
-        for second_dim in range(first_dim+1, num_axes):
-            # only plot stool (blue), ears (black), throat (pink) points 
-            for i in range(QE_nSimplices_cMDS_Xe.shape[0]):
-                if colors[i] not in focus_colors:
-                    continue
-                axes[col].scatter(QE_nSimplices_cMDS_Xe[i, second_dim], \
-                    QE_nSimplices_cMDS_Xe[i, first_dim], s=5, c=colors[i], label = color_to_site(colors[i]))
-            axes[col].set_xlabel('axis ' + str(first_dim))
-            axes[col].set_ylabel('axis ' + str(second_dim))
-
-            handles, labels = axes[col].get_legend_handles_labels()
-            handle_list, label_list = [], []
-            for handle, label in zip(handles, labels):
-                if label not in label_list:
-                    handle_list.append(handle)
-                    label_list.append(label)
-            axes[col].legend(handle_list, label_list, prop={'size': 6})
-            row += 1
-    axes[col].set_title('(B) '+ r'$Q_{E}+nSimplices$')
-
 
     QE_MDS_cMDS_Xe = np.loadtxt(QE_MDS_cMDS_axes_output_path)
-    row = 0
-    col = 0
     num_axes = 2 # show pairwise 2D plot to decompose the 3D plot
     for first_dim in range(num_axes):
         label_list = []
         for second_dim in range(first_dim+1, num_axes):
-            # only plot stool (blue), ears (black), throad (pink) points 
-            for i in range(QE_MDS_cMDS_Xe.shape[0]):
-                if colors[i] not in focus_colors:
-                    continue
-                axes[col].scatter(QE_MDS_cMDS_Xe[i, second_dim], \
-                    QE_MDS_cMDS_Xe[i, first_dim], s=5, c=colors[i], label = color_to_site(colors[i]))
-            axes[col].set_xlabel('axis ' + str(first_dim))
-            axes[col].set_ylabel('axis ' + str(second_dim))
+            # only plot stool (blue), vagina (orange), throat (pink) points 
+            # filter by color indices 
+            stool_indices = [i for i, e in enumerate(colors) if e == 'cornflowerblue']
+            ears_indices = [i for i, e in enumerate(colors) if e == 'orange']
+            throat_indices = [i for i, e in enumerate(colors) if e == 'deeppink']
 
-            handles, labels = axes[col].get_legend_handles_labels()
-            handle_list, label_list = [], []
-            for handle, label in zip(handles, labels):
-                if label not in label_list:
-                    handle_list.append(handle)
-                    label_list.append(label)
-            axes[col].legend(handle_list, label_list, prop={'size': 6})
-            row += 1
 
-    axes[col].set_title('(A) ' + r'$Q_{E}+MDS$')      
+            ax1.scatter(QE_MDS_cMDS_Xe[stool_indices, second_dim], \
+                QE_MDS_cMDS_Xe[stool_indices, first_dim], s=5, c='cornflowerblue', label = "STOOL")
+            ax1.scatter(QE_MDS_cMDS_Xe[ears_indices, second_dim], \
+                QE_MDS_cMDS_Xe[ears_indices, first_dim], s=5, c='orange', label = "VAGINA")
+            ax1.scatter(QE_MDS_cMDS_Xe[throat_indices, second_dim], \
+                QE_MDS_cMDS_Xe[throat_indices, first_dim], s=5, c='deeppink', label = "THROAT")
+            ax1.set_xlabel('axis ' + str(first_dim), size=10)
+            ax1.set_ylabel('axis ' + str(second_dim), size=10)
+            ax1.tick_params(labelsize=10)
+            ax1.legend()
+    ax1.text(-0.1, 1.05, 'A', transform=ax1.transAxes, size=10, weight='bold')
+    ax1.set_title(r'$Q_{E}+MDS$', size=10)   
+
+    QE_nSimplices_cMDS_Xe = np.loadtxt(QE_nSimplices_cMDS_axes_output_path)
+    num_axes = 2 # show pairwise 2D plot to decompose the 3D plot
+    for first_dim in range(num_axes):
+        label_list = []
+        for second_dim in range(first_dim+1, num_axes):
+            stool_indices = [i for i, e in enumerate(colors) if e == 'cornflowerblue']
+            ears_indices = [i for i, e in enumerate(colors) if e == 'orange']
+            throat_indices = [i for i, e in enumerate(colors) if e == 'deeppink']
+
+
+            ax2.scatter(QE_nSimplices_cMDS_Xe[stool_indices, second_dim], \
+                QE_nSimplices_cMDS_Xe[stool_indices, first_dim], s=5, c='cornflowerblue', label = "STOOL")
+            ax2.scatter(QE_nSimplices_cMDS_Xe[ears_indices, second_dim], \
+                QE_nSimplices_cMDS_Xe[ears_indices, first_dim], s=5, c='orange', label = "VAGINA")
+            ax2.scatter(QE_nSimplices_cMDS_Xe[throat_indices, second_dim], \
+                QE_nSimplices_cMDS_Xe[throat_indices, first_dim], s=5, c='deeppink', label = "THROAT")
+            ax2.set_xlabel('axis ' + str(first_dim), size=10)
+            ax2.set_ylabel('axis ' + str(second_dim), size=10)
+            ax2.tick_params(labelsize=10)
+            ax2.legend()
+    ax2.text(-0.1, 1.05, 'B', transform=ax2.transAxes, size=10, weight='bold')
+    ax2.set_title(r'$Q_{E}+nSimplices$', size=10)   
 
     plt.savefig(axes_figure_output_path)
     plt.close()

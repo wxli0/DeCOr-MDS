@@ -109,7 +109,9 @@ if not os.path.exists(cross_fig_path):
     va, ve, Xe = cMDS(ori_dis_sq)
     ax1.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black', label="normal")
     ax1.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red', label="outlier")
-    ax1.set_title("(A) True data")
+    ax1.set_title("True data")
+    ax1.text(-0.1, 1.05, 'A', transform=ax1.transAxes, 
+            size=15, weight='bold')
 
     ax1.legend()
     ax1.grid()
@@ -118,17 +120,109 @@ if not os.path.exists(cross_fig_path):
     va, ve, Xe = cMDS(out_dis_sq)
     ax2.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black', label="normal")
     ax2.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red', label="outlier")
-    ax2.set_title("(B) Outliers added")
+    ax2.grid()
+    ax2.set_title("Outliers added")
+    ax2.text(-0.1, 1.05, 'B', transform=ax2.transAxes, 
+            size=15, weight='bold')
 
     # plot correct outliers 
     va, ve, Xe = cMDS(corr_dis_sq)   
     ax3.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black', label="normal")
     ax3.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red', label="outlier")
-    ax3.set_title("(C) Corrected data")
+    ax3.set_title("Corrected data")
+    ax3.text(-0.1, 1.05, 'C', transform=ax3.transAxes, 
+            size=15, weight='bold')
     ax3.grid()
     plt.savefig(cross_fig_path)
     plt.close()
 
+
+    """ Section 1.1.2: Plot in 3D using the first three dimensions for cross data """
+
+    before_correction_dynamic_figure_path = "./outputs/synthetic_cross_before_correction_dynamic.html"
+    after_correction_dynamic_figure_path = "./outputs/synthetic_cross_after_correction_dynamic.html"
+
+    ori_coord=np.array(df_cross)
+
+    fig = plt.figure(figsize=(8,4))
+    ax1 = fig.add_subplot(121, projection='3d')
+
+    # plot the original coordinates
+
+    for i in range(num_point):
+        e=ori_coord[i]
+        if (i in outlier_indices):
+            print("outlier:", e)
+            ax1.scatter(e[0],e[1],e[2], s=5, color='red', label="outlier")
+        else:
+            ax1.scatter(e[0],e[1],e[2], s=5, color='black', label="normal")
+    ax1.set_title("Outliers added")
+    ax1.text2D(0, 1, "A", transform=ax1.transAxes, size=15, weight='bold')
+
+    # ax1.text(-10, 27, 'A', transform=ax1.transAxes, 
+    #     size=15, weight='bold')
+
+    def legend_without_duplicate_labels(ax):
+        handles, labels = ax.get_legend_handles_labels()
+        unique = [(h, l) for i, (h, l) in enumerate(zip(handles, labels)) if l not in labels[:i]]
+        ax.legend(*zip(*unique))
+
+    legend_without_duplicate_labels(ax1)
+
+    outlier_array = []
+    for i in range(corr_coord.shape[0]):
+        if i in outlier_indices:
+            outlier_array.append("outlier")
+        else:
+            outlier_array.append("normal")
+    color_discrete_map = {'outlier': 'red', 'normal': 'black'}
+    ori_coords_df = pd.DataFrame(ori_coord[:,:3], columns = ["axis_0", "axis_1", "axis_2"])
+    ori_coords_df['label'] = outlier_array
+    fig_dy1 = px.scatter_3d(ori_coords_df, x='axis_0', y='axis_1', z='axis_2',
+            color='label', color_discrete_map=color_discrete_map)
+    fig_dy1.update_layout(scene = dict(
+                xaxis_title='axis 0',
+                yaxis_title='axis 1',
+                zaxis_title='axis 2'))
+    fig_dy1.write_html(before_correction_dynamic_figure_path)
+
+
+    ax2 = fig.add_subplot(122, projection='3d')
+    ax2.set_xlim3d(-6, 6)
+    ax2.set_ylim3d(-10, 5)
+    ax2.set_zlim3d(-6, 6)
+    ax2.set_title("Corrected data")
+    ax2.text2D(0, 1, "B", transform=ax2.transAxes, size=15, weight='bold')
+
+    # ax2.text(2, -10, 'B', transform=ax2.transAxes, 
+    #     size=15, weight='bold')
+
+    # plot the corrected coordinates
+
+    for i in range(num_point):
+        e=corr_coord[i]
+        if (i in outlier_indices):
+            print("outlier corrected:", e)
+            ax2.scatter(e[0],e[1],e[2], s=5, color='red', label="outlier")
+        else:
+            ax2.scatter(e[0],e[1],e[2], s=5, color='black', label="normal")
+    
+    plt.savefig("./outputs/synthetic_cross_3D.png")
+    plt.close()
+
+
+    print("original coord is:", df_cross.head(10))
+    print("corr_coord is:", pd.DataFrame(corr_coord).head(10))
+
+    coords_df = pd.DataFrame(corr_coord[:,:3], columns = ["axis_0", "axis_1", "axis_2"])
+    coords_df['label'] = outlier_array
+    fig_dy2 = px.scatter_3d(coords_df, x='axis_0', y='axis_1', z='axis_2',
+            color='label', color_discrete_map=color_discrete_map)
+    fig_dy2.update_layout(scene = dict(
+                xaxis_title='axis 0',
+                yaxis_title='axis 1',
+                zaxis_title='axis 2'))
+    fig_dy2.write_html(after_correction_dynamic_figure_path)
 
 
 # 
@@ -216,8 +310,12 @@ if not os.path.exists(dim2_fig_path) or  not os.path.exists(before_correction_dy
             ax1.scatter(e[0],e[1],e[2], s=5, color='red', label="outlier")
         else:
             ax1.scatter(e[0],e[1],e[2], s=5, color='black', label="normal")
-    ax1.set_title("(A) Outliers added")
-    
+    ax1.set_title("Outliers added")
+    ax1.text2D(0, 1, "A", transform=ax1.transAxes, size=15, weight='bold')
+
+    # ax1.text(-10, 27, 'A', transform=ax1.transAxes, 
+    #     size=15, weight='bold')
+
     def legend_without_duplicate_labels(ax):
         handles, labels = ax.get_legend_handles_labels()
         unique = [(h, l) for i, (h, l) in enumerate(zip(handles, labels)) if l not in labels[:i]]
@@ -247,7 +345,11 @@ if not os.path.exists(dim2_fig_path) or  not os.path.exists(before_correction_dy
     ax2.set_xlim3d(-6, 6)
     ax2.set_ylim3d(-10, 5)
     ax2.set_zlim3d(-6, 6)
-    ax2.set_title("(C) Corrected data")
+    ax2.set_title("Corrected data")
+    ax2.text2D(0, 1, "B", transform=ax2.transAxes, size=15, weight='bold')
+
+    # ax2.text(2, -10, 'B', transform=ax2.transAxes, 
+    #     size=15, weight='bold')
 
     # plot the corrected coordinates
 
@@ -291,7 +393,9 @@ if not os.path.exists(dim2_fig_path) or  not os.path.exists(before_correction_dy
     va, ve, Xe = cMDS(ori_dis_sq)
     ax1.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black', label="normal")
     ax1.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red',label="outlier")
-    ax1.set_title("(A) True data")
+    ax1.set_title("True data")
+    ax1.text(-0.1, 1.05, 'A', transform=ax1.transAxes, 
+        size=15, weight='bold')
     ax1.legend()
     ax1.grid()
 
@@ -299,13 +403,18 @@ if not os.path.exists(dim2_fig_path) or  not os.path.exists(before_correction_dy
     va, ve, Xe = cMDS(out_dis_sq)
     ax2.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black', label="normal")
     ax2.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red', label="outlier")
-    ax2.set_title("(B) Outliers added")
+    ax2.text(-0.1, 1.05, 'B', transform=ax2.transAxes, 
+        size=15, weight='bold')
+    ax2.grid()
+    ax2.set_title("Outliers added")
 
     # plot correct outliers 
     va, ve, Xe = cMDS(corr_dis_sq)   
     ax3.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black', label="normal")
     ax3.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red', label="outlier")
-    ax3.set_title("(C) Corrected data")
+    ax3.set_title("Corrected data")
+    ax2.text(-0.1, 1.05, 'C', transform=ax3.transAxes, 
+        size=15, weight='bold')
     ax3.grid()
     plt.savefig(dim2_fig_path)
     plt.close()
@@ -376,7 +485,7 @@ if not os.path.exists(dim10_fig_path):
     print("subspace dimension is:", subspace_dim)
 
     fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(10*2.5,3*2.5))
-    fig.tight_layout(pad=5, w_pad=8, h_pad=1.0)
+    fig.tight_layout(pad=8, w_pad=10, h_pad=1.0)
 
     # In[20]:
 
@@ -408,12 +517,14 @@ if not os.path.exists(dim10_fig_path):
         bins=np.arange(min(hcolls[10-start_dim]), 30 + bin_width, bin_width))
 
     ax1.set_xticks(np.arange(0, 35, 5))
-    ax1.tick_params(axis='x', labelsize=12)
-    ax1.tick_params(axis='y', labelsize=12)
-    ax1.set_ylabel("frequency", fontsize=14)
-    ax1.set_xlabel(r'median of the heights $h^{n}_i$', fontsize=18)
-    ax1.set_title("(A) Distribution of medians of heights", fontsize=20)
-    ax1.legend()
+    ax1.tick_params(axis='x', labelsize=20)
+    ax1.tick_params(axis='y', labelsize=20)
+    ax1.set_ylabel("frequency", fontsize=25)
+    ax1.set_xlabel(r'median of the heights $h^{n}_i$', fontsize=25)
+    ax1.set_title("Distribution of medians of heights", fontsize=28)
+    ax1.text(-0.1, 1.05, 'A', transform=ax1.transAxes, 
+        size=30, weight='bold')
+    ax1.legend(fontsize=25)
 
 
     # In[26]:
@@ -437,24 +548,26 @@ if not os.path.exists(dim10_fig_path):
 
     # fig, sub_ax1 = plt.subplots()
     color = 'red'
-    ax2.set_xlabel(r'dimension tested $n$', fontsize=18)
-    ax2.set_ylabel(r'median of heights', color = color, fontsize=14)
+    ax2.set_xlabel(r'dimension tested $n$', fontsize=25)
+    ax2.set_ylabel(r'median of heights', color = color, fontsize=25)
     ax2.set_xticks(np.arange(2, 16, 1))
     ax2.scatter(list(range(start_dim, end_dim+1)), h_meds, color = color, s=6)
     ax2.tick_params(axis ='y', labelcolor = color)
-    ax2.tick_params(axis='x', labelsize=12)
-    ax2.tick_params(axis='y', labelsize=12)
-    ax2.set_title("(B) Dimensionality inference", fontsize=20)
+    ax2.tick_params(axis='x', labelsize=20)
+    ax2.tick_params(axis='y', labelsize=20)
+    ax2.text(-0.1, 1.05, 'B', transform=ax2.transAxes, 
+        size=30, weight='bold')
+    ax2.set_title("Dimensionality inference", fontsize=28)
     
     # Adding Twin Axes to plot using dataset_2
     sub_ax2 = ax2.twinx()
     
     color = 'black'
-    sub_ax2.set_ylabel(r'heights median ratio: $h_{n-1}/h_n$', color = color, fontsize=14)
+    sub_ax2.set_ylabel(r'heights median ratio: $h_{n-1}/h_n$', color = color, fontsize=25)
     sub_ax2.plot(list(range(start_dim+1, end_dim+1)), h_med_ratios, color = color)
     sub_ax2.tick_params(axis ='y', labelcolor = color)
-    sub_ax2.tick_params(axis='x', labelsize=12)
-    sub_ax2.tick_params(axis='y', labelsize=12)
+    sub_ax2.tick_params(axis='x', labelsize=20)
+    sub_ax2.tick_params(axis='y', labelsize=20)
     
     # # Show plot
     # plt.savefig("./outputs/synthetic_dim10_ratio.png")
@@ -473,17 +586,22 @@ if not os.path.exists(dim10_fig_path):
     # ax3.rc('xtick', labelsize=SMALL_SIZE)    # fontsize of the tick labels
     # ax3.rc('ytick', labelsize=SMALL_SIZE)    # fontsize of the tick labels
 
-    ax3.scatter(ori_dis_flat,out_dis_flat,color='red',alpha=0.2,s=6, label="outlier")
-    ax3.scatter(ori_dis_flat,corr_dis_flat,color='black',alpha=0.05,s=6, label="normal")
-    ax3.tick_params(axis='x', labelsize=12)
-    ax3.tick_params(axis='y', labelsize=12)
+    ax3.scatter(ori_dis_flat,out_dis_flat,color='red',alpha=0.8,s=6, label="outlier")
+    ax3.scatter(ori_dis_flat,corr_dis_flat,color='black',alpha=0.2,s=6, label="normal")
+    ax3.tick_params(axis='x', labelsize=20)
+    ax3.tick_params(axis='y', labelsize=20)
 
-    ax3.set_xlabel(r"true $\delta_{ij}$", fontsize=18)
-    ax3.set_ylabel(r'$\delta_{ij}$', fontsize=14)
+    ax3.set_xlabel(r"true $\delta_{ij}$", fontsize=25)
+    ax3.set_ylabel(r'actual $\delta_{ij}$', fontsize=25)
     ax3.set_xlim(5,50)
     ax3.set_ylim(2,70)
-    ax3.set_title("(C) Shepard diagram", fontsize=15)
-    ax3.legend()
+    ax3.set_title("Shepard diagram", fontsize=28)
+    ax3.text(-0.1, 1.05, 'C', transform=ax3.transAxes, 
+        size=30, weight='bold')
+    ax3.yaxis.tick_right()
+    ax3.yaxis.set_label_position("right")
+
+    ax3.legend(fontsize=25)
 
     plt.savefig(dim10_fig_path)
     plt.close()

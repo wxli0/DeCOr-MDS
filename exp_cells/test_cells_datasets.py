@@ -67,8 +67,8 @@ for i in range(1, len(hcolls)):
 plt.figure(0)
 fig, ax1 = plt.subplots()
 color = 'red'
-ax1.set_xlabel(r'dimension tested $n$')
-ax1.set_ylabel(r'median of heights', color = color)
+ax1.set_xlabel(r'dimension tested $n$', fontsize=15)
+ax1.set_ylabel(r'median of heights', color = color, fontsize=15)
 ax1.scatter(list(range(start_dim, end_dim+1)), h_meds, color = color, s=6)
 ax1.tick_params(axis ='y', labelcolor = color)
  
@@ -76,9 +76,10 @@ ax1.tick_params(axis ='y', labelcolor = color)
 ax2 = ax1.twinx()
  
 color = 'black'
-ax2.set_ylabel(r'heights median ratio: $h_{n-1}/h_n$', color = color)
+ax2.set_ylabel(r'heights median ratio: $h_{n-1}/h_n$', color = color, fontsize=15)
 ax2.plot(list(range(start_dim+1, end_dim+1)), h_med_ratios, color = color)
 ax2.tick_params(axis ='y', labelcolor = color)
+plt.tight_layout(pad=2)
  
 # Show plot
 plt.savefig("./outputs/cells_"+file_id+"_ratio.png")
@@ -114,14 +115,19 @@ print("outlier_indices are: ", outlier_indices)
 
 fig = plt.figure(figsize=(15, 8))
 
+invalid_outlier_indices = [0,4,7]
+
 for i in range(nb_cells):
     outlier_idx = outlier_indices[i]
     cell = target_cells[outlier_idx]
     fig.add_subplot(2, nb_cells, i + 1)
     # plt.gca().set_title(i)
-    plt.plot(cell[:, 0], cell[:, 1], color="red")
+    if i in invalid_outlier_indices:
+        plt.plot(cell[:, 0], cell[:, 1], color="cornflowerblue")
+    else:
+        plt.plot(cell[:, 0], cell[:, 1], color="red")
     if i == nb_cells//2:
-        plt.title("(A) Outlier cells", fontdict={'fontsize': 20})
+        plt.title("Outlier cells", fontdict={'fontsize': 25})
     plt.axis('equal')
     plt.axis('off')
     
@@ -131,7 +137,7 @@ for i in range(nb_cells):
     fig.add_subplot(2, nb_cells, i + nb_cells + 1)
     plt.plot(cell[:, 0], cell[:, 1], color="black")
     if i == nb_cells//2:
-        plt.title("(B) Normal cells", fontdict={'fontsize': 20})
+        plt.title("Normal cells", fontdict={'fontsize': 25})
     plt.axis('equal')
     plt.axis('off')
 
@@ -160,6 +166,7 @@ plt.close()
 # plt.savefig('./outputs/cells_'+str(blue_outlier_idx)+".png")
 
 """ Computes the corrected coordinates after removing the abnormal outliers """
+cMDS_fig_path = "outputs/cells_"+file_id+"_cMDS_combined.png"
 remove_indices = [42, 134, 203] # detected from cells_control_outlier_normal.png
 remove_corr_dis_sq, _ = \
     remove_correct_proj(target_matrix, feature_num, subspace_dim, outlier_indices, remove_indices)
@@ -168,26 +175,35 @@ print("remove_corr_pairwise_dis shape is:", remove_corr_dis_sq.shape)
 remove_outlier_indices = update_outlier_index(outlier_indices, remove_indices)
 remove_normal_indices=[i for i in range(remove_corr_dis_sq.shape[0]) if i not in remove_outlier_indices] # list of normal points 
 
+fig, (ax1, ax2 ) = plt.subplots(1, 2, figsize=(9,4))
 """ Plot cMDS embedding in 2D using the two largest eigenvalues. The corrected \
     distance matrix are obtained by not removing the abnormal outliers """
-plt.figure(5)
 _, _, corr_Xe = cMDS(corr_dis_sq)
-plt.plot(corr_Xe[normal_indices,0],corr_Xe[normal_indices,1],'.', color='black', label="normal")
-plt.plot(corr_Xe[outlier_indices,0],corr_Xe[outlier_indices,1],'.',color='red', label="outlier")
-plt.title("cMDS embedding (corrected and without abnormal outliers removed)")
-plt.legend()
-plt.savefig("outputs/cells_"+file_id+"_cMDS_corrected.png")
-plt.close()
+ax1.plot(corr_Xe[normal_indices,0],corr_Xe[normal_indices,1],'.', color='black', label="normal")
+ax1.plot(corr_Xe[outlier_indices,0],corr_Xe[outlier_indices,1],'.',color='red', label="outlier")
+ax1.set_title("Correted cMDS embedding \n without invalid outliers removed)", fontsize=14)
+ax1.text(-0.1, 1.05, 'A', transform=ax1.transAxes, 
+    size=15, weight='bold')
+# ax1.axis('equal')
+ax1.legend()
+# plt.savefig("outputs/cells_"+file_id+"_cMDS_corrected.png")
+# plt.close()
+
+
+
 
 """ Plot cMDS embedding in 2D using the two largest eigenvalues. The corrected \
     distance matrix are obtained by removing the abnormal outliers """
-plt.figure(5)
+# plt.figure(5)
 _, _, remove_Xe = cMDS(remove_corr_dis_sq)
-plt.plot(remove_Xe[remove_normal_indices,0],remove_Xe[remove_normal_indices,1],'.', color='black', label="normal")
-plt.plot(remove_Xe[remove_outlier_indices,0],remove_Xe[remove_outlier_indices,1],'.',color='red', label="outlier")
-plt.title("cMDS embedding (corrected and with abnormal outliers removed)")
-plt.legend()
-plt.savefig("outputs/cells_"+file_id+"_cMDS_removed_corrected.png")
-plt.close()
+ax2.plot(remove_Xe[remove_normal_indices,0],remove_Xe[remove_normal_indices,1],'.', color='black', label="normal")
+ax2.plot(remove_Xe[remove_outlier_indices,0],remove_Xe[remove_outlier_indices,1],'.',color='red', label="outlier")
+ax2.set_title("Corrected cMDS embedding \n with invalid outliers removed)", fontsize=14)
+ax1.text(-0.1, 1.05, 'B', transform=ax2.transAxes, 
+    size=15, weight='bold')
+ax2.legend()
+plt.tight_layout(w_pad=2)
+plt.savefig(cMDS_fig_path)
+# plt.close()
 
 
