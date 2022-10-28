@@ -108,7 +108,7 @@ if not os.path.exists(cross_fig_path):
     # plot original graph
     va, ve, Xe = cMDS(ori_dis_sq)
     ax1.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black', label="normal")
-    ax1.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red', label="outlier")
+    ax1.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red', label="selected")
     ax1.set_title("True data")
     ax1.text(-0.1, 1.05, 'A', transform=ax1.transAxes, 
             size=15, weight='bold')
@@ -120,6 +120,7 @@ if not os.path.exists(cross_fig_path):
     va, ve, Xe = cMDS(out_dis_sq)
     ax2.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black', label="normal")
     ax2.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red', label="outlier")
+    ax2.legend()
     ax2.grid()
     ax2.set_title("Outliers added")
     ax2.text(-0.1, 1.05, 'B', transform=ax2.transAxes, 
@@ -129,6 +130,7 @@ if not os.path.exists(cross_fig_path):
     va, ve, Xe = cMDS(corr_dis_sq)   
     ax3.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black', label="normal")
     ax3.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red', label="outlier")
+    ax3.legend()
     ax3.set_title("Corrected data")
     ax3.text(-0.1, 1.05, 'C', transform=ax3.transAxes, 
             size=15, weight='bold')
@@ -207,6 +209,7 @@ if not os.path.exists(cross_fig_path):
         else:
             ax2.scatter(e[0],e[1],e[2], s=5, color='black', label="normal")
     
+    legend_without_duplicate_labels(ax2)
     plt.savefig("./outputs/synthetic_cross_3D.png")
     plt.close()
 
@@ -347,6 +350,7 @@ if not os.path.exists(dim2_fig_path) or  not os.path.exists(before_correction_dy
     ax2.set_zlim3d(-6, 6)
     ax2.set_title("Corrected data")
     ax2.text2D(0, 1, "B", transform=ax2.transAxes, size=15, weight='bold')
+    
 
     # ax2.text(2, -10, 'B', transform=ax2.transAxes, 
     #     size=15, weight='bold')
@@ -360,7 +364,7 @@ if not os.path.exists(dim2_fig_path) or  not os.path.exists(before_correction_dy
             ax2.scatter(e[0],e[1],e[2], s=5, color='red', label="outlier")
         else:
             ax2.scatter(e[0],e[1],e[2], s=5, color='black', label="normal")
-    
+    legend_without_duplicate_labels(ax2)
     plt.savefig("./outputs/synthetic_dim2_3D.png")
     plt.close()
 
@@ -392,7 +396,7 @@ if not os.path.exists(dim2_fig_path) or  not os.path.exists(before_correction_dy
     # plot original graph
     va, ve, Xe = cMDS(ori_dis_sq)
     ax1.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black', label="normal")
-    ax1.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red',label="outlier")
+    ax1.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red',label="selected")
     ax1.set_title("True data")
     ax1.text(-0.1, 1.05, 'A', transform=ax1.transAxes, 
         size=15, weight='bold')
@@ -406,6 +410,7 @@ if not os.path.exists(dim2_fig_path) or  not os.path.exists(before_correction_dy
     ax2.text(-0.1, 1.05, 'B', transform=ax2.transAxes, 
         size=15, weight='bold')
     ax2.grid()
+    ax2.legend()
     ax2.set_title("Outliers added")
 
     # plot correct outliers 
@@ -416,6 +421,7 @@ if not os.path.exists(dim2_fig_path) or  not os.path.exists(before_correction_dy
     ax2.text(-0.1, 1.05, 'C', transform=ax3.transAxes, 
         size=15, weight='bold')
     ax3.grid()
+    ax3.legend()
     plt.savefig(dim2_fig_path)
     plt.close()
 
@@ -522,8 +528,8 @@ if not os.path.exists(dim10_fig_path):
     ax1.set_ylabel("frequency", fontsize=25)
     ax1.set_xlabel(r'median of the heights $h^{n}_i$', fontsize=25)
     ax1.set_title("Distribution of medians of heights", fontsize=28)
-    ax1.text(-0.1, 1.05, 'A', transform=ax1.transAxes, 
-        size=30, weight='bold')
+    ax1.text(-0.1, 1.15, 'A', transform=ax1.transAxes, 
+        size=37, weight='bold')
     ax1.legend(fontsize=25)
 
 
@@ -555,8 +561,8 @@ if not os.path.exists(dim10_fig_path):
     ax2.tick_params(axis ='y', labelcolor = color)
     ax2.tick_params(axis='x', labelsize=20)
     ax2.tick_params(axis='y', labelsize=20)
-    ax2.text(-0.1, 1.05, 'B', transform=ax2.transAxes, 
-        size=30, weight='bold')
+    ax2.text(-0.1, 1.15, 'B', transform=ax2.transAxes, 
+        size=37, weight='bold')
     ax2.set_title("Dimensionality inference", fontsize=28)
     
     # Adding Twin Axes to plot using dataset_2
@@ -596,8 +602,8 @@ if not os.path.exists(dim10_fig_path):
     ax3.set_xlim(5,50)
     ax3.set_ylim(2,70)
     ax3.set_title("Shepard diagram", fontsize=28)
-    ax3.text(-0.1, 1.05, 'C', transform=ax3.transAxes, 
-        size=30, weight='bold')
+    ax3.text(-0.1, 1.15, 'C', transform=ax3.transAxes, 
+        size=37, weight='bold')
     ax3.yaxis.tick_right()
     ax3.yaxis.set_label_position("right")
 
