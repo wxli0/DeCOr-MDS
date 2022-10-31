@@ -126,8 +126,8 @@ for i in range(nb_cells):
         plt.plot(cell[:, 0], cell[:, 1], color="cornflowerblue")
     else:
         plt.plot(cell[:, 0], cell[:, 1], color="red")
-    if i == nb_cells//2:
-        plt.title("Outlier cells", fontdict={'fontsize': 20})
+    # if i == nb_cells//2:
+    #     plt.title("Outlier cells", fontdict={'fontsize': 20})
     plt.axis('equal')
     plt.axis('off')
     
@@ -136,8 +136,8 @@ for i in range(nb_cells):
     cell = target_cells[normal_idx]
     fig.add_subplot(2, nb_cells, i + nb_cells + 1)
     plt.plot(cell[:, 0], cell[:, 1], color="black")
-    if i == nb_cells//2:
-        plt.title("Normal cells", fontdict={'fontsize': 20})
+    # if i == nb_cells//2:
+    #     plt.title("Normal cells", fontdict={'fontsize': 20})
     plt.axis('equal')
     plt.axis('off')
 

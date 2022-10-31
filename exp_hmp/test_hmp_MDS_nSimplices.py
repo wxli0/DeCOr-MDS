@@ -240,7 +240,7 @@ if not os.path.exists(axes_figure_output_path):
             ax1.set_xlabel('axis ' + str(first_dim), size=10)
             ax1.set_ylabel('axis ' + str(second_dim), size=10)
             ax1.tick_params(labelsize=10)
-            ax1.legend()
+            ax1.legend(fontsize=8)
     ax1.text(-0.1, 1.05, 'A', transform=ax1.transAxes, size=10, weight='bold')
     ax1.set_title(r'$Q_{E}+MDS$', size=10)   
 
@@ -263,7 +263,7 @@ if not os.path.exists(axes_figure_output_path):
             ax2.set_xlabel('axis ' + str(first_dim), size=10)
             ax2.set_ylabel('axis ' + str(second_dim), size=10)
             ax2.tick_params(labelsize=10)
-            ax2.legend()
+            ax2.legend(fontsize=8)
     ax2.text(-0.1, 1.05, 'B', transform=ax2.transAxes, size=10, weight='bold')
     ax2.set_title(r'$Q_{E}+nSimplices$', size=10)   
 
