@@ -557,7 +557,9 @@ if not os.path.exists(dim10_fig_path):
     ax2.set_xlabel(r'dimension tested $n$', fontsize=25)
     ax2.set_ylabel(r'median of heights', color = color, fontsize=25)
     ax2.set_xticks(np.arange(2, 16, 1))
-    ax2.scatter(list(range(start_dim, end_dim+1)), h_meds, color = color, s=6)
+    ax2.scatter(list(range(start_dim, end_dim+1)), h_meds, color = color, s=10)
+    ax2.plot(list(range(start_dim, end_dim+1)), h_meds, color=color)
+
     ax2.tick_params(axis ='y', labelcolor = color)
     ax2.tick_params(axis='x', labelsize=20)
     ax2.tick_params(axis='y', labelsize=20)
@@ -574,10 +576,6 @@ if not os.path.exists(dim10_fig_path):
     sub_ax2.tick_params(axis ='y', labelcolor = color)
     sub_ax2.tick_params(axis='x', labelsize=20)
     sub_ax2.tick_params(axis='y', labelsize=20)
-    
-    # # Show plot
-    # plt.savefig("./outputs/synthetic_dim10_ratio.png")
-    # plt.close()
 
     # In[24]:
 
@@ -592,13 +590,13 @@ if not os.path.exists(dim10_fig_path):
     # ax3.rc('xtick', labelsize=SMALL_SIZE)    # fontsize of the tick labels
     # ax3.rc('ytick', labelsize=SMALL_SIZE)    # fontsize of the tick labels
 
-    ax3.scatter(ori_dis_flat,out_dis_flat,color='red',alpha=0.8,s=6, label="outlier")
-    ax3.scatter(ori_dis_flat,corr_dis_flat,color='black',alpha=0.2,s=6, label="normal")
+    ax3.scatter(ori_dis_flat,out_dis_flat,color='red',alpha=0.8,s=6, label="MDS")
+    ax3.scatter(ori_dis_flat,corr_dis_flat,color='black',alpha=0.2,s=6, label="nSimplices")
     ax3.tick_params(axis='x', labelsize=20)
     ax3.tick_params(axis='y', labelsize=20)
 
-    ax3.set_xlabel(r"true $\delta_{ij}$", fontsize=25)
-    ax3.set_ylabel(r'actual $\delta_{ij}$', fontsize=25)
+    ax3.set_xlabel("original pairwise distance", fontsize=25)
+    ax3.set_ylabel("embedded pairwise distance", fontsize=25)
     ax3.set_xlim(5,50)
     ax3.set_ylim(2,70)
     ax3.set_title("Shepard diagram", fontsize=28)

@@ -308,7 +308,7 @@ def find_subspace_dim(pairwise_dis, dim_start, dim_end):
     
     # Correct the bias obtained by subspace dimension
     outlier_prop = outlier_indices.shape[0]/subspace_height_size
-    subspace_dim = subspace_dim - int(subspace_dim * outlier_prop) 
+    subspace_dim = subspace_dim - int((subspace_dim+1) * outlier_prop) 
 
     return int(subspace_dim), outlier_indices
 

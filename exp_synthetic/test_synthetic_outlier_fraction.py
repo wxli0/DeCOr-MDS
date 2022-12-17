@@ -30,13 +30,11 @@ true_dim = 40
 num_components = 50
 df_prev = df_dim40
 for i in range(len(res_outlier_indices_list)):
-    print("iteration:", i)
     res_outlier_indices = \
         range(int(res_outlier_indices_list[i] * df_prev.shape[0]), \
             int((res_outlier_indices_list[i]+outlier_indices_gap) * df_prev.shape[0]))
     df_prev = sim_outliers(df_prev, prop_incre, 40, 45, \
         res_outlier_indices = res_outlier_indices)
-    df_prev.to_csv("outputs/iteration"+str(i)+".csv")
     out_dis=pdist(df_prev) # pairwise distance in tab (with outliers added)
     out_dis_sq=squareform(out_dis) # squared matrix form of D
     subspace_dim, outlier_indices = find_subspace_dim(out_dis_sq, 30, df_prev.shape[1])
@@ -51,7 +49,7 @@ plt.plot(props, dim_pred_diff, c="red", label = "after correction")
 plt.plot(props, dim_raw_diff, c="black", label = "before correction")
 plt.axhline(y=0, color='black', linestyle='dotted', label="baseline")
 plt.xticks(props)
-plt.xlabel(r'fraction of outliers $p$', fontsize=15)
-plt.ylabel(r'$\bar{n}-d^{*}$', fontsize=15)
-plt.legend(fontsize=15)
+plt.xlabel(r'fraction of outliers $p$', fontsize=30)
+plt.ylabel(r'$\bar{n}-d^{*}$', fontsize=30)
+plt.legend(fontsize=30)
 plt.savefig("./outputs/synthetic_dim40.png")

@@ -69,7 +69,8 @@ fig, ax1 = plt.subplots()
 color = 'red'
 ax1.set_xlabel(r'dimension tested $n$', fontsize=15)
 ax1.set_ylabel(r'median of heights', color = color, fontsize=15)
-ax1.scatter(list(range(start_dim, end_dim+1)), h_meds, color = color, s=6)
+ax1.scatter(list(range(start_dim, end_dim+1)), h_meds, color = color, s=10)
+ax1.plot(list(range(start_dim, end_dim+1)), h_meds, color=color)
 ax1.tick_params(axis ='y', labelcolor = color)
  
 # Adding Twin Axes to plot using dataset_2
@@ -105,12 +106,13 @@ target_indexes = [int(x) for x in target_indexes]
 print(target_indexes)
 target_cells = cells[target_indexes,:,:]
 normal_indices=[i for i in range(target_matrix.shape[0]) if i not in outlier_indices] # list of normal points 
+print("number of normal cells is:", len(normal_indices))
 
 """ Plot outlier cells against normal cells """
 
 plt.figure(2)
 
-nb_cells = len(outlier_indices)
+nb_cells = len(outlier_indices) # in the main manuscript, only select the first 10 outliers
 print("outlier_indices are: ", outlier_indices)
 
 fig = plt.figure(figsize=(15, 8))
