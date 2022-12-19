@@ -146,26 +146,33 @@ for i in range(nb_cells):
 plt.savefig("./outputs/cells_"+file_id+"_outlier_normal.png")
 plt.close()
 
-# """ Plot cMDS embedding in 2D using the two largest eigenvalues """
 
-# plt.figure(3)
-# blue_outlier_idx = -1
-# _, _, Xe = cMDS(target_matrix)
-# plt.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black')
-# plt.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red')
-# for i in range(Xe.shape[0]):
-#     if 0.6 < Xe[i, 0] and Xe[i, 0] < 0.7:
-#         blue_outlier_idx = i
-# plt.title("cMDS embedding")
-# plt.savefig("outputs/cells_"+file_id+"_cMDS.png")
-# plt.close()
+""" Plot cMDS embedding in 2D using the two largest eigenvalues """
+# plot MDS vs MDS + nSimplices (with correct) + MDS in 2D
 
-# fig = plt.figure(4)
-# plt.plot(cell[:, 0], cell[:, 1], color="red")
-# plt.axis('equal')
-# plt.axis('off')
-# plt.title('blue cMDS outlier but not detected')
-# plt.savefig('./outputs/cells_'+str(blue_outlier_idx)+".png")
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(8,3))
+
+# plot original graphs with outliers added 
+va, ve, Xe = cMDS(target_matrix)
+ax1.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black', label="normal")
+ax1.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red', label="outlier")
+ax1.text(-0.1, 1.05, 'A', transform=ax1.transAxes, 
+    size=15, weight='bold')
+ax1.grid()
+ax1.legend()
+ax1.set_title("Outliers added")
+
+# plot corrected outliers 
+va, ve, Xe = cMDS(corr_dis_sq)   
+ax2.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black', label="normal")
+ax2.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red', label="outlier")
+ax2.set_title("Corrected data")
+ax2.text(-0.1, 1.05, 'B', transform=ax2.transAxes, 
+    size=15, weight='bold')
+ax2.grid()
+ax2.legend()
+plt.savefig("./outputs/cells_"+file_id+"_2D.png")
+plt.close()
 
 """ Computes the corrected coordinates after removing the abnormal outliers """
 cMDS_fig_path = "outputs/cells_"+file_id+"_cMDS_combined.png"

@@ -413,7 +413,7 @@ if not os.path.exists(dim2_fig_path) or  not os.path.exists(before_correction_dy
     ax2.legend()
     ax2.set_title("Outliers added")
 
-    # plot correct outliers 
+    # plot corrected outliers 
     va, ve, Xe = cMDS(corr_dis_sq)   
     ax3.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black', label="normal")
     ax3.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red', label="outlier")
