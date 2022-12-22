@@ -43,9 +43,11 @@ for i in range(len(res_outlier_indices_list)):
     print("subspace_dim is:", subspace_dim)
 
 
-plt.figure(figsize=(6.4, 5.2))
+plt.figure(figsize=(7, 5.2))
 props = np.arange(prop_incre, prop_incre+len(dim_pred_diff)*prop_incre, prop_incre)
+plt.scatter(props, dim_pred_diff, color = "red", s=10)
 plt.plot(props, dim_pred_diff, c="red", label = "after correction")
+plt.scatter(props, dim_raw_diff, color = "black", s=10)
 plt.plot(props, dim_raw_diff, c="black", label = "before correction")
 plt.axhline(y=0, color='black', linestyle='dotted', label="baseline")
 plt.xticks(props)

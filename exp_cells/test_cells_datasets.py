@@ -108,7 +108,7 @@ target_cells = cells[target_indexes,:,:]
 normal_indices=[i for i in range(target_matrix.shape[0]) if i not in outlier_indices] # list of normal points 
 print("number of normal cells is:", len(normal_indices))
 
-""" Plot outlier cells against normal cells """
+""" Plot selected outlier cells against normal cells """
 
 plt.figure(2)
 
@@ -144,6 +144,51 @@ for i in range(nb_cells):
     plt.axis('off')
 
 plt.savefig("./outputs/cells_"+file_id+"_outlier_normal.png")
+plt.close()
+
+""" Plot all outlier cells """
+cells_per_row = 10
+
+nb_cells = len(outlier_indices) # in the main manuscript, only select the first 10 outliers
+print("outlier_indices are: ", outlier_indices)
+
+fig, axis = plt.subplots(2, cells_per_row)
+
+for i in range(nb_cells):
+    row = i // cells_per_row
+    col = i % cells_per_row
+    outlier_idx = outlier_indices[i]
+    cell = target_cells[outlier_idx]
+    axis[row, col].plot(cell[:, 0], cell[:, 1], color="cornflowerblue")
+    axis[row, col].axis('equal')
+    axis[row, col].axis('off')
+
+for i in range(nb_cells, 2*cells_per_row):
+    row = i // cells_per_row
+    col = i % cells_per_row
+    axis[row, col].axis('equal')
+    axis[row, col].axis('off')
+
+plt.savefig("./outputs/cells_"+file_id+"_outlier.png")
+plt.close()
+
+
+""" Plot the first 100 normal cells """
+
+fig, axis = plt.subplots(10, cells_per_row)
+
+nb_cells = len(normal_indices) # in the main manuscript, only select the first 10 outliers
+
+for i in range(10*cells_per_row):
+    row = i // cells_per_row
+    col = i % cells_per_row
+    normal_idx = normal_indices[i]
+    cell = target_cells[normal_idx]
+    axis[row, col].plot(cell[:, 0], cell[:, 1], color="black")
+    axis[row, col].axis('equal')
+    axis[row, col].axis('off')
+
+plt.savefig("./outputs/cells_"+file_id+"_normal.png")
 plt.close()
 
 
