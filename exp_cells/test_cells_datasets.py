@@ -204,6 +204,8 @@ ax1.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red', label="out
 ax1.text(-0.1, 1.05, 'A', transform=ax1.transAxes, 
     size=15, weight='bold')
 ax1.grid()
+ax1.set_xlim([-0.5, 0.7])
+ax1.set_ylim([-0.5, 0.5])
 ax1.legend()
 ax1.set_title("Outliers added")
 
@@ -215,6 +217,8 @@ ax2.set_title("Corrected data")
 ax2.text(-0.1, 1.05, 'B', transform=ax2.transAxes, 
     size=15, weight='bold')
 ax2.grid()
+ax2.set_xlim([-0.5, 0.7])
+ax2.set_ylim([-0.5, 0.5])
 ax2.legend()
 plt.savefig("./outputs/cells_"+file_id+"_2D.png")
 plt.close()
