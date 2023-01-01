@@ -11,7 +11,7 @@ hmp_df = data.frame(read.csv(file.path(data_dir, "hmp_v13lqphylotypePheno_target
 
 # phenos = list("THROAT", "STOOL", "MOUTH", "EARS", "NOSE", "ELBOWS", "VAGINA")
 target_phenos = list("STOOL", "VAGINA")
-methods = list("QE_nSimplices_target_cMDS", "NB_nSimplices_target_cMDS", "QE_target_MDS_cMDS", "NB_target_MDS_cMDS")
+methods = list("target_QE_nSimplices_cMDS", "target_NB_nSimplices_cMDS", "target_QE_MDS_cMDS", "target_NB_MDS_cMDS")
 
 
 for (method in methods) {
