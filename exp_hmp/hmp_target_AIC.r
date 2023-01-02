@@ -11,7 +11,11 @@ hmp_df = data.frame(read.csv(file.path(data_dir, "hmp_v13lqphylotypePheno_target
 
 # phenos = list("THROAT", "STOOL", "MOUTH", "EARS", "NOSE", "ELBOWS", "VAGINA")
 target_phenos = list("STOOL", "VAGINA")
-methods = list("target_QE_nSimplices_cMDS", "target_NB_nSimplices_cMDS", "target_QE_MDS_cMDS", "target_NB_MDS_cMDS")
+target_id = "SV"
+methods = list(paste0("target_", target_id, "_QE_nSimplices_cMDS"), 
+    paste0("target_", target_id, "_NB_nSimplices_cMDS"), 
+    paste0("target_", target_id, "_QE_MDS_cMDS"), 
+    paste0("target_", target_id, "_NB_MDS_cMDS"))
 
 
 for (method in methods) {
@@ -29,8 +33,15 @@ for (method in methods) {
     phenoSingleVector <- hmp_df[["STOOL"]]*2+hmp_df[["VAGINA"]]*7
 
     phenoSV <- phenoSingleVector
-    phenoSV[phenoSingleVector==2] <- "STOOL"
-    phenoSV[phenoSingleVector==7] <- "VAGINA"
+    if (is.element('STOOL', target_phenos)) {
+        phenoSV[phenoSingleVector==2] <- "STOOL"
+    }
+    if (is.element('VAGINA', target_phenos)) {
+        phenoSV[phenoSingleVector==7] <- "VAGINA"
+    }
+    if (is.element('THROAT', target_phenos)) {
+        phenoSV[phenoSingleVector==1] <- "THROAT"
+    }
     phenoSV <- as.factor(phenoSV)
 
     mn_model = multinom(phenoSV ~ V1+V2+V3+V4+V5+V6+V7+V8+V9+V10, data = Xe_df)

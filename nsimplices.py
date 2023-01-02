@@ -246,7 +246,7 @@ def correct_proj(euc_coord, outlier_indices, subspace_dim):
     return corr_pairwise_dis, corr_coord
 
 
-def find_subspace_dim(pairwise_dis, dim_start, dim_end):
+def find_subspace_dim(pairwise_dis, dim_start, dim_end, std_multi):
     """
     Find the subspace dimension formed by the pairwise distance matrix pairwise_dis
     Parameters
@@ -257,6 +257,8 @@ def find_subspace_dim(pairwise_dis, dim_start, dim_end):
         Lowest dimension to test (inclusive)
     dim_end: int, default 6
         Largest dimension to test (inclusive)
+    std_factor: int
+        The multiplier before std when computing the threshold to determine outliers
 
     Returns
     -------
@@ -297,7 +299,7 @@ def find_subspace_dim(pairwise_dis, dim_start, dim_end):
     subspace_std = stats.median_abs_deviation(subspace_heights)
     subspace_mean = np.mean(subspace_heights)
     
-    thres = subspace_mean + 3 * subspace_std # TODO: consider make 5 a parameter
+    thres = subspace_mean + std_multi * subspace_std # TODO: consider make 5 a parameter
     print("thres is:", thres, "mean is:", subspace_mean, "std is:", subspace_std)
     all_indices = np.array(range(subspace_height_size))
     outlier_indices = all_indices[subspace_heights > thres]
@@ -313,7 +315,7 @@ def find_subspace_dim(pairwise_dis, dim_start, dim_end):
     return int(subspace_dim), outlier_indices
 
 
-def nsimplices(pairwise_dis, feature_num, dim_start, dim_end, euc_coord=None, correct=True):
+def nsimplices(pairwise_dis, feature_num, dim_start, dim_end, euc_coord=None, correct=True, std_multi=3):
     """
     The nSimplices method
     Parameters
@@ -332,6 +334,8 @@ def nsimplices(pairwise_dis, feature_num, dim_start, dim_end, euc_coord=None, co
         MDS to transform pairwise_dis 
     correct: bool, default True
         Correct outliers or not
+    std_factor: int, default 3
+        The multiplier before std when computing the threshold to determine outliers
 
     Returns
     -------
@@ -345,7 +349,7 @@ def nsimplices(pairwise_dis, feature_num, dim_start, dim_end, euc_coord=None, co
         The list of corrected coordinates
     """
     
-    subspace_dim, outlier_indices = find_subspace_dim(pairwise_dis, dim_start, dim_end)
+    subspace_dim, outlier_indices = find_subspace_dim(pairwise_dis, dim_start, dim_end, std_multi)
 
     # if not correct outliers, set the outliers input to nSipmlices to be empty
     correct_outlier_indices = outlier_indices
@@ -410,7 +414,7 @@ def remove_correct_proj(pairwise_dis, feature_num, subspace_dim, outlier_indices
         pairwise_dis = np.array(pairwise_dis)
         pairwise_dis = np.delete(pairwise_dis, remove_indices, 0)
         pairwise_dis = np.delete(pairwise_dis, remove_indices, 1)
-        MDS_model = manifold.MDS(n_components=feature_num, max_iter=100000000000,dissimilarity='precomputed')
+        MDS_model = manifold.MDS(n_components=feature_num, max_iter=100000000000, dissimilarity='precomputed')
         euc_coord = MDS_model.fit_transform(pairwise_dis)
         corr_pairwise_dis, corr_coord = correct_proj(euc_coord, outlier_indices, subspace_dim)
     
