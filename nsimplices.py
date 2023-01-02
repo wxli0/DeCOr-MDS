@@ -313,7 +313,7 @@ def find_subspace_dim(pairwise_dis, dim_start, dim_end):
     return int(subspace_dim), outlier_indices
 
 
-def nsimplices(pairwise_dis, feature_num, dim_start, dim_end, euc_coord=None):
+def nsimplices(pairwise_dis, feature_num, dim_start, dim_end, euc_coord=None, correct=True):
     """
     The nSimplices method
     Parameters
@@ -330,6 +330,8 @@ def nsimplices(pairwise_dis, feature_num, dim_start, dim_end, euc_coord=None):
         Euclidean coordinates of the dataset containing the outliers, default None.\
         If provided, pass euc_coord directly into correct_proj; otherwise, use \
         MDS to transform pairwise_dis 
+    correct: bool, default True
+        Correct outliers or not
 
     Returns
     -------
@@ -344,15 +346,20 @@ def nsimplices(pairwise_dis, feature_num, dim_start, dim_end, euc_coord=None):
     """
     
     subspace_dim, outlier_indices = find_subspace_dim(pairwise_dis, dim_start, dim_end)
+
+    # if not correct outliers, set the outliers input to nSipmlices to be empty
+    correct_outlier_indices = outlier_indices
+    if not correct:
+        correct_outlier_indices = []
     
     # Correction of outliers using MDS, PCA
     corr_coord = None
     if euc_coord is not None: # no need to apply MDS
-        corr_pairwise_dis, corr_coord = correct_proj(euc_coord, outlier_indices, subspace_dim)
+        corr_pairwise_dis, corr_coord = correct_proj(euc_coord, correct_outlier_indices, subspace_dim)
     else:
         MDS_model = manifold.MDS(n_components=feature_num, max_iter=100000000000,dissimilarity='precomputed')
-        euc_coord = MDS_model.fit_transform(pairwise_dis)
-        corr_pairwise_dis, corr_coord = correct_proj(euc_coord, outlier_indices, subspace_dim)
+        euc_coord = MDS_model.fit_transform(pairwise_dis) # TODO: problem with this line
+        corr_pairwise_dis, corr_coord = correct_proj(euc_coord, correct_outlier_indices, subspace_dim)
     
     return outlier_indices, subspace_dim , corr_pairwise_dis, corr_coord
 
