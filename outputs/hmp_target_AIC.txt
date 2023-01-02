@@ -1389,1074 +1389,388 @@ iter  10 value 8.222386
 final  value 6.245234 
 converged
 [1] "target_NB_nSimplices_cMDS MN model AIC for is: 6.20540071828994"
-[1] "target_QE_MDS_cMDS GLM model AIC for STOOL is: 6.00000062672933"
-[1] "target_QE_MDS_cMDS GLM model AIC for VAGINA is: 6.00000062672933"
+[1] "target_QE_MDS_cMDS GLM model AIC for STOOL is: 6.00000416918557"
+[1] "target_QE_MDS_cMDS GLM model AIC for VAGINA is: 6.00000416918556"
 # weights:  12 (11 variable)
 initial  value 228.738570 
-iter  10 value 1.467685
-iter  20 value 0.831865
-iter  30 value 0.049900
-final  value 0.000094 
+iter  10 value 0.448910
+iter  20 value 0.244835
+iter  30 value 0.224584
+iter  40 value 0.010721
+final  value 0.000087 
 converged
 # weights:  11 (10 variable)
 initial  value 228.738570 
-final  value 195.345088 
+final  value 221.668870 
 converged
 # weights:  11 (10 variable)
 initial  value 228.738570 
-iter  10 value 44.632864
-final  value 44.598981 
+iter  10 value 3.982699
+iter  20 value 3.376474
+final  value 3.375136 
 converged
 # weights:  11 (10 variable)
 initial  value 228.738570 
-iter  10 value 2.796684
-iter  20 value 1.362090
-iter  30 value 0.092247
-final  value 0.000091 
+iter  10 value 1.526973
+iter  20 value 1.445508
+iter  30 value 0.840276
+iter  40 value 0.078653
+iter  50 value 0.007220
+iter  60 value 0.000118
+iter  60 value 0.000093
+iter  60 value 0.000093
+final  value 0.000093 
 converged
 # weights:  11 (10 variable)
 initial  value 228.738570 
-iter  10 value 1.467685
-iter  20 value 0.831865
-iter  30 value 0.013809
-final  value 0.000054 
+iter  10 value 0.448910
+iter  20 value 0.244835
+iter  30 value 0.191925
+iter  40 value 0.001269
+final  value 0.000089 
 converged
 # weights:  11 (10 variable)
 initial  value 228.738570 
-iter  10 value 1.467685
-iter  20 value 0.831865
-iter  30 value 0.013809
-final  value 0.000054 
+iter  10 value 0.448910
+iter  20 value 0.244835
+iter  30 value 0.191925
+iter  40 value 0.001269
+final  value 0.000089 
 converged
 # weights:  11 (10 variable)
 initial  value 228.738570 
-iter  10 value 1.467685
-iter  20 value 0.831865
-iter  30 value 0.013809
-final  value 0.000054 
+iter  10 value 0.448910
+iter  20 value 0.244835
+iter  30 value 0.191925
+iter  40 value 0.001269
+final  value 0.000089 
 converged
 # weights:  11 (10 variable)
 initial  value 228.738570 
-iter  10 value 1.467685
-iter  20 value 0.831865
-iter  30 value 0.013809
-final  value 0.000054 
+iter  10 value 0.448910
+iter  20 value 0.244835
+iter  30 value 0.191925
+iter  40 value 0.001269
+final  value 0.000089 
 converged
 # weights:  11 (10 variable)
 initial  value 228.738570 
-iter  10 value 1.467685
-iter  20 value 0.831865
-iter  30 value 0.013809
-final  value 0.000054 
+iter  10 value 0.448910
+iter  20 value 0.244835
+iter  30 value 0.191925
+iter  40 value 0.001269
+final  value 0.000089 
 converged
 # weights:  11 (10 variable)
 initial  value 228.738570 
-iter  10 value 1.467685
-iter  20 value 0.831865
-iter  30 value 0.013809
-final  value 0.000054 
+iter  10 value 0.448910
+iter  20 value 0.244835
+iter  30 value 0.191925
+iter  40 value 0.001269
+final  value 0.000089 
 converged
 # weights:  11 (10 variable)
 initial  value 228.738570 
-iter  10 value 1.467685
-iter  20 value 0.831865
-iter  30 value 0.013809
-final  value 0.000054 
+iter  10 value 0.448910
+iter  20 value 0.244835
+iter  30 value 0.191925
+iter  40 value 0.001269
+final  value 0.000089 
 converged
 # weights:  11 (10 variable)
 initial  value 228.738570 
-iter  10 value 1.467685
-iter  20 value 0.831865
-iter  30 value 0.013809
-final  value 0.000054 
+iter  10 value 0.448910
+iter  20 value 0.244835
+iter  30 value 0.191925
+iter  40 value 0.001269
+final  value 0.000089 
+converged
+[1] "target_QE_MDS_cMDS MN model AIC for is: 8.0001771181544"
+[1] "target_NB_MDS_cMDS GLM model AIC for STOOL is: 8.0000002258554"
+[1] "target_NB_MDS_cMDS GLM model AIC for VAGINA is: 8.0000002258554"
+# weights:  12 (11 variable)
+initial  value 228.738570 
+final  value 184.206822 
+converged
+# weights:  11 (10 variable)
+initial  value 228.738570 
+final  value 222.514904 
+converged
+# weights:  11 (10 variable)
+initial  value 228.738570 
+iter  10 value 13.257063
+final  value 7.663857 
+converged
+# weights:  11 (10 variable)
+initial  value 228.738570 
+final  value 184.206928 
+converged
+# weights:  11 (10 variable)
+initial  value 228.738570 
+final  value 184.206822 
+converged
+# weights:  11 (10 variable)
+initial  value 228.738570 
+final  value 184.206822 
+converged
+# weights:  11 (10 variable)
+initial  value 228.738570 
+final  value 184.206822 
+converged
+# weights:  11 (10 variable)
+initial  value 228.738570 
+final  value 184.206822 
+converged
+# weights:  11 (10 variable)
+initial  value 228.738570 
+final  value 184.206822 
+converged
+# weights:  11 (10 variable)
+initial  value 228.738570 
+final  value 184.206822 
+converged
+# weights:  11 (10 variable)
+initial  value 228.738570 
+final  value 184.206822 
+converged
+# weights:  11 (10 variable)
+initial  value 228.738570 
+final  value 184.206822 
 converged
 # weights:  10 (9 variable)
 initial  value 228.738570 
-final  value 195.345088 
+final  value 222.514904 
 converged
 # weights:  10 (9 variable)
 initial  value 228.738570 
-iter  10 value 44.632864
-final  value 44.598981 
+iter  10 value 13.257063
+final  value 7.663857 
 converged
 # weights:  10 (9 variable)
 initial  value 228.738570 
-iter  10 value 2.796684
-iter  20 value 1.362090
-iter  30 value 0.013437
-final  value 0.000061 
+final  value 184.206928 
 converged
 # weights:  10 (9 variable)
 initial  value 228.738570 
-iter  10 value 1.467685
-iter  20 value 0.831865
-iter  30 value 0.004746
-final  value 0.000077 
+final  value 184.206822 
 converged
 # weights:  10 (9 variable)
 initial  value 228.738570 
-iter  10 value 1.467685
-iter  20 value 0.831865
-iter  30 value 0.004746
-final  value 0.000077 
+final  value 184.206822 
 converged
 # weights:  10 (9 variable)
 initial  value 228.738570 
-iter  10 value 1.467685
-iter  20 value 0.831865
-iter  30 value 0.004746
-final  value 0.000077 
+final  value 184.206822 
 converged
 # weights:  10 (9 variable)
 initial  value 228.738570 
-iter  10 value 1.467685
-iter  20 value 0.831865
-iter  30 value 0.004746
-final  value 0.000077 
+final  value 184.206822 
 converged
 # weights:  10 (9 variable)
 initial  value 228.738570 
-iter  10 value 1.467685
-iter  20 value 0.831865
-iter  30 value 0.004746
-final  value 0.000077 
+final  value 184.206822 
 converged
 # weights:  10 (9 variable)
 initial  value 228.738570 
-iter  10 value 1.467685
-iter  20 value 0.831865
-iter  30 value 0.004746
-final  value 0.000077 
+final  value 184.206822 
 converged
 # weights:  10 (9 variable)
 initial  value 228.738570 
-iter  10 value 2.796684
-iter  20 value 1.362090
-iter  30 value 0.013437
-final  value 0.000061 
+final  value 184.206822 
 converged
 # weights:  9 (8 variable)
 initial  value 228.738570 
-final  value 195.355026 
+final  value 222.514904 
 converged
 # weights:  9 (8 variable)
 initial  value 228.738570 
-iter  10 value 44.906355
-final  value 44.904984 
+iter  10 value 13.257063
+final  value 7.663857 
 converged
 # weights:  9 (8 variable)
 initial  value 228.738570 
-iter  10 value 2.796684
-iter  20 value 1.637213
-iter  30 value 0.002095
-final  value 0.000067 
+final  value 184.206928 
 converged
 # weights:  9 (8 variable)
 initial  value 228.738570 
-iter  10 value 2.796684
-iter  20 value 1.637213
-iter  30 value 0.002095
-final  value 0.000067 
+final  value 184.206822 
 converged
 # weights:  9 (8 variable)
 initial  value 228.738570 
-iter  10 value 2.796684
-iter  20 value 1.637213
-iter  30 value 0.002095
-final  value 0.000067 
+final  value 184.206822 
 converged
 # weights:  9 (8 variable)
 initial  value 228.738570 
-iter  10 value 2.796684
-iter  20 value 1.637213
-iter  30 value 0.002095
-final  value 0.000067 
+final  value 184.206822 
 converged
 # weights:  9 (8 variable)
 initial  value 228.738570 
-iter  10 value 2.796684
-iter  20 value 1.637213
-iter  30 value 0.002095
-final  value 0.000067 
+final  value 184.206822 
 converged
 # weights:  9 (8 variable)
 initial  value 228.738570 
-iter  10 value 2.796684
-iter  20 value 1.637213
-iter  30 value 0.002095
-final  value 0.000067 
+final  value 184.206822 
 converged
 # weights:  9 (8 variable)
 initial  value 228.738570 
-iter  10 value 2.796684
-iter  20 value 1.637213
-iter  30 value 0.002095
-final  value 0.000067 
+final  value 184.206822 
 converged
 # weights:  8 (7 variable)
 initial  value 228.738570 
-final  value 195.355026 
+final  value 222.514904 
 converged
 # weights:  8 (7 variable)
 initial  value 228.738570 
-iter  10 value 44.906355
-final  value 44.904984 
+iter  10 value 13.257063
+iter  20 value 7.663877
+final  value 7.663857 
 converged
 # weights:  8 (7 variable)
 initial  value 228.738570 
-iter  10 value 2.796684
-iter  20 value 1.003099
-iter  30 value 0.000909
-iter  40 value 0.000227
-final  value 0.000091 
+final  value 184.206928 
 converged
 # weights:  8 (7 variable)
 initial  value 228.738570 
-iter  10 value 2.796684
-iter  20 value 1.003099
-iter  30 value 0.000909
-iter  40 value 0.000227
-final  value 0.000091 
+final  value 184.206822 
 converged
 # weights:  8 (7 variable)
 initial  value 228.738570 
-iter  10 value 2.796684
-iter  20 value 1.003099
-iter  30 value 0.000909
-iter  40 value 0.000227
-final  value 0.000091 
+final  value 184.206822 
 converged
 # weights:  8 (7 variable)
 initial  value 228.738570 
-iter  10 value 2.796684
-iter  20 value 1.003099
-iter  30 value 0.000909
-iter  40 value 0.000227
-final  value 0.000091 
+final  value 184.206822 
 converged
 # weights:  8 (7 variable)
 initial  value 228.738570 
-iter  10 value 2.796684
-iter  20 value 1.003099
-iter  30 value 0.000909
-iter  40 value 0.000227
-final  value 0.000091 
+final  value 184.206822 
 converged
 # weights:  8 (7 variable)
 initial  value 228.738570 
-iter  10 value 2.796684
-iter  20 value 1.003099
-iter  30 value 0.000909
-iter  40 value 0.000227
-final  value 0.000091 
+final  value 184.206822 
 converged
 # weights:  7 (6 variable)
 initial  value 228.738570 
-final  value 195.355026 
+final  value 222.514904 
 converged
 # weights:  7 (6 variable)
 initial  value 228.738570 
-iter  10 value 44.906355
-final  value 44.904984 
+iter  10 value 13.257063
+iter  20 value 7.663867
+final  value 7.663857 
 converged
 # weights:  7 (6 variable)
 initial  value 228.738570 
-iter  10 value 2.796684
-iter  20 value 0.815159
-iter  30 value 0.004975
-iter  40 value 0.004455
-iter  50 value 0.002966
-iter  60 value 0.002132
-iter  70 value 0.002061
-iter  80 value 0.001925
-iter  90 value 0.001811
-iter 100 value 0.001688
-final  value 0.001688 
-stopped after 100 iterations
+final  value 184.206928 
+converged
 # weights:  7 (6 variable)
 initial  value 228.738570 
-iter  10 value 2.796684
-iter  20 value 0.815159
-iter  30 value 0.004975
-iter  40 value 0.004455
-iter  50 value 0.002966
-iter  60 value 0.002132
-iter  70 value 0.002061
-iter  80 value 0.001925
-iter  90 value 0.001811
-iter 100 value 0.001688
-final  value 0.001688 
-stopped after 100 iterations
+final  value 184.206822 
+converged
 # weights:  7 (6 variable)
 initial  value 228.738570 
-iter  10 value 2.796684
-iter  20 value 0.815159
-iter  30 value 0.004975
-iter  40 value 0.004455
-iter  50 value 0.002966
-iter  60 value 0.002132
-iter  70 value 0.002061
-iter  80 value 0.001925
-iter  90 value 0.001811
-iter 100 value 0.001688
-final  value 0.001688 
-stopped after 100 iterations
+final  value 184.206822 
+converged
 # weights:  7 (6 variable)
 initial  value 228.738570 
-iter  10 value 2.796684
-iter  20 value 0.815159
-iter  30 value 0.004975
-iter  40 value 0.004455
-iter  50 value 0.002966
-iter  60 value 0.002132
-iter  70 value 0.002061
-iter  80 value 0.001925
-iter  90 value 0.001811
-iter 100 value 0.001688
-final  value 0.001688 
-stopped after 100 iterations
+final  value 184.206822 
+converged
 # weights:  7 (6 variable)
 initial  value 228.738570 
-iter  10 value 2.796684
-iter  20 value 0.815159
-iter  30 value 0.004975
-iter  40 value 0.004455
-iter  50 value 0.002966
-iter  60 value 0.002132
-iter  70 value 0.002061
-iter  80 value 0.001925
-iter  90 value 0.001811
-iter 100 value 0.001688
-final  value 0.001688 
-stopped after 100 iterations
-# weights:  6 (5 variable)
-initial  value 228.738570 
-final  value 195.355026 
+final  value 184.206822 
 converged
 # weights:  6 (5 variable)
 initial  value 228.738570 
-iter  10 value 44.906355
-final  value 44.904984 
+final  value 222.514904 
 converged
 # weights:  6 (5 variable)
 initial  value 228.738570 
-iter  10 value 2.796684
-iter  20 value 0.296859
-iter  30 value 0.022448
-iter  40 value 0.011663
-iter  50 value 0.011229
-iter  60 value 0.001942
-iter  70 value 0.000281
-iter  80 value 0.000232
-iter  90 value 0.000205
-iter 100 value 0.000156
-final  value 0.000156 
-stopped after 100 iterations
+iter  10 value 13.257063
+iter  20 value 7.663857
+final  value 7.663857 
+converged
 # weights:  6 (5 variable)
 initial  value 228.738570 
-iter  10 value 2.796684
-iter  20 value 0.296859
-iter  30 value 0.022448
-iter  40 value 0.011663
-iter  50 value 0.011229
-iter  60 value 0.001942
-iter  70 value 0.000281
-iter  80 value 0.000232
-iter  90 value 0.000205
-iter 100 value 0.000156
-final  value 0.000156 
-stopped after 100 iterations
+final  value 184.206928 
+converged
 # weights:  6 (5 variable)
 initial  value 228.738570 
-iter  10 value 2.796684
-iter  20 value 0.296859
-iter  30 value 0.022448
-iter  40 value 0.011663
-iter  50 value 0.011229
-iter  60 value 0.001942
-iter  70 value 0.000281
-iter  80 value 0.000232
-iter  90 value 0.000205
-iter 100 value 0.000156
-final  value 0.000156 
-stopped after 100 iterations
+final  value 184.206822 
+converged
 # weights:  6 (5 variable)
 initial  value 228.738570 
-iter  10 value 2.796684
-iter  20 value 0.296859
-iter  30 value 0.022448
-iter  40 value 0.011663
-iter  50 value 0.011229
-iter  60 value 0.001942
-iter  70 value 0.000281
-iter  80 value 0.000232
-iter  90 value 0.000205
-iter 100 value 0.000156
-final  value 0.000156 
-stopped after 100 iterations
-# weights:  5 (4 variable)
+final  value 184.206822 
+converged
+# weights:  6 (5 variable)
 initial  value 228.738570 
-final  value 195.355026 
+final  value 184.206822 
 converged
 # weights:  5 (4 variable)
 initial  value 228.738570 
-iter  10 value 44.906355
-final  value 44.904984 
+final  value 222.514904 
 converged
 # weights:  5 (4 variable)
 initial  value 228.738570 
-iter  10 value 2.796684
-iter  20 value 0.156415
-iter  30 value 0.094348
-iter  40 value 0.029168
-iter  50 value 0.019537
-iter  60 value 0.010222
-iter  70 value 0.007259
-iter  80 value 0.004282
-iter  90 value 0.002802
-iter 100 value 0.001405
-final  value 0.001405 
-stopped after 100 iterations
+iter  10 value 13.257063
+iter  20 value 7.665889
+final  value 7.663857 
+converged
 # weights:  5 (4 variable)
 initial  value 228.738570 
-iter  10 value 2.796684
-iter  20 value 0.156415
-iter  30 value 0.094348
-iter  40 value 0.029168
-iter  50 value 0.019537
-iter  60 value 0.010222
-iter  70 value 0.007259
-iter  80 value 0.004282
-iter  90 value 0.002802
-iter 100 value 0.001405
-final  value 0.001405 
-stopped after 100 iterations
+final  value 184.206928 
+converged
 # weights:  5 (4 variable)
 initial  value 228.738570 
-iter  10 value 2.796684
-iter  20 value 0.156415
-iter  30 value 0.094348
-iter  40 value 0.029168
-iter  50 value 0.019537
-iter  60 value 0.010222
-iter  70 value 0.007259
-iter  80 value 0.004282
-iter  90 value 0.002802
-iter 100 value 0.001405
-final  value 0.001405 
-stopped after 100 iterations
-# weights:  4 (3 variable)
+final  value 184.206822 
+converged
+# weights:  5 (4 variable)
 initial  value 228.738570 
-final  value 195.355026 
+final  value 184.206822 
 converged
 # weights:  4 (3 variable)
 initial  value 228.738570 
-iter  10 value 44.914461
-final  value 44.904984 
+final  value 222.514904 
 converged
 # weights:  4 (3 variable)
 initial  value 228.738570 
-iter  10 value 1.950310
-iter  20 value 0.313812
-iter  30 value 0.067939
-iter  40 value 0.049066
-iter  50 value 0.039435
-iter  60 value 0.030711
-iter  70 value 0.018660
-iter  80 value 0.015174
-iter  90 value 0.013004
-iter 100 value 0.011390
-final  value 0.011390 
-stopped after 100 iterations
+iter  10 value 16.096739
+iter  20 value 7.703289
+iter  30 value 7.663858
+final  value 7.663857 
+converged
 # weights:  4 (3 variable)
 initial  value 228.738570 
-iter  10 value 1.950310
-iter  20 value 0.313812
-iter  30 value 0.067939
-iter  40 value 0.049066
-iter  50 value 0.039435
-iter  60 value 0.030711
-iter  70 value 0.018660
-iter  80 value 0.015174
-iter  90 value 0.013004
-iter 100 value 0.011390
-final  value 0.011390 
-stopped after 100 iterations
-# weights:  3 (2 variable)
+final  value 184.206928 
+converged
+# weights:  4 (3 variable)
 initial  value 228.738570 
-final  value 195.355026 
+iter  10 value 16.096739
+iter  20 value 7.703289
+iter  30 value 7.663858
+final  value 7.663857 
 converged
 # weights:  3 (2 variable)
 initial  value 228.738570 
-iter  10 value 45.091628
-final  value 44.904984 
+final  value 226.435855 
 converged
-[1] "target_QE_MDS_cMDS MN model AIC for is: 6.02277986051944"
-[1] "target_NB_MDS_cMDS GLM model AIC for STOOL is: 8.00000010757847"
-[1] "target_NB_MDS_cMDS GLM model AIC for VAGINA is: 8.00000010757847"
-# weights:  12 (11 variable)
+# weights:  3 (2 variable)
 initial  value 228.738570 
-iter  10 value 0.344839
-iter  20 value 0.001940
-iter  30 value 0.001770
-iter  40 value 0.001273
-iter  50 value 0.001007
-iter  60 value 0.000766
-iter  70 value 0.000165
-iter  80 value 0.000136
-iter  90 value 0.000113
-final  value 0.000099 
+iter  10 value 8.917933
+iter  20 value 8.028804
+iter  20 value 8.028804
+iter  20 value 8.028804
+final  value 8.028804 
 converged
-# weights:  11 (10 variable)
+# weights:  3 (2 variable)
 initial  value 228.738570 
-final  value 218.563415 
+iter  10 value 8.917933
+iter  20 value 8.028804
+iter  20 value 8.028804
+iter  20 value 8.028804
+final  value 8.028804 
 converged
-# weights:  11 (10 variable)
+# weights:  2 (1 variable)
 initial  value 228.738570 
-iter  10 value 7.986810
-final  value 7.145082 
+final  value 226.545830 
 converged
-# weights:  11 (10 variable)
-initial  value 228.738570 
-iter  10 value 185.441375
-iter  10 value 185.441375
-final  value 185.209918 
-converged
-# weights:  11 (10 variable)
-initial  value 228.738570 
-iter  10 value 0.344839
-iter  20 value 0.001940
-iter  30 value 0.001614
-iter  40 value 0.001239
-iter  50 value 0.000784
-iter  60 value 0.000456
-final  value 0.000093 
-converged
-# weights:  11 (10 variable)
-initial  value 228.738570 
-iter  10 value 0.344839
-iter  20 value 0.001940
-iter  30 value 0.001614
-iter  40 value 0.001239
-iter  50 value 0.000784
-iter  60 value 0.000456
-final  value 0.000093 
-converged
-# weights:  11 (10 variable)
-initial  value 228.738570 
-iter  10 value 0.344839
-iter  20 value 0.001940
-iter  30 value 0.001614
-iter  40 value 0.001239
-iter  50 value 0.000784
-iter  60 value 0.000456
-final  value 0.000093 
-converged
-# weights:  11 (10 variable)
-initial  value 228.738570 
-iter  10 value 0.344839
-iter  20 value 0.001940
-iter  30 value 0.001614
-iter  40 value 0.001239
-iter  50 value 0.000784
-iter  60 value 0.000456
-final  value 0.000093 
-converged
-# weights:  11 (10 variable)
-initial  value 228.738570 
-iter  10 value 0.344839
-iter  20 value 0.001940
-iter  30 value 0.001614
-iter  40 value 0.001239
-iter  50 value 0.000784
-iter  60 value 0.000456
-final  value 0.000093 
-converged
-# weights:  11 (10 variable)
-initial  value 228.738570 
-iter  10 value 0.344839
-iter  20 value 0.001940
-iter  30 value 0.001614
-iter  40 value 0.001239
-iter  50 value 0.000784
-iter  60 value 0.000456
-final  value 0.000093 
-converged
-# weights:  11 (10 variable)
-initial  value 228.738570 
-iter  10 value 0.344839
-iter  20 value 0.001940
-iter  30 value 0.001614
-iter  40 value 0.001239
-iter  50 value 0.000784
-iter  60 value 0.000456
-final  value 0.000093 
-converged
-# weights:  11 (10 variable)
-initial  value 228.738570 
-iter  10 value 0.344839
-iter  20 value 0.001940
-iter  30 value 0.001614
-iter  40 value 0.001239
-iter  50 value 0.000784
-iter  60 value 0.000456
-final  value 0.000093 
-converged
-# weights:  10 (9 variable)
-initial  value 228.738570 
-final  value 218.563415 
-converged
-# weights:  10 (9 variable)
-initial  value 228.738570 
-iter  10 value 7.986810
-final  value 7.145082 
-converged
-# weights:  10 (9 variable)
-initial  value 228.738570 
-iter  10 value 185.441375
-iter  10 value 185.441375
-final  value 185.209918 
-converged
-# weights:  10 (9 variable)
-initial  value 228.738570 
-iter  10 value 0.344839
-iter  20 value 0.001940
-iter  30 value 0.001659
-iter  40 value 0.000989
-iter  50 value 0.000594
-iter  60 value 0.000114
-iter  60 value 0.000059
-iter  60 value 0.000059
-final  value 0.000059 
-converged
-# weights:  10 (9 variable)
-initial  value 228.738570 
-iter  10 value 0.344839
-iter  20 value 0.001940
-iter  30 value 0.001659
-iter  40 value 0.000989
-iter  50 value 0.000594
-iter  60 value 0.000114
-iter  60 value 0.000059
-iter  60 value 0.000059
-final  value 0.000059 
-converged
-# weights:  10 (9 variable)
-initial  value 228.738570 
-iter  10 value 0.344839
-iter  20 value 0.001940
-iter  30 value 0.001659
-iter  40 value 0.000989
-iter  50 value 0.000594
-iter  60 value 0.000114
-iter  60 value 0.000059
-iter  60 value 0.000059
-final  value 0.000059 
-converged
-# weights:  10 (9 variable)
-initial  value 228.738570 
-iter  10 value 0.344839
-iter  20 value 0.001940
-iter  30 value 0.001659
-iter  40 value 0.000989
-iter  50 value 0.000594
-iter  60 value 0.000114
-iter  60 value 0.000059
-iter  60 value 0.000059
-final  value 0.000059 
-converged
-# weights:  10 (9 variable)
-initial  value 228.738570 
-iter  10 value 0.344839
-iter  20 value 0.001940
-iter  30 value 0.001659
-iter  40 value 0.000989
-iter  50 value 0.000594
-iter  60 value 0.000114
-iter  60 value 0.000059
-iter  60 value 0.000059
-final  value 0.000059 
-converged
-# weights:  10 (9 variable)
-initial  value 228.738570 
-iter  10 value 0.344839
-iter  20 value 0.001940
-iter  30 value 0.001659
-iter  40 value 0.000989
-iter  50 value 0.000594
-iter  60 value 0.000114
-iter  60 value 0.000059
-iter  60 value 0.000059
-final  value 0.000059 
-converged
-# weights:  10 (9 variable)
-initial  value 228.738570 
-iter  10 value 0.344839
-iter  20 value 0.001940
-iter  30 value 0.001659
-iter  40 value 0.000989
-iter  50 value 0.000594
-iter  60 value 0.000114
-iter  60 value 0.000059
-iter  60 value 0.000059
-final  value 0.000059 
-converged
-# weights:  9 (8 variable)
-initial  value 228.738570 
-final  value 218.563415 
-converged
-# weights:  9 (8 variable)
-initial  value 228.738570 
-iter  10 value 7.986810
-final  value 7.145082 
-converged
-# weights:  9 (8 variable)
-initial  value 228.738570 
-iter  10 value 185.441375
-iter  10 value 185.441375
-final  value 185.209918 
-converged
-# weights:  9 (8 variable)
-initial  value 228.738570 
-iter  10 value 0.344839
-iter  20 value 0.001940
-iter  30 value 0.001624
-iter  40 value 0.000406
-iter  50 value 0.000247
-iter  60 value 0.000150
-iter  70 value 0.000126
-iter  80 value 0.000118
-final  value 0.000080 
-converged
-# weights:  9 (8 variable)
-initial  value 228.738570 
-iter  10 value 0.344839
-iter  20 value 0.001940
-iter  30 value 0.001624
-iter  40 value 0.000406
-iter  50 value 0.000247
-iter  60 value 0.000150
-iter  70 value 0.000126
-iter  80 value 0.000118
-final  value 0.000080 
-converged
-# weights:  9 (8 variable)
-initial  value 228.738570 
-iter  10 value 0.344839
-iter  20 value 0.001940
-iter  30 value 0.001624
-iter  40 value 0.000406
-iter  50 value 0.000247
-iter  60 value 0.000150
-iter  70 value 0.000126
-iter  80 value 0.000118
-final  value 0.000080 
-converged
-# weights:  9 (8 variable)
-initial  value 228.738570 
-iter  10 value 0.344839
-iter  20 value 0.001940
-iter  30 value 0.001624
-iter  40 value 0.000406
-iter  50 value 0.000247
-iter  60 value 0.000150
-iter  70 value 0.000126
-iter  80 value 0.000118
-final  value 0.000080 
-converged
-# weights:  9 (8 variable)
-initial  value 228.738570 
-iter  10 value 0.344839
-iter  20 value 0.001940
-iter  30 value 0.001624
-iter  40 value 0.000406
-iter  50 value 0.000247
-iter  60 value 0.000150
-iter  70 value 0.000126
-iter  80 value 0.000118
-final  value 0.000080 
-converged
-# weights:  9 (8 variable)
-initial  value 228.738570 
-iter  10 value 0.344839
-iter  20 value 0.001940
-iter  30 value 0.001624
-iter  40 value 0.000406
-iter  50 value 0.000247
-iter  60 value 0.000150
-iter  70 value 0.000126
-iter  80 value 0.000118
-final  value 0.000080 
-converged
-# weights:  8 (7 variable)
-initial  value 228.738570 
-final  value 218.563415 
-converged
-# weights:  8 (7 variable)
-initial  value 228.738570 
-iter  10 value 7.986810
-iter  20 value 7.145082
-iter  20 value 7.145082
-iter  20 value 7.145082
-final  value 7.145082 
-converged
-# weights:  8 (7 variable)
-initial  value 228.738570 
-iter  10 value 185.441375
-iter  10 value 185.441375
-final  value 185.209918 
-converged
-# weights:  8 (7 variable)
-initial  value 228.738570 
-iter  10 value 0.344839
-iter  20 value 0.002277
-iter  30 value 0.001986
-iter  40 value 0.001608
-iter  50 value 0.001435
-iter  60 value 0.001090
-iter  70 value 0.000698
-iter  80 value 0.000594
-iter  90 value 0.000480
-iter 100 value 0.000350
-final  value 0.000350 
-stopped after 100 iterations
-# weights:  8 (7 variable)
-initial  value 228.738570 
-iter  10 value 0.344839
-iter  20 value 0.002277
-iter  30 value 0.001986
-iter  40 value 0.001608
-iter  50 value 0.001435
-iter  60 value 0.001090
-iter  70 value 0.000698
-iter  80 value 0.000594
-iter  90 value 0.000480
-iter 100 value 0.000350
-final  value 0.000350 
-stopped after 100 iterations
-# weights:  8 (7 variable)
-initial  value 228.738570 
-iter  10 value 0.344839
-iter  20 value 0.002277
-iter  30 value 0.001986
-iter  40 value 0.001608
-iter  50 value 0.001435
-iter  60 value 0.001090
-iter  70 value 0.000698
-iter  80 value 0.000594
-iter  90 value 0.000480
-iter 100 value 0.000350
-final  value 0.000350 
-stopped after 100 iterations
-# weights:  8 (7 variable)
-initial  value 228.738570 
-iter  10 value 0.344839
-iter  20 value 0.002277
-iter  30 value 0.001986
-iter  40 value 0.001608
-iter  50 value 0.001435
-iter  60 value 0.001090
-iter  70 value 0.000698
-iter  80 value 0.000594
-iter  90 value 0.000480
-iter 100 value 0.000350
-final  value 0.000350 
-stopped after 100 iterations
-# weights:  8 (7 variable)
-initial  value 228.738570 
-iter  10 value 0.344839
-iter  20 value 0.002277
-iter  30 value 0.001986
-iter  40 value 0.001608
-iter  50 value 0.001435
-iter  60 value 0.001090
-iter  70 value 0.000698
-iter  80 value 0.000594
-iter  90 value 0.000480
-iter 100 value 0.000350
-final  value 0.000350 
-stopped after 100 iterations
-# weights:  7 (6 variable)
-initial  value 228.738570 
-final  value 218.563415 
-converged
-# weights:  7 (6 variable)
-initial  value 228.738570 
-iter  10 value 7.986810
-final  value 7.145082 
-converged
-# weights:  7 (6 variable)
-initial  value 228.738570 
-iter  10 value 185.441375
-iter  10 value 185.441375
-final  value 185.209918 
-converged
-# weights:  7 (6 variable)
-initial  value 228.738570 
-iter  10 value 0.344839
-iter  20 value 0.007753
-iter  30 value 0.003956
-iter  40 value 0.001720
-iter  50 value 0.001532
-iter  60 value 0.001079
-iter  70 value 0.000960
-iter  80 value 0.000871
-iter  90 value 0.000806
-iter 100 value 0.000779
-final  value 0.000779 
-stopped after 100 iterations
-# weights:  7 (6 variable)
-initial  value 228.738570 
-iter  10 value 0.344839
-iter  20 value 0.007753
-iter  30 value 0.003956
-iter  40 value 0.001720
-iter  50 value 0.001532
-iter  60 value 0.001079
-iter  70 value 0.000960
-iter  80 value 0.000871
-iter  90 value 0.000806
-iter 100 value 0.000779
-final  value 0.000779 
-stopped after 100 iterations
-# weights:  7 (6 variable)
-initial  value 228.738570 
-iter  10 value 0.344839
-iter  20 value 0.007753
-iter  30 value 0.003956
-iter  40 value 0.001720
-iter  50 value 0.001532
-iter  60 value 0.001079
-iter  70 value 0.000960
-iter  80 value 0.000871
-iter  90 value 0.000806
-iter 100 value 0.000779
-final  value 0.000779 
-stopped after 100 iterations
-# weights:  7 (6 variable)
-initial  value 228.738570 
-iter  10 value 0.344839
-iter  20 value 0.007753
-iter  30 value 0.003956
-iter  40 value 0.001720
-iter  50 value 0.001532
-iter  60 value 0.001079
-iter  70 value 0.000960
-iter  80 value 0.000871
-iter  90 value 0.000806
-iter 100 value 0.000779
-final  value 0.000779 
-stopped after 100 iterations
-# weights:  6 (5 variable)
-initial  value 228.738570 
-final  value 218.563415 
-converged
-# weights:  6 (5 variable)
-initial  value 228.738570 
-iter  10 value 7.986810
-final  value 7.145082 
-converged
-# weights:  6 (5 variable)
-initial  value 228.738570 
-iter  10 value 185.441375
-iter  10 value 185.441375
-final  value 185.209918 
-converged
-# weights:  6 (5 variable)
-initial  value 228.738570 
-iter  10 value 0.344839
-iter  20 value 0.013968
-iter  30 value 0.001761
-iter  40 value 0.001588
-iter  50 value 0.001088
-iter  60 value 0.000774
-iter  70 value 0.000656
-iter  80 value 0.000583
-iter  90 value 0.000533
-iter 100 value 0.000484
-final  value 0.000484 
-stopped after 100 iterations
-# weights:  6 (5 variable)
-initial  value 228.738570 
-iter  10 value 0.344839
-iter  20 value 0.013968
-iter  30 value 0.001761
-iter  40 value 0.001588
-iter  50 value 0.001088
-iter  60 value 0.000774
-iter  70 value 0.000656
-iter  80 value 0.000583
-iter  90 value 0.000533
-iter 100 value 0.000484
-final  value 0.000484 
-stopped after 100 iterations
-# weights:  6 (5 variable)
-initial  value 228.738570 
-iter  10 value 0.344839
-iter  20 value 0.013968
-iter  30 value 0.001761
-iter  40 value 0.001588
-iter  50 value 0.001088
-iter  60 value 0.000774
-iter  70 value 0.000656
-iter  80 value 0.000583
-iter  90 value 0.000533
-iter 100 value 0.000484
-final  value 0.000484 
-stopped after 100 iterations
-# weights:  5 (4 variable)
-initial  value 228.738570 
-final  value 218.563415 
-converged
-# weights:  5 (4 variable)
-initial  value 228.738570 
-iter  10 value 7.986810
-final  value 7.145082 
-converged
-# weights:  5 (4 variable)
-initial  value 228.738570 
-iter  10 value 185.441375
-final  value 185.209918 
-converged
-# weights:  5 (4 variable)
-initial  value 228.738570 
-iter  10 value 0.344839
-iter  20 value 0.002618
-iter  30 value 0.001639
-iter  40 value 0.001445
-iter  50 value 0.001239
-iter  60 value 0.000942
-iter  70 value 0.000784
-iter  80 value 0.000611
-iter  90 value 0.000491
-iter 100 value 0.000453
-final  value 0.000453 
-stopped after 100 iterations
-# weights:  5 (4 variable)
-initial  value 228.738570 
-iter  10 value 0.344839
-iter  20 value 0.002618
-iter  30 value 0.001639
-iter  40 value 0.001445
-iter  50 value 0.001239
-iter  60 value 0.000942
-iter  70 value 0.000784
-iter  80 value 0.000611
-iter  90 value 0.000491
-iter 100 value 0.000453
-final  value 0.000453 
-stopped after 100 iterations
-# weights:  4 (3 variable)
-initial  value 228.738570 
-final  value 218.563415 
-converged
-# weights:  4 (3 variable)
-initial  value 228.738570 
-iter  10 value 7.423852
-final  value 7.145082 
-converged
-# weights:  4 (3 variable)
-initial  value 228.738570 
-final  value 185.190026 
-converged
-[1] "target_NB_MDS_cMDS MN model AIC for is: 8.00090635951818"
+[1] "target_NB_MDS_cMDS MN model AIC for is: 20.0576078284639"

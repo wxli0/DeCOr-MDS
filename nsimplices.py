@@ -357,8 +357,8 @@ def nsimplices(pairwise_dis, feature_num, dim_start, dim_end, euc_coord=None, co
     if euc_coord is not None: # no need to apply MDS
         corr_pairwise_dis, corr_coord = correct_proj(euc_coord, correct_outlier_indices, subspace_dim)
     else:
-        MDS_model = manifold.MDS(n_components=feature_num, max_iter=100000000000,dissimilarity='precomputed')
-        euc_coord = MDS_model.fit_transform(pairwise_dis) # TODO: problem with this line
+        MDS_model = manifold.MDS(n_components=feature_num, max_iter=100000000000, dissimilarity='precomputed')
+        euc_coord = MDS_model.fit_transform(pairwise_dis)
         corr_pairwise_dis, corr_coord = correct_proj(euc_coord, correct_outlier_indices, subspace_dim)
     
     return outlier_indices, subspace_dim , corr_pairwise_dis, corr_coord
