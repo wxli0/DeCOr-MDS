@@ -216,7 +216,7 @@ def correct_proj(euc_coord, outlier_indices, subspace_dim):
     corr_coord = euc_coord * 1.0
     
     normal_coord = np.delete(euc_coord, outlier_indices, 0) # delete outliers
-    print("outliet_indices is:", outlier_indices)
+    print("outlier_indices is:", outlier_indices)
     
     PCA_model = PCA(n_components=subspace_dim)
     _ = PCA_model.fit_transform(normal_coord) # do not need to correct non-outliers 
