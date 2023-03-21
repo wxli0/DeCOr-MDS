@@ -113,14 +113,14 @@ if not os.path.exists(cross_fig_path):
     ax1.text(-0.1, 1.05, 'A', transform=ax1.transAxes, 
             size=15, weight='bold')
 
-    ax1.legend()
+    ax1.legend(fontsize=9)
     ax1.grid()
 
     # plot original graphs with outliers added 
     va, ve, Xe = cMDS(out_dis_sq)
     ax2.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black', label="normal")
     ax2.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red', label="outlier")
-    ax2.legend()
+    ax2.legend(fontsize=9)
     ax2.grid()
     ax2.set_title("Outliers added")
     ax2.text(-0.1, 1.05, 'B', transform=ax2.transAxes, 
@@ -130,10 +130,10 @@ if not os.path.exists(cross_fig_path):
     va, ve, Xe = cMDS(corr_dis_sq)   
     ax3.plot(Xe[normal_indices,0],Xe[normal_indices,1],'.', color='black', label="normal")
     ax3.plot(Xe[outlier_indices,0],Xe[outlier_indices,1],'.',color='red', label="outlier")
-    ax3.legend()
+    ax3.legend(fontsize=9)
     ax3.set_title("Corrected data")
     ax3.text(-0.1, 1.05, 'C', transform=ax3.transAxes, 
-            size=15, weight='bold')
+            size=14, weight='bold')
     ax3.grid()
     plt.savefig(cross_fig_path)
     plt.close()

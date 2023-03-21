@@ -37,13 +37,13 @@ for i in range(len(res_outlier_indices_list)):
         res_outlier_indices = res_outlier_indices)
     out_dis=pdist(df_prev) # pairwise distance in tab (with outliers added)
     out_dis_sq=squareform(out_dis) # squared matrix form of D
-    subspace_dim, outlier_indices = find_subspace_dim(out_dis_sq, 30, df_prev.shape[1])
+    subspace_dim, outlier_indices = find_subspace_dim(out_dis_sq, 30, df_prev.shape[1], 3)
     dim_pred_diff.append(subspace_dim - true_dim)
     dim_raw_diff.append(subspace_dim + int((subspace_dim * len(outlier_indices)/df_prev.shape[0]) - true_dim))
     print("subspace_dim is:", subspace_dim)
 
 
-plt.figure(figsize=(7, 5.2))
+plt.figure(figsize=(8, 5.2))
 props = np.arange(prop_incre, prop_incre+len(dim_pred_diff)*prop_incre, prop_incre)
 plt.scatter(props, dim_pred_diff, color = "red", s=10)
 plt.plot(props, dim_pred_diff, c="red", label = "after correction")
