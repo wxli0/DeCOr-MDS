@@ -45,15 +45,17 @@ for i in range(len(res_outlier_indices_list)):
 
 plt.figure(figsize=(8, 5.2))
 props = np.arange(prop_incre, prop_incre+len(dim_pred_diff)*prop_incre, prop_incre)
+yticks = [0, 1, 2, 3, 4]
 plt.scatter(props, dim_pred_diff, color = "red", s=10)
 plt.plot(props, dim_pred_diff, c="red", label = "after correction")
 plt.scatter(props, dim_raw_diff, color = "black", s=10)
 plt.plot(props, dim_raw_diff, c="black", label = "before correction")
 plt.axhline(y=0, color='black', linestyle='dotted', label="baseline")
 plt.xticks(props)
+plt.yticks(yticks)
 plt.xlabel(r'fraction of outliers $p$', fontsize=15)
 plt.ylabel(r'$\bar{n}-d^{*}$', fontsize=15)
 plt.xticks(fontsize=15)
 plt.yticks(fontsize=15)
 plt.legend(fontsize=16)
-plt.savefig("./outputs/synthetic_dim40.png")
+plt.savefig("./outputs/synthetic_dim40.pdf")
