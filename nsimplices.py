@@ -288,7 +288,7 @@ def find_subspace_dim(pairwise_dis, dim_start, dim_end, std_multi):
     subspace_dim = dim_start
     if dim_start != dim_end:
         subspace_dim = np.argmax(med_height[0:len(dims)-1]/med_height[1:len(dims)])+dim_start+1
-    print("subspace_dim one is:", subspace_dim)
+    print("subspace_dim is:", subspace_dim)
     
     # Detect outliers in dimension subspace_dim
     subspace_heights = dim_height_map[subspace_dim]
