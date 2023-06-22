@@ -93,7 +93,7 @@ if not os.path.exists(cross_fig_path):
     outlier_indices, subspace_dim, corr_dis_sq, corr_coord = nsimplices(out_dis_sq, feature_num, dim_start, dim_end, euc_coord=np.array(df_cross.copy()))
 
     T2=time.time()
-    print("running time is:", T2-T1)
+    print("runtime is:", T2-T1)
     print("subspace dimension is:", subspace_dim)
 
 
@@ -298,7 +298,7 @@ if not os.path.exists(dim2_fig_path) or  not os.path.exists(before_correction_dy
     T1=time.time()
     outlier_indices,rdim,corr_dis_sq,corr_coord = nsimplices(out_dis_sq, df_dim2.shape[1], dim_start = 1, dim_end = 7)
     T2=time.time()
-    print("running time is:", T2-T1)
+    print("runtime is:", T2-T1)
     print("subspace dimension is:", rdim)
 
 
@@ -436,9 +436,8 @@ if not os.path.exists(dim2_fig_path) or  not os.path.exists(before_correction_dy
 
 """ Section 2.1.3: Main subspace of higher dimensions """
 
-dim10_fig_path = "./outputs/synthetic_dim10.pdf"
+dim10_fig_path = "./outputs/synthetic_dim10_1000.pdf"
 if not os.path.exists(dim10_fig_path):
-    start = time.time()
     print(" ====== Running dimension 10 dataset =====")
 
     # In[15]:
@@ -446,7 +445,7 @@ if not os.path.exists(dim10_fig_path):
     ### Prepare for section 2.1.3
 
     ### test data, read in a dataset of main dimension 10
-    df_dim10 = pd.read_csv(r'data/synthetic_rdim10.csv',sep=';',header=None)
+    df_dim10 = pd.read_csv(r'data/synthetic_rdim10_2500.csv',sep=';',header=None)
     df_dim10.head()
 
 
@@ -494,9 +493,9 @@ if not os.path.exists(dim10_fig_path):
 
     ### Run nSimplices method
     T1=time.time()
-    outlier_indices,subspace_dim,corr_dis_sq,corr_coord = nsimplices(out_dis_sq, df_dim10.shape[1], dim_start=1, dim_end=df_dim10.shape[1], num_groups=150)
+    outlier_indices,subspace_dim,corr_dis_sq,corr_coord = nsimplices(out_dis_sq, df_dim10.shape[1], dim_start=1, dim_end=df_dim10.shape[1], num_groups=100)
     T2=time.time()
-    print("running time is:", T2-T1)
+    print("runtime is:", T2-T1)
     print("subspace dimension is:", subspace_dim)
 
     fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(10*2.5,3*2.5))
@@ -618,5 +617,3 @@ if not os.path.exists(dim10_fig_path):
 
     plt.savefig(dim10_fig_path)
     plt.close()
-    end = time.time()
-    print(f"time for dimension 10 is: {end-start}")
