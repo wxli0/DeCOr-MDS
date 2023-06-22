@@ -51,7 +51,7 @@ def simplex_volume(indices,dis_sq,use_deno=False):
 
 
 
-def nsimplices_heights(dis_sq, num_total_point, num_group, point_index, num_simplex_point):
+def nsimplices_heights(dis_sq, num_total_point, num_groups, point_index, num_simplex_point):
     '''
     From a set of num_total_point points with pairwise distances (dis_sq), \
         draw num_group groups of (num_simplex-1) \
@@ -78,7 +78,7 @@ def nsimplices_heights(dis_sq, num_total_point, num_group, point_index, num_simp
     '''
     
     heights=[]
-    for _ in range(num_group):
+    for _ in range(num_groups):
         indices = \
             alea.sample([x for x in range(num_total_point) if x != point_index], \
                 (num_simplex_point)+1 )
@@ -93,7 +93,7 @@ def nsimplices_heights(dis_sq, num_total_point, num_group, point_index, num_simp
 
 
 def nsimplices_all_heights(num_total_point, dis_sq, num_simplex_point, \
-    seed=1):
+    seed=1, num_groups=100):
     """ 
     For a set of num_total_point points with pairwise distances dis_sq, determine \
         the height of each point, by drawing 100 groups of simplices for each point, \
@@ -123,11 +123,10 @@ def nsimplices_all_heights(num_total_point, dis_sq, num_simplex_point, \
     # computation of h_i for each i
     for idx in range(num_total_point):
         
-        num_group = 100
-        # we draw 100 groups of (num_simplex_point) points, \
+        # we draw num_groups groups of (num_simplex_point) points, \
         # to create n-simplices and then compute the height median for i
         idx_heights = \
-            nsimplices_heights(dis_sq, num_total_point, num_group, idx, num_simplex_point)
+            nsimplices_heights(dis_sq, num_total_point, num_groups, idx, num_simplex_point)
         
         #w e here get h[i] the median of heights of the data point i
         heights[idx] = np.median(idx_heights)
@@ -246,7 +245,7 @@ def correct_proj(euc_coord, outlier_indices, subspace_dim):
     return corr_pairwise_dis, corr_coord
 
 
-def find_subspace_dim(pairwise_dis, dim_start, dim_end, std_multi):
+def find_subspace_dim(pairwise_dis, dim_start, dim_end, std_multi, num_groups=100):
     """
     Find the subspace dimension formed by the pairwise distance matrix pairwise_dis
     Parameters
@@ -257,8 +256,10 @@ def find_subspace_dim(pairwise_dis, dim_start, dim_end, std_multi):
         Lowest dimension to test (inclusive)
     dim_end: int, default 6
         Largest dimension to test (inclusive)
-    std_factor: int
+    std_multi: int
         The multiplier before std when computing the threshold to determine outliers
+    num_groups: int
+        The number of nSimplices to draw for each point, default 100
 
     Returns
     -------
@@ -277,7 +278,7 @@ def find_subspace_dim(pairwise_dis, dim_start, dim_end, std_multi):
     # Determine the screeplot nb_outliers as a function of the dimension tested
     for dim in range(dim_start,dim_end+1):       
         print("dim in find_subspace_dim is:", dim)    
-        cur_height = nsimplices_all_heights(point_num, pairwise_dis, dim, seed=dim+1)     
+        cur_height = nsimplices_all_heights(point_num, pairwise_dis, dim, seed=dim+1, num_groups=num_groups)     
         cur_height = np.array(cur_height)
         med_height[dim-dim_start] = np.median(cur_height)
         dim_height_map[dim] = cur_height
@@ -315,7 +316,7 @@ def find_subspace_dim(pairwise_dis, dim_start, dim_end, std_multi):
     return int(subspace_dim), outlier_indices
 
 
-def nsimplices(pairwise_dis, feature_num, dim_start, dim_end, euc_coord=None, correct=True, std_multi=3):
+def nsimplices(pairwise_dis, feature_num, dim_start, dim_end, euc_coord=None, correct=True, std_multi=3, num_groups=100):
     """
     The nSimplices method
     Parameters
@@ -336,6 +337,8 @@ def nsimplices(pairwise_dis, feature_num, dim_start, dim_end, euc_coord=None, co
         Correct outliers or not
     std_factor: int, default 3
         The multiplier before std when computing the threshold to determine outliers
+    num_groups: int, default 100
+        The number of nSimplices to draw for each point
 
     Returns
     -------
@@ -349,7 +352,7 @@ def nsimplices(pairwise_dis, feature_num, dim_start, dim_end, euc_coord=None, co
         The list of corrected coordinates
     """
     
-    subspace_dim, outlier_indices = find_subspace_dim(pairwise_dis, dim_start, dim_end, std_multi)
+    subspace_dim, outlier_indices = find_subspace_dim(pairwise_dis, dim_start, dim_end, std_multi, num_groups)
 
     # if not correct outliers, set the outliers input to nSipmlices to be empty
     correct_outlier_indices = outlier_indices

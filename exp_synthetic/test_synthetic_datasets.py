@@ -9,6 +9,7 @@ import os
 import random as alea
 from scipy.linalg import solve,pinv,pinv2
 from scipy.spatial.distance import pdist, squareform
+import time
 import pandas as pd
 import plotly.express as px
 from sklearn.decomposition import PCA
@@ -29,7 +30,7 @@ plt.rcParams["savefig.directory"] = os.getcwd() # To save figures to directory
 
 """ Section 2.1.1: Cross dataset """
 
-cross_fig_path = "./outputs/synthetic_cross_2D.png"
+cross_fig_path = "./outputs/synthetic_cross_2D.pdf"
 if not os.path.exists(cross_fig_path):
     print(" ====== Running cross dataset =====")
     # In[3]:
@@ -103,7 +104,7 @@ if not os.path.exists(cross_fig_path):
 
     normal_indices=[i for i in range(num_point) if i not in outlier_indices] # list of normal points 
 
-    fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(10,3))
+    fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(9,3))
 
     # plot original graph
     va, ve, Xe = cMDS(ori_dis_sq)
@@ -112,6 +113,8 @@ if not os.path.exists(cross_fig_path):
     ax1.set_title("True data")
     ax1.text(-0.1, 1.05, 'A', transform=ax1.transAxes, 
             size=15, weight='bold')
+    ax1.set_xlabel('axis 0', fontsize=9)
+    ax1.set_ylabel('axis 1', fontsize=9)
 
     ax1.legend(fontsize=9)
     ax1.grid()
@@ -125,6 +128,8 @@ if not os.path.exists(cross_fig_path):
     ax2.set_title("Outliers added")
     ax2.text(-0.1, 1.05, 'B', transform=ax2.transAxes, 
             size=15, weight='bold')
+    ax2.set_xlabel('axis 0', fontsize=9)
+    ax2.set_ylabel('axis 1', fontsize=9)
 
     # plot correct outliers 
     va, ve, Xe = cMDS(corr_dis_sq)   
@@ -134,7 +139,10 @@ if not os.path.exists(cross_fig_path):
     ax3.set_title("Corrected data")
     ax3.text(-0.1, 1.05, 'C', transform=ax3.transAxes, 
             size=14, weight='bold')
+    ax3.set_xlabel('axis 0', fontsize=9)
+    ax3.set_ylabel('axis 1', fontsize=9)
     ax3.grid()
+    plt.tight_layout()
     plt.savefig(cross_fig_path)
     plt.close()
 
@@ -428,8 +436,9 @@ if not os.path.exists(dim2_fig_path) or  not os.path.exists(before_correction_dy
 
 """ Section 2.1.3: Main subspace of higher dimensions """
 
-dim10_fig_path = "./outputs/synthetic_dim10.png"
+dim10_fig_path = "./outputs/synthetic_dim10.pdf"
 if not os.path.exists(dim10_fig_path):
+    start = time.time()
     print(" ====== Running dimension 10 dataset =====")
 
     # In[15]:
@@ -485,7 +494,7 @@ if not os.path.exists(dim10_fig_path):
 
     ### Run nSimplices method
     T1=time.time()
-    outlier_indices,subspace_dim,corr_dis_sq,corr_coord = nsimplices(out_dis_sq, df_dim10.shape[1], dim_start=1, dim_end=df_dim10.shape[1])
+    outlier_indices,subspace_dim,corr_dis_sq,corr_coord = nsimplices(out_dis_sq, df_dim10.shape[1], dim_start=1, dim_end=df_dim10.shape[1], num_groups=150)
     T2=time.time()
     print("running time is:", T2-T1)
     print("subspace dimension is:", subspace_dim)
@@ -609,73 +618,5 @@ if not os.path.exists(dim10_fig_path):
 
     plt.savefig(dim10_fig_path)
     plt.close()
-
-"""
-Moved to test_synthetic_outlier_detection.py
-"""
-# # Section 2.1.4: Dimension correction in higher dimensions
-
-# # In[2]:
-
-
-# # Read in dataset of main dimension 40
-# df_dim40 = pd.read_csv(r'data/synthetic_rdim40.csv',sep=';',header=None)
-# df_dim40.head()
-
-
-# # In[28]:
-
-
-# prop = 0.04
-# df_outlier = sim_outliers(df_dim40, prop, 40, 45)
-# out_dis=pdist(df_outlier) # pairwise distance in tab (with outliers added)
-# out_dis_sq=squareform(out_dis) # squared matrix form of D
-# subspace_dim, _ = find_subspace_dim(out_dis_sq, 30, df_outlier.shape[1])
-
-# print("subspace_dim is:", subspace_dim)
-
-
-# # In[3]:
-
-
-# outlier_indices_gap = 0.1
-# res_outlier_indices_list = np.arange(0, 1, outlier_indices_gap)
-# outlier_num = len(res_outlier_indices_list)
-# prop_incre = 0.02 # simulate 2% more outliers per iteration
-# dim_pred_diff = []
-# dim_raw_diff= []
-# true_dim = 40
-# num_components = 50
-# df_prev = df_dim40
-# props = np.arange(prop_incre, prop_incre+outlier_num*prop_incre, prop_incre)
-# for i in range(len(res_outlier_indices_list)):
-
-#     res_outlier_indices =         range(int(res_outlier_indices_list[i] * df_prev.shape[0]),             int((res_outlier_indices_list[i]+outlier_indices_gap) * df_prev.shape[0]))
-#     df_prev = sim_outliers(df_prev, prop_incre, 40, 45,         res_outlier_indices = res_outlier_indices)
-#     df_prev.to_csv("outputs/iteration"+str(i)+".csv")
-#     out_dis=pdist(df_prev) # pairwise distance in tab (with outliers added)
-#     out_dis_sq=squareform(out_dis) # squared matrix form of D
-#     subspace_dim, _ = find_subspace_dim(out_dis_sq, 30, df_prev.shape[1])
-#     dim_pred_diff.append(subspace_dim - true_dim)
-#     dim_raw_diff.append(subspace_dim + int((subspace_dim * prop_incre * i) - true_dim))
-#     print("subspace_dim is:", subspace_dim)
-
-
-# # In[4]:
-
-
-# plt.figure()
-# plt.plot(props, dim_pred_diff, c="red", label = "after correction")
-# plt.plot(props, dim_raw_diff, c="blue", label = "before correction")
-# plt.xticks(props)
-# plt.xlabel(r'frarction of outliers $p$')
-# plt.ylabel(r'$\bar{n}-d^{*}$')
-# plt.savefig("./outputs/synthetic_prop.png")
-# plt.close()
-
-
-# # In[ ]:
-
-
-
-
+    end = time.time()
+    print(f"time for dimension 10 is: {end-start}")
