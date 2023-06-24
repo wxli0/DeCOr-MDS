@@ -445,7 +445,7 @@ if not os.path.exists(dim10_fig_path):
     ### Prepare for section 2.1.3
 
     ### test data, read in a dataset of main dimension 10
-    df_dim10 = pd.read_csv(r'data/synthetic_rdim10_2500.csv',sep=';',header=None)
+    df_dim10 = pd.read_csv(r'data/synthetic_rdim10.csv',sep=';',header=None)
     df_dim10.head()
 
 
