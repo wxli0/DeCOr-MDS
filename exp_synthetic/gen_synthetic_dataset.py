@@ -101,7 +101,7 @@ nois32=np.array(df_noise2_influence32)
 
 # np.savetxt(r'data/bdd_synthetic_rdim20.csv',tab_dim20,delimiter=';')
 
-# np.savetxt(r'data/bdd_synthetic_rdim40.csv',tab_dim40,delimiter=';')
+np.savetxt(f'data/synthetic_rdim40_{str(N)}.csv',tab_dim40,delimiter=';')
 
 # np.savetxt(r'data/bdd_synthetic_rdim40_2.csv',tab_dim40_2,delimiter=';')
 

@@ -20,7 +20,7 @@ exec(compile(open(r"nsimplices.py", encoding="utf8").read(), "nsimplices.py", 'e
 plt.rcParams["savefig.directory"] = os.getcwd() # To save figures to directory
                                                 #   defined above
 
-df_dim40 = pd.read_csv(r'data/synthetic_rdim40.csv',sep=';',header=None)
+df_dim40 = pd.read_csv(r'data/synthetic_rdim40_2000.csv',sep=';',header=None)
 
 ori_dis = pdist(df_dim40.copy())
 ori_dis_sq = squareform(ori_dis)
@@ -47,7 +47,7 @@ out_dis_sq=squareform(out_dis)
 
 ### Run nSimplices method
 T1=time.time()
-outlier_indices,subspace_dim,corr_dis_sq,corr_coord = nsimplices(out_dis_sq, df_dim40.shape[1], dim_start=30, dim_end=50, num_groups=250)
+outlier_indices,subspace_dim,corr_dis_sq,corr_coord = nsimplices(out_dis_sq, df_dim40.shape[1], dim_start=30, dim_end=50, num_groups=100)
 T2=time.time()
 print("runtime is:", T2-T1)
 print("subspace dimension is:", subspace_dim)
