@@ -37,3 +37,6 @@ python3 exp_cells/test_cells_datasets.py
 ```
 python3 exp_hmp/test_hmp_MDS_nSimplices.py 
 ```
+
+### scRNA-seq dataset
+Run the jupyter notebook in exp_genomic/test_scRNAseq_Baron.ipynb

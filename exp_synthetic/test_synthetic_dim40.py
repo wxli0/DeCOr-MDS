@@ -20,7 +20,7 @@ exec(compile(open(r"nsimplices.py", encoding="utf8").read(), "nsimplices.py", 'e
 plt.rcParams["savefig.directory"] = os.getcwd() # To save figures to directory
                                                 #   defined above
 
-df_dim40 = pd.read_csv(r'data/synthetic_rdim40_2000.csv',sep=';',header=None)
+df_dim40 = pd.read_csv(r'data/synthetic_rdim40_2500.csv',sep=';',header=None)
 
 ori_dis = pdist(df_dim40.copy())
 ori_dis_sq = squareform(ori_dis)
