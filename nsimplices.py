@@ -215,7 +215,7 @@ def correct_proj(euc_coord, outlier_indices, subspace_dim):
     corr_coord = euc_coord * 1.0
     
     normal_coord = np.delete(euc_coord, outlier_indices, 0) # delete outliers
-    print("outlier_indices is:", outlier_indices)
+    # print("outlier_indices is:", outlier_indices)
     
     PCA_model = PCA(n_components=subspace_dim)
     _ = PCA_model.fit_transform(normal_coord) # do not need to correct non-outliers 
@@ -230,11 +230,11 @@ def correct_proj(euc_coord, outlier_indices, subspace_dim):
     
     for idx in outlier_indices:
         outlier = euc_coord[idx]
-        print("original coord is:", outlier)
+        # print("original coord is:", outlier)
         proj_coord = np.zeros(feature_num)
         for comp in PCA_components:
             proj_coord += np.dot(outlier, comp) * comp
-            print("proj_coord is:", proj_coord)
+            # print("proj_coord is:", proj_coord)
         # print("+normal_mean is:", proj_coord + normal_mean)
         corr_coord[idx, :] = proj_coord + normal_mean
         # print("corr_coord is:", pd.DataFrame(corr_coord).head(20))
@@ -277,7 +277,7 @@ def find_subspace_dim(pairwise_dis, dim_start, dim_end, std_multi, num_groups=10
     
     # Determine the screeplot nb_outliers as a function of the dimension tested
     for dim in range(dim_start,dim_end+1):       
-        print("dim in find_subspace_dim is:", dim)    
+        # print("dim in find_subspace_dim is:", dim)    
         cur_height = nsimplices_all_heights(point_num, pairwise_dis, dim, seed=dim+1, num_groups=num_groups)     
         cur_height = np.array(cur_height)
         med_height[dim-dim_start] = np.median(cur_height)
@@ -285,11 +285,11 @@ def find_subspace_dim(pairwise_dis, dim_start, dim_end, std_multi, num_groups=10
     
     # Determine the subspace dimension
     dims = np.array(range(dim_start, dim_end+1),dtype=float)
-    print("med_height is:", med_height)
+    # print("med_height is:", med_height)
     subspace_dim = dim_start
     if dim_start != dim_end:
         subspace_dim = np.argmax(med_height[0:len(dims)-1]/med_height[1:len(dims)])+dim_start+1
-    print("subspace_dim is:", subspace_dim)
+    # print("subspace_dim is:", subspace_dim)
     
     # Detect outliers in dimension subspace_dim
     subspace_heights = dim_height_map[subspace_dim]
@@ -301,10 +301,10 @@ def find_subspace_dim(pairwise_dis, dim_start, dim_end, std_multi, num_groups=10
     subspace_mean = np.mean(subspace_heights)
     
     thres = subspace_mean + std_multi * subspace_std # TODO: consider make 5 a parameter
-    print("thres is:", thres, "mean is:", subspace_mean, "std is:", subspace_std)
+    # print("thres is:", thres, "mean is:", subspace_mean, "std is:", subspace_std)
     all_indices = np.array(range(subspace_height_size))
     outlier_indices = all_indices[subspace_heights > thres]
-    print("outlier indices are:", outlier_indices)
+    # print("outlier indices are:", outlier_indices)
     for idx in outlier_indices:
         print("idx is:", idx, "height is:", subspace_heights[idx], "thres is:", thres)
     
@@ -401,8 +401,8 @@ def remove_correct_proj(pairwise_dis, feature_num, subspace_dim, outlier_indices
     corr_coord: list[list[float]]
         The list of corrected coordinates
     """
-    print("remove_indices is:", remove_indices)
-    print("outlier_indices is:", outlier_indices)
+    # print("remove_indices is:", remove_indices)
+    # print("outlier_indices is:", outlier_indices)
     # Check if remove_indices are all in outlier_indices
     if not all(elem in outlier_indices  for elem in remove_indices):
         raise Exception("remove_indices should be all in outlier_indices")
@@ -466,8 +466,8 @@ def sim_outliers(df, prop, col_start, col_end, out_dist = alea.uniform(-100,100)
     return df_new
 
 def update_outlier_index(outlier_indices, remove_indices):
-    print("remove_indices is:", remove_indices)
-    print("outlier_indices is:", outlier_indices)
+    # print("remove_indices is:", remove_indices)
+    # print("outlier_indices is:", outlier_indices)
     updated_outlier_indices = []
     outlier_idx = 0
     remove_idx = 0

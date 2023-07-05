@@ -90,6 +90,16 @@ if not os.path.exists(QE_nSimplices_cMDS_axes_output_path):
 
     np.savetxt(QE_nSimplices_cMDS_axes_output_path, Xe, fmt='%f')
 
+    """ 
+    Determine the number of additional outliers detected in the second round of nSimplices
+    """
+    normal_indices=[i for i in range(df_hmp.shape[0]) if i not in outlier_indices] # list of normal points 
+    hmp_dis_sq_second = hmp_dis_sq[normal_indices, :][:, normal_indices]
+    outlier_indices, subspace_dim , corr_pairwise_dis, corr_coord = nsimplices(hmp_dis_sq_second, feature_num, dim_start, dim_end)
+    print("outlier_indices are:", outlier_indices)
+    print("number of outliers detected in the second round is:", len(outlier_indices))
+
+
 
 figure_output_path = "./outputs/hmp_QE_nSimplices_cMDS_0_1.png"
 if not os.path.exists(figure_output_path):
