@@ -23,6 +23,7 @@ plt.rcParams["savefig.directory"] = os.getcwd() # To save figures to directory
 
 ### Run nSimplices method
 feature_num = 40
+# feature_num = 2
 dim_start = 1
 dim_end = feature_num
 file_id = "control"
@@ -35,6 +36,18 @@ print("outlier_indices is:", outlier_indices)
 print("outlier_indices len is:", len(outlier_indices))
 
 normal_indices=[i for i in range(target_matrix.shape[0]) if i not in outlier_indices] # list of normal points 
+
+# """ Determine the number of additional outliers detected in the second round
+# """
+
+# # target_matrix = np.loadtxt("data/cells_"+file_id+"_matrix.txt")
+# target_matrix_second = target_matrix[normal_indices, :][:, normal_indices]
+# print("target_matrix_second shape is:", target_matrix_second.shape)
+# dim_start = 2
+# dim_end = 2
+# outlier_indices, subspace_dim, corr_dis_sq, corr_coord = nsimplices(target_matrix_second, feature_num, dim_start, dim_end, std_multi=3)
+# print("outlier indices in the second round are:", outlier_indices)
+# print("number of outliers in the second round is:", len(outlier_indices))
 
 # In[2]:
 
@@ -267,14 +280,14 @@ plt.savefig(cMDS_fig_path)
 # plt.close()
 
 
-""" Determine the number of additional outliers detected in the second round
-"""
+# """ Determine the number of additional outliers detected in the second round
+# """
 
-target_matrix = np.loadtxt("data/cells_"+file_id+"_matrix.txt")
-target_matrix_second = target_matrix[normal_indices, :][:, normal_indices]
-print("target_matrix_second shape is:", target_matrix_second.shape)
-dim_start = 40
-dim_end = 40
-outlier_indices, subspace_dim, corr_dis_sq, corr_coord = nsimplices(target_matrix_second, feature_num, dim_start, dim_end, std_multi=6)
-print("outlier indices in the second round are:", outlier_indices)
-print("number of outliers in the second round is:", len(outlier_indices))
+# target_matrix = np.loadtxt("data/cells_"+file_id+"_matrix.txt")
+# target_matrix_second = target_matrix[normal_indices, :][:, normal_indices]
+# print("target_matrix_second shape is:", target_matrix_second.shape)
+# dim_start = 40
+# dim_end = 40
+# outlier_indices, subspace_dim, corr_dis_sq, corr_coord = nsimplices(target_matrix_second, feature_num, dim_start, dim_end, std_multi=6)
+# print("outlier indices in the second round are:", outlier_indices)
+# print("number of outliers in the second round is:", len(outlier_indices))
