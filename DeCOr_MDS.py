@@ -259,7 +259,7 @@ def find_subspace_dim(pairwise_dis, dim_start, dim_end, std_multi, num_groups=10
     std_multi: int
         The multiplier before std when computing the threshold to determine outliers
     num_groups: int
-        The number of nSimplices to draw for each point, default 100
+        The number of simplices to draw for each point, default 100
 
     Returns
     -------
@@ -316,9 +316,9 @@ def find_subspace_dim(pairwise_dis, dim_start, dim_end, std_multi, num_groups=10
     return int(subspace_dim), outlier_indices
 
 
-def nsimplices(pairwise_dis, feature_num, dim_start, dim_end, euc_coord=None, correct=True, std_multi=3, num_groups=100):
+def DeCOr_MDS(pairwise_dis, feature_num, dim_start, dim_end, euc_coord=None, correct=True, std_multi=3, num_groups=100):
     """
-    The nSimplices method
+    The DeCOr_MDS method
     Parameters
     ----------
     pairwise_dis: 2D np array of float
