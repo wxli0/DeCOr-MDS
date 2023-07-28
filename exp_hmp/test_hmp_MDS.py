@@ -11,7 +11,7 @@ from scipy.spatial.distance import pdist, squareform
 
 # read colors
 colors = np.loadtxt("./data/hmp_colors.txt", dtype="str")
-exec(open("./nsimplices.py").read())
+exec(open("./DeCOr_MDS.py").read())
 alea.seed(42)
 
 dir="./data/"

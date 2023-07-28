@@ -6,22 +6,22 @@
 
 import matplotlib.pyplot as plt
 
-# Running nSimplices
+# Running DeCOr_MDS
 
 # In[1]:
-"""Run nSimplices for cell datasets """
+"""Run DeCOr_MDS for cell datasets """
 # In[ ]:
 
 
-# import nSimplices 
+# import DeCOr_MDS
 # get_ipython().run_line_magic('matplotlib', 'widget')
-exec(compile(open(r"nsimplices.py", encoding="utf8").read(), "nsimplices.py", 'exec'))
+exec(compile(open(r"DeCOr_MDS.py", encoding="utf8").read(), "DeCOr_MDS.py", 'exec'))
 
 # set matplotlib default savefig directory
 plt.rcParams["savefig.directory"] = os.getcwd() # To save figures to directory
                                                 #   defined above
 
-### Run nSimplices method
+### Run DeCOr_MDS method
 feature_num = 40
 # feature_num = 2
 dim_start = 1
@@ -29,7 +29,7 @@ dim_end = feature_num
 file_id = "control"
 target_matrix = np.loadtxt("data/cells_"+file_id+"_matrix.txt")
 print("target_matrix is:", target_matrix)
-outlier_indices, subspace_dim, corr_dis_sq, corr_coord = nsimplices(target_matrix, feature_num, dim_start, dim_end)
+outlier_indices, subspace_dim, corr_dis_sq, corr_coord = DeCOr_MDS(target_matrix, feature_num, dim_start, dim_end)
 
 print("subspace dimension is:", subspace_dim)
 print("outlier_indices is:", outlier_indices)
@@ -45,7 +45,7 @@ normal_indices=[i for i in range(target_matrix.shape[0]) if i not in outlier_ind
 # print("target_matrix_second shape is:", target_matrix_second.shape)
 # dim_start = 2
 # dim_end = 2
-# outlier_indices, subspace_dim, corr_dis_sq, corr_coord = nsimplices(target_matrix_second, feature_num, dim_start, dim_end, std_multi=3)
+# outlier_indices, subspace_dim, corr_dis_sq, corr_coord = DeCOr-MDS(target_matrix_second, feature_num, dim_start, dim_end, std_multi=3)
 # print("outlier indices in the second round are:", outlier_indices)
 # print("number of outliers in the second round is:", len(outlier_indices))
 
@@ -288,6 +288,6 @@ plt.savefig(cMDS_fig_path)
 # print("target_matrix_second shape is:", target_matrix_second.shape)
 # dim_start = 40
 # dim_end = 40
-# outlier_indices, subspace_dim, corr_dis_sq, corr_coord = nsimplices(target_matrix_second, feature_num, dim_start, dim_end, std_multi=6)
+# outlier_indices, subspace_dim, corr_dis_sq, corr_coord = DeCOr-MDS(target_matrix_second, feature_num, dim_start, dim_end, std_multi=6)
 # print("outlier indices in the second round are:", outlier_indices)
 # print("number of outliers in the second round is:", len(outlier_indices))

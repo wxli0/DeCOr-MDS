@@ -14,7 +14,7 @@ import time
 
 # import nSimplices 
 # get_ipython().run_line_magic('matplotlib', 'widget')
-exec(compile(open(r"nsimplices.py", encoding="utf8").read(), "nsimplices.py", 'exec'))
+exec(compile(open(r"DeCOr_MDS.py", encoding="utf8").read(), "DeCOr_MDS.py", 'exec'))
 
 # set matplotlib default savefig directory
 plt.rcParams["savefig.directory"] = os.getcwd() # To save figures to directory
@@ -47,7 +47,7 @@ out_dis_sq=squareform(out_dis)
 
 ### Run nSimplices method
 T1=time.time()
-outlier_indices,subspace_dim,corr_dis_sq,corr_coord = nsimplices(out_dis_sq, df_dim40.shape[1], dim_start=30, dim_end=50, num_groups=100)
+outlier_indices,subspace_dim,corr_dis_sq,corr_coord = DeCOr-MDS(out_dis_sq, df_dim40.shape[1], dim_start=30, dim_end=50, num_groups=100)
 T2=time.time()
 print("runtime is:", T2-T1)
 print("subspace dimension is:", subspace_dim)

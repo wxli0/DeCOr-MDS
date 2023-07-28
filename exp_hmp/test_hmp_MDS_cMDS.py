@@ -12,7 +12,7 @@ from sklearn.manifold import MDS
 
 """ Run nSimplices on HMP dataset """
 colors = np.loadtxt("./data/hmp_colors.txt", dtype="str")
-exec(open("./nsimplices.py").read())
+exec(open("./DeCOr_MDS.py").read())
 alea.seed(42)
 
 """ QE normalization + MDS + cMDS """ 

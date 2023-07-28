@@ -39,13 +39,13 @@ if not os.path.exists("./data/hmp_colors.txt"):
     np.savetxt("./data/hmp_colors.txt", colors, fmt="%s")
 
 
-""" Run nSimplices on HMP dataset """
+""" Run DeCOr_MDS on HMP dataset """
 
 colors = np.loadtxt("./data/hmp_colors.txt", dtype="str")
-exec(open("./nsimplices.py").read())
+exec(open("./DeCOr_MDS.py").read())
 alea.seed(42)
 
-""" NB normalization + nSimplices + cMDS """ 
+""" NB normalization + DeCOr_MDS + cMDS """ 
 axes_output_path = "./outputs/hmp_NB_nSimplices_cMDS_axes.txt"
 if not os.path.exists(axes_output_path):
     print("======== NB normalization + nSimplices + cMDS ========")
@@ -59,7 +59,7 @@ if not os.path.exists(axes_output_path):
     dim_end = feature_num
 
     print("hmp_dis_sq shape is:", hmp_dis_sq.shape)
-    outlier_indices, subspace_dim , corr_pairwise_dis, corr_coord = nsimplices(hmp_dis_sq, feature_num, dim_start, dim_end)
+    outlier_indices, subspace_dim , corr_pairwise_dis, corr_coord = DeCOr_MDS(hmp_dis_sq, feature_num, dim_start, dim_end)
     print("subspace dimension is:", subspace_dim)
 
     # run cMDS to get the corrected coordinates in importance decreasing order
@@ -67,7 +67,7 @@ if not os.path.exists(axes_output_path):
     np.savetxt(axes_output_path, Xe, fmt='%f')
 
 
-""" QE normalization + nSimplices + cMDS """ 
+""" QE normalization + DeCOr_MDS + cMDS """ 
 QE_nSimplices_cMDS_axes_output_path = "./outputs/hmp_QE_nSimplices_cMDS_axes.txt"
 if not os.path.exists(QE_nSimplices_cMDS_axes_output_path):
     print("======== QE normalization + nSimplices + cMDS ========")
@@ -82,7 +82,7 @@ if not os.path.exists(QE_nSimplices_cMDS_axes_output_path):
     dim_end = feature_num
 
     print("hmp_dis_sq shape is:", hmp_dis_sq.shape)
-    outlier_indices, subspace_dim , corr_pairwise_dis, corr_coord = nsimplices(hmp_dis_sq, feature_num, dim_start, dim_end)
+    outlier_indices, subspace_dim , corr_pairwise_dis, corr_coord = DeCOr_MDS(hmp_dis_sq, feature_num, dim_start, dim_end)
     print("subspace dimension is:", subspace_dim)
 
     """ (1) Plot cMDS embedding using the pairs of axis from the four most significant axes """
@@ -95,7 +95,7 @@ if not os.path.exists(QE_nSimplices_cMDS_axes_output_path):
     """
     normal_indices=[i for i in range(df_hmp.shape[0]) if i not in outlier_indices] # list of normal points 
     hmp_dis_sq_second = hmp_dis_sq[normal_indices, :][:, normal_indices]
-    outlier_indices, subspace_dim , corr_pairwise_dis, corr_coord = nsimplices(hmp_dis_sq_second, feature_num, dim_start, dim_end)
+    outlier_indices, subspace_dim , corr_pairwise_dis, corr_coord = DeCOr_MDS(hmp_dis_sq_second, feature_num, dim_start, dim_end)
     print("outlier_indices are:", outlier_indices)
     print("number of outliers detected in the second round is:", len(outlier_indices))
 

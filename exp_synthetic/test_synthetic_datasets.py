@@ -21,7 +21,7 @@ import time
 
 # import nSimplices 
 # get_ipython().run_line_magic('matplotlib', 'widget')
-exec(compile(open(r"nsimplices.py", encoding="utf8").read(), "nsimplices.py", 'exec'))
+exec(compile(open(r"DeCOr_MDS.py", encoding="utf8").read(), "DeCOr_MDS.py", 'exec'))
 
 # set matplotlib default savefig directory
 plt.rcParams["savefig.directory"] = os.getcwd() # To save figures to directory
@@ -90,7 +90,7 @@ if not os.path.exists(cross_fig_path):
     T1=time.time()
     # outlier_indices, subspace_dim, corr_dis_sq, corr_coord = nSimplices(out_dis_sq, feature_num, dim_start, dim_end, euc_coord=np.array(df_cross.copy()))
 
-    outlier_indices, subspace_dim, corr_dis_sq, corr_coord = nsimplices(out_dis_sq, feature_num, dim_start, dim_end, euc_coord=np.array(df_cross.copy()))
+    outlier_indices, subspace_dim, corr_dis_sq, corr_coord = DeCOr-MDS(out_dis_sq, feature_num, dim_start, dim_end, euc_coord=np.array(df_cross.copy()))
 
     T2=time.time()
     print("runtime is:", T2-T1)
@@ -296,7 +296,7 @@ if not os.path.exists(dim2_fig_path) or  not os.path.exists(before_correction_dy
 
     """ Run n-Simplices method """
     T1=time.time()
-    outlier_indices,rdim,corr_dis_sq,corr_coord = nsimplices(out_dis_sq, df_dim2.shape[1], dim_start = 1, dim_end = 7)
+    outlier_indices,rdim,corr_dis_sq,corr_coord = DeCOr-MDS(out_dis_sq, df_dim2.shape[1], dim_start = 1, dim_end = 7)
     T2=time.time()
     print("runtime is:", T2-T1)
     print("subspace dimension is:", rdim)
@@ -493,7 +493,7 @@ if not os.path.exists(dim10_fig_path):
 
     ### Run nSimplices method
     T1=time.time()
-    outlier_indices,subspace_dim,corr_dis_sq,corr_coord = nsimplices(out_dis_sq, df_dim10.shape[1], dim_start=1, dim_end=df_dim10.shape[1], num_groups=100)
+    outlier_indices,subspace_dim,corr_dis_sq,corr_coord = DeCOr-MDS(out_dis_sq, df_dim10.shape[1], dim_start=1, dim_end=df_dim10.shape[1], num_groups=100)
     T2=time.time()
     print("runtime is:", T2-T1)
     print("subspace dimension is:", subspace_dim)

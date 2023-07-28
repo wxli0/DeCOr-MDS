@@ -10,7 +10,7 @@ DeCOr-MDS has been developed using Python 3.8.
 
 # Code structure
 
-DeCOr-MDS procedures are implemented in nsimplices.py. 
+DeCOr-MDS procedures are implemented in DeCOr_MDS.py. 
 Experiment scripts are in exp_synthetic/, exp_cells/ and exp_hmp/. 
 Experiment data is in data/.
 

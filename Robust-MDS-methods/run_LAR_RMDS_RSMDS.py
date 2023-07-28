@@ -2,7 +2,7 @@ from scipy.spatial.distance import pdist, squareform
 import os
 import numpy as np
 
-exec(open("./nsimplices.py").read())
+exec(open("./DeCOr_MDS.py").read())
 
 data_path = os.path.join("./data/hmp_v13lqphylotypecounts_rs_c.csv")
 df_hmp = np.loadtxt(data_path, delimiter=",")

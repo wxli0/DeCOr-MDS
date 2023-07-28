@@ -9,7 +9,7 @@ from sklearn.decomposition import PCA
 import time
 
 # import nSimplices 
-exec(compile(open(r"nsimplices.py", encoding="utf8").read(), "nsimplices.py", 'exec'))
+exec(compile(open(r"DeCOr_MDS.py", encoding="utf8").read(), "DeCOr_MDS.py", 'exec'))
 
 # set matplotlib default savefig directory
 plt.rcParams["savefig.directory"] = os.getcwd() # To save figures to directory
